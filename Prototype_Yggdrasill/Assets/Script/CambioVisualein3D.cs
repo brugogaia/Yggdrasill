@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CambioVisuale : MonoBehaviour
+public class CambioVisualein3D : MonoBehaviour
 {
     //DA APPLICARE SUL PIANO POSTO TRA LE DUE SEQUENZE
 
@@ -25,9 +25,7 @@ public class CambioVisuale : MonoBehaviour
     {
         if (other = GameObject.FindGameObjectWithTag("Player").GetComponent<Collider>())
         {
-            visuale3D = Camera.GetComponent<Camera>().getVisual();
-            if (!visuale3D) visuale3D = true;
-            Camera.GetComponent<Camera>().ChangeVisual(visuale3D);
+            Camera.GetComponent<Camera>().ChangeinVisual3D();
         }
     }
 }
