@@ -27,6 +27,7 @@ public class Camera : MonoBehaviour
         {
             target = GameObject.FindGameObjectWithTag("Target2D").transform;
             this.transform.right = Player.transform.right;
+            Player.GetComponent<Giocatore>().CambiaVisualein2D();
         }
         else
         {
@@ -45,7 +46,6 @@ public class Camera : MonoBehaviour
     public void ChangeinVisual3D()
     {
         visual3D = true;
-        Player.GetComponent<Giocatore>().CambiaVisualein3D();
         //Debug.Log("Visuale in 3D");
         // transform.Rotate(0, 90, 0);
     }
@@ -53,7 +53,7 @@ public class Camera : MonoBehaviour
     public void ChangeinVisual2D()
     {
         visual3D = false;
-        Player.GetComponent<Giocatore>().CambiaVisualein2D();
+        
         //Debug.Log("Visuale in 2D");
         //transform.Rotate(0, 90, 0);
     }
