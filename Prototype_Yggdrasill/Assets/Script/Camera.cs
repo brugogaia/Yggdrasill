@@ -23,11 +23,13 @@ public class Camera : MonoBehaviour
         {
             target = GameObject.FindGameObjectWithTag("Target2D").transform;
             Player.GetComponent<Giocatore>().CambiaVisuale(false);
+            this.transform.right = Player.transform.right;
         }
         else
         {
             target = GameObject.FindGameObjectWithTag("Target3D").transform;
             Player.GetComponent<Giocatore>().CambiaVisuale(true);
+            this.transform.forward = Player.transform.right;
         }
         // Define a target position above and behind the target transform
         Vector3 targetPosition = target.TransformPoint(new Vector3(0, 5, -10));
@@ -40,14 +42,14 @@ public class Camera : MonoBehaviour
     {
         visual3D = true;
         Debug.Log("Visuale in 3D");
-        transform.Rotate(0, 45, 0);
+       // transform.Rotate(0, 90, 0);
     }
 
     public void ChangeinVisual2D()
     {
         visual3D = false;
         Debug.Log("Visuale in 2D");
-        transform.Rotate(0, -45, 0);
+        //transform.Rotate(0, 90, 0);
     }
 
     public bool getVisual()

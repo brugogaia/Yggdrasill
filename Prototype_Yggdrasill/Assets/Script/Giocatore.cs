@@ -21,7 +21,7 @@ public class Giocatore : MonoBehaviour
             float movimentoOrizzontale = Input.GetAxis("Vertical") * speed;
             float movimentoVerticale = Input.GetAxis("Horizontal") * speed;
             movimentoVerticale *= Time.deltaTime;
-            transform.Translate(0, 0,movimentoVerticale);
+            transform.Translate(0, 0,-movimentoVerticale);
             movimentoOrizzontale *= Time.deltaTime;
             transform.Translate(movimentoOrizzontale, 0, 0);
         }
