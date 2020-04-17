@@ -10,11 +10,16 @@ public class Camera : MonoBehaviour
     public float smoothTime = 0.3F;
     private Vector3 velocity = Vector3.zero;
     bool visual3D = false;
+    
+
 
     private void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
         MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update()
@@ -30,6 +35,8 @@ public class Camera : MonoBehaviour
             target = GameObject.FindGameObjectWithTag("Target3D").transform;
             Player.GetComponent<Giocatore>().CambiaVisuale(true);
             this.transform.forward = Player.transform.right;
+                
+            
         }
         // Define a target position above and behind the target transform
         Vector3 targetPosition = target.TransformPoint(new Vector3(0, 5, -10));

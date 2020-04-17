@@ -8,6 +8,9 @@ public class Giocatore : MonoBehaviour
     public float rotationSpeed = 100.0f;
     public bool visual3D = false;
 
+    private float velocita_verticale_camera = 1.0f;
+    private float velocita_orizzontale_camera = 1.0f;
+
     void Update()
     {
         if (!visual3D)
@@ -18,12 +21,32 @@ public class Giocatore : MonoBehaviour
         }
         else
         {
-            float movimentoOrizzontale = Input.GetAxis("Vertical") * speed;
-            float movimentoVerticale = Input.GetAxis("Horizontal") * speed;
-            movimentoVerticale *= Time.deltaTime;
-            transform.Translate(0, 0,-movimentoVerticale);
-            movimentoOrizzontale *= Time.deltaTime;
-            transform.Translate(movimentoOrizzontale, 0, 0);
+            float movimentoAvantiIndietro = Input.GetAxis("Vertical") * speed;
+            float movimentoDxSx = Input.GetAxis("Horizontal") * speed;
+            movimentoDxSx *= Time.deltaTime;
+            transform.Translate(0, 0,-movimentoDxSx);
+            movimentoAvantiIndietro *= Time.deltaTime;
+            transform.Translate(movimentoAvantiIndietro, 0, 0);
+
+
+            Vector2 mouseMovement = new Vector2();
+            mouseMovement.x = Input.GetAxis("Mouse X");
+            mouseMovement.y = Input.GetAxis("Mouse Y");
+
+            float angolo_orizzontale_rotazione = 0.0f;
+            float angolo_verticale_rotazione = 0.0f;
+            if (mouseMovement.magnitude > 0.05)
+            {
+                //Rotazione asse verticale camera
+                angolo_verticale_rotazione -= mouseMovement.y * this.velocita_verticale_camera;
+
+                //Rotazione asse orizzontale camera
+                angolo_orizzontale_rotazione = mouseMovement.x * velocita_orizzontale_camera;
+            }
+
+
+            this.transform.Rotate(0, angolo_orizzontale_rotazione, 0);
+            this.transform.Rotate(0, 0, angolo_verticale_rotazione);
         }
         
         
