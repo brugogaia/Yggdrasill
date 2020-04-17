@@ -9,20 +9,18 @@ public class Giocatore : MonoBehaviour
 
     void Update()
     {
-        // Get the horizontal and vertical axis.
-        // By default they are mapped to the arrow keys.
-        // The value is in the range -1 to 1
-        float translation = Input.GetAxis("Vertical") * speed;
-        float orizzontal = Input.GetAxis("Horizontal") * speed;
+
+        float movement3D = Input.GetAxis("Vertical") * speed;
+        float movement2D = Input.GetAxis("Horizontal") * speed;
 
         // Make it move 10 meters per second instead of 10 meters per frame...
-        translation *= Time.deltaTime;
-        orizzontal *= Time.deltaTime;
+        //movement3D *= Time.deltaTime;
+        movement2D *= Time.deltaTime;
 
         // Move translation along the object's z-axis
-        transform.Translate(0, 0, translation);
+        //transform.Translate(0, 0, movement3D);
 
         // Rotate around our y-axis
-        transform.Translate(orizzontal, 0, 0);
+        transform.Translate(movement2D, 0, 0);
     }
 }
