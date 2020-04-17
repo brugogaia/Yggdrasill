@@ -4,29 +4,45 @@ using UnityEngine;
 
 public class Giocatore : MonoBehaviour
 {
-    public float speed = 20.0f;
+    public float speed = 20f;
     public float rotationSpeed = 100.0f;
-    public bool visual3D = false;
+    private bool vis3D = false;
+
+    private Quaternion rotIniziale;
 
     private float velocita_verticale_camera = 1.0f;
     private float velocita_orizzontale_camera = 1.0f;
 
+    private void Start()
+    {
+        rotIniziale = transform.rotation;
+    }
+
     void Update()
     {
-        if (!visual3D)
+        Debug.Log("vis3D giocatore = " + vis3D);
+        if (!vis3D)
         {
             float movimentoOrizzontale = Input.GetAxis("Horizontal") * speed;
             movimentoOrizzontale *= Time.deltaTime;
             transform.Translate(movimentoOrizzontale, 0, 0);
+            if (transform.rotation != rotIniziale)
+            {
+                transform.rotation = rotIniziale;
+                Debug.Log("sono nell if");
+            }
         }
         else
         {
+            speed = 20f;
             float movimentoAvantiIndietro = Input.GetAxis("Vertical") * speed;
             float movimentoDxSx = Input.GetAxis("Horizontal") * speed;
             movimentoDxSx *= Time.deltaTime;
-            transform.Translate(0, 0,-movimentoDxSx);
             movimentoAvantiIndietro *= Time.deltaTime;
-            transform.Translate(movimentoAvantiIndietro, 0, 0);
+            Vector3 AD = transform.right*movimentoAvantiIndietro;
+            Vector3 DxSx = transform.forward * -movimentoDxSx;
+            transform.position = transform.position + AD + DxSx;
+            
 
 
             Vector2 mouseMovement = new Vector2();
@@ -45,8 +61,8 @@ public class Giocatore : MonoBehaviour
             }
 
 
-            this.transform.Rotate(0, angolo_orizzontale_rotazione, 0);
-            this.transform.Rotate(0, 0, angolo_verticale_rotazione);
+            transform.Rotate(0, angolo_orizzontale_rotazione, 0);
+            transform.Rotate(0, 0, angolo_verticale_rotazione);
         }
         
         
@@ -62,8 +78,14 @@ public class Giocatore : MonoBehaviour
         
     }
 
-    public void CambiaVisuale(bool nuovaVisuale)
+    public void CambiaVisualein3D()
     {
-        visual3D = nuovaVisuale;
+        vis3D = true;
     }
+
+    public void CambiaVisualein2D()
+    {
+        vis3D = false;
+    }
+
 }

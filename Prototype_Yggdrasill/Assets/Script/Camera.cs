@@ -6,17 +6,15 @@ public class Camera : MonoBehaviour
 {
     public Transform target;
     public GameObject Player;
-    public GameObject MainCamera;
     public float smoothTime = 0.3F;
     private Vector3 velocity = Vector3.zero;
-    bool visual3D = false;
+    private bool visual3D = false;
     
 
 
     private void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
-        MainCamera = GameObject.FindGameObjectWithTag("MainCamera");
 
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -24,19 +22,18 @@ public class Camera : MonoBehaviour
 
     void Update()
     {
+        
         if (!visual3D)
         {
             target = GameObject.FindGameObjectWithTag("Target2D").transform;
-            Player.GetComponent<Giocatore>().CambiaVisuale(false);
             this.transform.right = Player.transform.right;
         }
         else
         {
             target = GameObject.FindGameObjectWithTag("Target3D").transform;
-            Player.GetComponent<Giocatore>().CambiaVisuale(true);
             this.transform.forward = Player.transform.right;
-                
-            
+            Player.GetComponent<Giocatore>().CambiaVisualein3D();
+
         }
         // Define a target position above and behind the target transform
         Vector3 targetPosition = target.TransformPoint(new Vector3(0, 5, -10));
@@ -48,21 +45,20 @@ public class Camera : MonoBehaviour
     public void ChangeinVisual3D()
     {
         visual3D = true;
-        Debug.Log("Visuale in 3D");
-       // transform.Rotate(0, 90, 0);
+        Player.GetComponent<Giocatore>().CambiaVisualein3D();
+        //Debug.Log("Visuale in 3D");
+        // transform.Rotate(0, 90, 0);
     }
 
     public void ChangeinVisual2D()
     {
         visual3D = false;
-        Debug.Log("Visuale in 2D");
+        Player.GetComponent<Giocatore>().CambiaVisualein2D();
+        //Debug.Log("Visuale in 2D");
         //transform.Rotate(0, 90, 0);
     }
 
-    public bool getVisual()
-    {
-        return visual3D;
-    }
+    
 
     
 }

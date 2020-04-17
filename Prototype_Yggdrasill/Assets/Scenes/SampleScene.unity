@@ -897,11 +897,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6361d0665005c9541a61e223167b865f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target_tmp: {fileID: 0}
-  punto_a_inseguimento: {x: 0, y: 0, z: 0}
-  velocita_verticale_camera: 1
-  velocita_orizzontale_camera: 1
-  giocatore: {fileID: 844888041}
 --- !u!114 &963194230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -914,9 +909,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6620376aeacd0ed45b33ef4c54dfe9bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 643056154}
+  target: {fileID: 0}
   Player: {fileID: 0}
-  MainCamera: {fileID: 0}
   smoothTime: 0.3
 --- !u!1 &1186134405
 GameObject:
