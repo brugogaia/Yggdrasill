@@ -25,7 +25,7 @@ public class CambioVisualein2D : MonoBehaviour
     {
         if (other = GameObject.FindGameObjectWithTag("Player").GetComponent<Collider>())
         {
-            Camera.GetComponent<Camera>().ChangeinVisual2D();
+            Camera.GetComponent<ScriptCamera>().ChangeinVisual2D();
             Debug.Log("TRIGGER TO 2D");
         }
     }
