@@ -7,7 +7,7 @@ public class CambioVisualein3D : MonoBehaviour
     //DA APPLICARE SUL PIANO POSTO TRA LE DUE SEQUENZE
 
     GameObject Camera;
-    bool visuale3D;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +26,7 @@ public class CambioVisualein3D : MonoBehaviour
         if (other = GameObject.FindGameObjectWithTag("Player").GetComponent<Collider>())
         {
             Camera.GetComponent<Camera>().ChangeinVisual3D();
+            Debug.Log("TRIGGER TO 3D");
         }
     }
 }

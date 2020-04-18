@@ -16,21 +16,18 @@ public class Giocatore : MonoBehaviour
     private void Start()
     {
         rotIniziale = transform.rotation;
+        
     }
 
     void Update()
     {
-        Debug.Log("vis3D giocatore = " + vis3D);
+        //Debug.Log("k giocatore = " + k);
         if (!vis3D)
         {
             float movimentoOrizzontale = Input.GetAxis("Horizontal") * speed;
             movimentoOrizzontale *= Time.deltaTime;
             transform.Translate(movimentoOrizzontale, 0, 0);
-            if (transform.rotation != rotIniziale)
-            {
-                transform.rotation = rotIniziale;
-                Debug.Log("sono nell if");
-            }
+            
         }
         else
         {
@@ -81,11 +78,17 @@ public class Giocatore : MonoBehaviour
     public void CambiaVisualein3D()
     {
         vis3D = true;
+        Debug.Log("Giocatore in 3D, vis3D vale "+vis3D);
     }
 
     public void CambiaVisualein2D()
     {
         vis3D = false;
+        if (transform.rotation != rotIniziale)
+        {
+            transform.rotation = rotIniziale;
+            Debug.Log("sono nell if");
+        }
     }
 
 }
