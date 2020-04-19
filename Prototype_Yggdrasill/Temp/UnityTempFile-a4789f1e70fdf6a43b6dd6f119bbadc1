@@ -285,6 +285,8 @@
 /define:ENABLE_LEGACY_INPUT_MANAGER
 /define:CSHARP_7_OR_LATER
 /define:CSHARP_7_3_OR_NEWER
+Assets\Assets\Scripts\MouseLook.cs
+Assets\Assets\Scripts\PlayerMovement.cs
 Assets\Script\CambioVisualein2D.cs
 Assets\Script\CambioVisualein3D.cs
 Assets\Script\Giocatore.cs
