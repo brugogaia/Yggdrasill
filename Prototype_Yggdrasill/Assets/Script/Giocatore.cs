@@ -59,19 +59,13 @@ public class Giocatore : MonoBehaviour
 
 
             transform.Rotate(0, angolo_orizzontale_rotazione, 0);
-            transform.Rotate(0, 0, angolo_verticale_rotazione);
+            //transform.Rotate(0, 0, angolo_verticale_rotazione);
         }
         
         
 
-        // Make it move 10 meters per second instead of 10 meters per frame...
-        //movement3D *= Time.deltaTime;
         
-
-        // Move translation along the object's z-axis
-        //transform.Translate(0, 0, movement3D);
-
-        // Rotate around our y-axis
+        
         
     }
 
