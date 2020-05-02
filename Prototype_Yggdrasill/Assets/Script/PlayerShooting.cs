@@ -83,11 +83,5 @@ public class PlayerShooting : MonoBehaviour
             Debug.Log("trovato nemico");
         }
     }
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.tag == "Enemy")
-        {
-            enemy = null;
-        }
-    }
+    
 }
