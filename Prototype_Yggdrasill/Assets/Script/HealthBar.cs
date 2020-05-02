@@ -78,8 +78,7 @@ public class HealthBar : MonoBehaviour
     public void SetCurrentHealth(float health)
     {
         CurrentHealth = health;
-        ScaleChange = new Vector3(CurrentHealth, HBImage.transform.localScale.y, HBImage.transform.localScale.z);
-        HBImage.transform.localScale = ScaleChange;
+        HBImage.GetComponent<Image>().fillAmount = CurrentHealth;
     }
 
 
@@ -87,15 +86,14 @@ public class HealthBar : MonoBehaviour
     {
         if(CurrentHealth < MaxHealth)
         {
-            float cura = 0.2f;
+            float cura = 0.1f;
             CurrentHealth = CurrentHealth + cura;
             if (CurrentHealth > MaxHealth)
             {
                 CurrentHealth = MaxHealth;
             }
-            ScaleChange = new Vector3(CurrentHealth, HBImage.transform.localScale.y, HBImage.transform.localScale.z);
-            HBImage.transform.localScale = ScaleChange;
-            
+            HBImage.GetComponent<Image>().fillAmount = CurrentHealth;
+
         }
         
     }

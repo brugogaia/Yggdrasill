@@ -16,7 +16,7 @@ public class EnemyShooting : MonoBehaviour
 
     private bool shooting = false;
 
-    private float waitTime = 2.0f;
+    private float waitTime = 0.7f;
     private float timer = 0.0f;
 
     private void Awake()
@@ -63,7 +63,7 @@ public class EnemyShooting : MonoBehaviour
         shooting = true;
         float FractionalDistance = (70 - Vector3.Distance(transform.position, player.position)) / 70;
         float damage = ScaleDamage * FractionalDistance + MinDamage;
-        damage = damage;
+        damage = damage / 2;
         player.GetComponent<FallDamage>().TakeDamage(damage);
         ShotEffects();
     }
