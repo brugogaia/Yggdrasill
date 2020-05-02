@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Target2D
   - Target3D
+  - Enemy
   layers:
   - Default
   - TransparentFX

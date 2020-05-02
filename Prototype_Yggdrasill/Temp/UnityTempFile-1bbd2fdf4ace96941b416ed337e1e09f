@@ -289,5 +289,10 @@ Assets\Labyrinth\Scripts\MouseLook.cs
 Assets\Labyrinth\Scripts\PlayerMovement.cs
 Assets\Script\CambioVisualein2D.cs
 Assets\Script\CambioVisualein3D.cs
+Assets\Script\Enemy.cs
+Assets\Script\EnemyShooting.cs
+Assets\Script\FallDamage.cs
 Assets\Script\Giocatore.cs
+Assets\Script\HealthBar.cs
+Assets\Script\Movimento3D.cs
 Assets\Script\ScriptCamera.cs
