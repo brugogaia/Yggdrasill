@@ -86,7 +86,7 @@ public class HealthBar : MonoBehaviour
     {
         if(CurrentHealth < MaxHealth)
         {
-            float cura = 0.1f;
+            float cura = 0.2f;
             CurrentHealth = CurrentHealth + cura;
             if (CurrentHealth > MaxHealth)
             {
