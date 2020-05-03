@@ -7,10 +7,14 @@ public class FallDamage : MonoBehaviour
     // DA POSIZIONARE SU GIOCATORE
 
     public Transform healthbar;
-    public Collider grabObj = null;
+    public Collider Puu;
     public float Damage;
     //[SerializeField] Animator animator;
 
+    private void Start()
+    {
+        Puu = GameObject.FindGameObjectWithTag("Puu").GetComponent<Collider>();
+    }
 
     public void TakeDamage(float DamageAmount){
         healthbar.GetComponent<HealthBar>().FallDamage(DamageAmount);
@@ -19,7 +23,8 @@ public class FallDamage : MonoBehaviour
     void OnCollisionEnter(Collision collision){
         
         Debug.Log("Relative velcity of collision"+collision.relativeVelocity.magnitude);
-        if(collision.collider != grabObj && collision.relativeVelocity.magnitude > 25f)
+        
+        if(collision.collider != Puu && collision.relativeVelocity.magnitude > 25f)
         {
             //Debug.Log("Collisione!");
             Damage =collision.relativeVelocity.magnitude;

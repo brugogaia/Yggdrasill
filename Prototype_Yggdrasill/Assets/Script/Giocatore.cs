@@ -14,10 +14,12 @@ public class Giocatore : MonoBehaviour
     private float velocita_verticale_camera = 1.0f;
     private float velocita_orizzontale_camera = 1.0f;
 
+    private GameObject Puu;
+
     private void Start()
     {
         rotIniziale = transform.rotation;
-        
+        Puu = GameObject.FindGameObjectWithTag("Puu");
     }
 
     void Update()
@@ -29,6 +31,15 @@ public class Giocatore : MonoBehaviour
         if (!isGrounded)
         {
             Atterra();
+        }
+
+        if(Input.GetKey(KeyCode.F) && !isGrounded )
+        {
+            Fly();
+        }
+        else
+        {
+            Puu.GetComponent<Puu>().StopFlying();
         }
             //Debug.Log("k giocatore = " + k);
             if (!vis3D)
@@ -98,6 +109,12 @@ public class Giocatore : MonoBehaviour
         {
             isGrounded = false;
         }
+    }
+
+    private void Fly()
+    {
+        this.GetComponent<Rigidbody>().AddForce(new Vector3(0f, 0.25f, 0f), ForceMode.Impulse);
+        Puu.GetComponent<Puu>().isFlying();
     }
 
     public void CambiaVisualein3D()

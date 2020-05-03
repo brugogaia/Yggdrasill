@@ -8,6 +8,9 @@ TagManager:
   - Target3D
   - Enemy
   - Ground
+  - Puu
+  - Fly
+  - TargetPuu
   layers:
   - Default
   - TransparentFX

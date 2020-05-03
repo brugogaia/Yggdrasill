@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Puu : MonoBehaviour
 {
-    [SerializeField] Transform target;
+    private Transform target;
 
     public float MaxDamage = 15f;
     public float MinDamage = 10f;
@@ -19,6 +19,8 @@ public class Puu : MonoBehaviour
     private Transform enemy;
     private bool shooting = false;
 
+    public bool flying = false;
+
     private float waitTime = 0.1f;
     private float timer = 0.0f;
     // Start is called before the first frame update
@@ -30,11 +32,14 @@ public class Puu : MonoBehaviour
         laserShotLine.enabled = false;
         spellLight.intensity = 0f;
         ScaleDamage = MaxDamage - MinDamage;
+
+        target = GameObject.FindGameObjectWithTag("TargetPuu").transform;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(!flying) target = GameObject.FindGameObjectWithTag("TargetPuu").transform;
         timer += Time.deltaTime;
         this.GetComponent<Rigidbody>().velocity = (target.position - this.transform.position) * 80;
         if (enemy != null)
@@ -52,6 +57,16 @@ public class Puu : MonoBehaviour
             }
         }
         spellLight.intensity = Mathf.Lerp(spellLight.intensity, 0f, fadeSpeed * Time.deltaTime);
+    }
+
+    public void isFlying()
+    {
+        flying = true;
+        target = GameObject.FindGameObjectWithTag("Fly").transform;
+    }
+    public void StopFlying()
+    {
+        flying = false;
     }
 
     public void setNemico(Transform nemico)
