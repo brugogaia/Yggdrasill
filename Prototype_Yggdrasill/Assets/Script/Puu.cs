@@ -2,51 +2,45 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerShooting : MonoBehaviour
+public class Puu : MonoBehaviour
 {
-    public float MaxDamage = 20f;
+    [SerializeField] Transform target;
+
+    public float MaxDamage = 15f;
     public float MinDamage = 10f;
-    public float flashIntensity = 3f;
-    public float fadeSpeed = 10f;
-
-    private LineRenderer laserShotLine;
-    private Light spellLight;
-    private Transform enemy;
     private float ScaleDamage;
-
-    private bool shooting = false;
 
     private int distanza = 70;
 
-    private GameObject Puu;
+    private LineRenderer laserShotLine;
+    private Light spellLight;
+    public float flashIntensity = 3f;
+    public float fadeSpeed = 10f;
+    private Transform enemy;
+    private bool shooting = false;
 
-
-    private void Awake()
-    {
-        laserShotLine = GetComponentInChildren<LineRenderer>();
-        spellLight = laserShotLine.gameObject.GetComponent<Light>();
-        Puu = GameObject.FindGameObjectWithTag("Puu");
-
-        laserShotLine.enabled = false;
-        spellLight.intensity = 0f;
-
-        ScaleDamage = MaxDamage - MinDamage;
-    }
-
+    private float waitTime = 0.1f;
+    private float timer = 0.0f;
     // Start is called before the first frame update
     void Start()
     {
+        laserShotLine = GetComponentInChildren<LineRenderer>();
+        spellLight = laserShotLine.gameObject.GetComponent<Light>();
 
+        laserShotLine.enabled = false;
+        spellLight.intensity = 0f;
     }
 
     // Update is called once per frame
     void Update()
     {
+        timer += Time.deltaTime;
+        this.GetComponent<Rigidbody>().velocity = (target.position - this.transform.position) * 80;
         if (enemy != null)
         {
-            if (Input.GetMouseButtonDown(0) && !shooting && Vector3.Distance(transform.position, enemy.position) <= distanza)
+            if (timer >= waitTime && !shooting && Vector3.Distance(transform.position, enemy.position) <= 70)
             {
-
+                timer = 0f;
                 Shoot();
 
             }
@@ -56,13 +50,15 @@ public class PlayerShooting : MonoBehaviour
                 laserShotLine.enabled = false;
             }
         }
-
-
         spellLight.intensity = Mathf.Lerp(spellLight.intensity, 0f, fadeSpeed * Time.deltaTime);
-
     }
 
-    void Shoot()
+    public void setNemico(Transform nemico)
+    {
+        enemy = nemico;
+    }
+
+    private void Shoot()
     {
         shooting = true;
         float FractionalDistance = (distanza - Vector3.Distance(transform.position, enemy.position)) / distanza;
@@ -79,25 +75,4 @@ public class PlayerShooting : MonoBehaviour
         spellLight.intensity = flashIntensity;
 
     }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Enemy")
-        {
-            enemy = other.transform;
-            Puu.GetComponent<Puu>().setNemico(enemy);
-            Debug.Log("trovato nemico");
-        }
-    }
-
-    public void setDistanza3D()
-    {
-        distanza = 120;
-    }
-
-    public void resetDistanza2D()
-    {
-        distanza = 70;
-    }
-
 }

@@ -21,7 +21,8 @@ public class Enemy3D : MonoBehaviour
     {
         Vector3 direction = player.position - transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        this.transform.Rotate(0, angle, 0);
+        
+        //this.transform.Rotate(0, angle, 0);
         direction.Normalize();
         movement = direction;
         
