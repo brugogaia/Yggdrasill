@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Giocatore : MonoBehaviour
 {
-    public float speed = 20f;
+    public float speed = 10000f;
     public float rotationSpeed = 100.0f;
     private bool vis3D = false;
     private bool isGrounded = true;
@@ -44,14 +44,13 @@ public class Giocatore : MonoBehaviour
             //Debug.Log("k giocatore = " + k);
             if (!vis3D)
         {
-            float movimentoOrizzontale = Input.GetAxis("Horizontal") * speed;
-            movimentoOrizzontale *= Time.deltaTime;
+            float movimentoOrizzontale = Input.GetAxis("Horizontal") * Time.deltaTime * speed ;
+            Debug.Log(movimentoOrizzontale);
             transform.Translate(movimentoOrizzontale, 0, 0);
             
         }
         else
         {
-            speed = 20f;
             float movimentoAvantiIndietro = Input.GetAxis("Vertical") * speed;
             float movimentoDxSx = Input.GetAxis("Horizontal") * speed;
             movimentoDxSx *= Time.deltaTime;

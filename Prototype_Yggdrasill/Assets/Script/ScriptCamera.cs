@@ -6,7 +6,7 @@ public class ScriptCamera : MonoBehaviour
 {
     public Transform target;
     public GameObject Player;
-    public float smoothTime = 0.3F;
+    public float smoothTime = 0.3f;
     private Vector3 velocity = Vector3.zero;
     private bool visual3D = false;
     
