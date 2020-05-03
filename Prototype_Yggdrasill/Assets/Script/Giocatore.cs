@@ -24,6 +24,7 @@ public class Giocatore : MonoBehaviour
 
     void Update()
     {
+        Debug.Log("is grounded " + isGrounded);
         if (Input.GetKeyDown("space") && isGrounded)
         {
             Jump();
@@ -96,6 +97,15 @@ public class Giocatore : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        //Debug.Log("sto collidendo con " + collision.collider);
+        if (collision.gameObject.tag == "Ground")
+        {
+            isGrounded = true;
+        }
+    }
+    private void OnCollisionStay(Collision collision)
+    {
+        //Debug.Log("sto collidendo con " + collision.collider);
         if (collision.gameObject.tag == "Ground")
         {
             isGrounded = true;
@@ -104,6 +114,7 @@ public class Giocatore : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
+        //Debug.Log("non sto piu collidendo con " + collision.collider);
         if (collision.gameObject.tag == "Ground")
         {
             isGrounded = false;
