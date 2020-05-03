@@ -29,6 +29,7 @@ public class Puu : MonoBehaviour
 
         laserShotLine.enabled = false;
         spellLight.intensity = 0f;
+        ScaleDamage = MaxDamage - MinDamage;
     }
 
     // Update is called once per frame
