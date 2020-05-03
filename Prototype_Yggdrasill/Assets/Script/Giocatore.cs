@@ -42,9 +42,11 @@ public class Giocatore : MonoBehaviour
         {
             Puu.GetComponent<Puu>().StopFlying();
         }
-            //Debug.Log("k giocatore = " + k);
-            if (!vis3D)
+        speed = 30f;
+        //Debug.Log("k giocatore = " + k);
+        if (!vis3D)
         {
+            
             float movimentoOrizzontale = Input.GetAxis("Horizontal") * Time.deltaTime * speed ;
             Debug.Log(movimentoOrizzontale);
             transform.Translate(movimentoOrizzontale, 0, 0);
@@ -52,6 +54,7 @@ public class Giocatore : MonoBehaviour
         }
         else
         {
+            
             float movimentoAvantiIndietro = Input.GetAxis("Vertical") * speed;
             float movimentoDxSx = Input.GetAxis("Horizontal") * speed;
             movimentoDxSx *= Time.deltaTime;
@@ -87,12 +90,12 @@ public class Giocatore : MonoBehaviour
 
     private void Jump()
     {
-        this.GetComponent<Rigidbody>().AddForce(new Vector3(0f, 10f,0f), ForceMode.Impulse);
+        this.GetComponent<Rigidbody>().AddForce(new Vector3(0f, 12f,0f), ForceMode.Impulse);
     }
 
     private void Atterra()
     {
-        this.GetComponent<Rigidbody>().AddForce(new Vector3(0f, -0.2f, 0f), ForceMode.Impulse);
+        this.GetComponent<Rigidbody>().AddForce(new Vector3(0f, -0.5f, 0f), ForceMode.Impulse);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -123,7 +126,7 @@ public class Giocatore : MonoBehaviour
 
     private void Fly()
     {
-        this.GetComponent<Rigidbody>().AddForce(new Vector3(0f, 0.25f, 0f), ForceMode.Impulse);
+        this.GetComponent<Rigidbody>().AddForce(new Vector3(0f, 0.3f, 0f), ForceMode.Impulse);
         Puu.GetComponent<Puu>().isFlying();
     }
 

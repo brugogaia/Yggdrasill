@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
     public Transform player;
     public Rigidbody rb;
     public Vector2 movement;
-    public float speed = 4f;
+    public float speed = 10f;
 
     // Start is called before the first frame update
     void Start()

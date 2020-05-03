@@ -6,7 +6,7 @@ public class ScriptCamera : MonoBehaviour
 {
     public Transform target;
     public GameObject Player;
-    public float smoothTime = 0.3f;
+    public float smoothTime = 1F;
     private Vector3 velocity = Vector3.zero;
     private bool visual3D = false;
     
@@ -40,7 +40,7 @@ public class ScriptCamera : MonoBehaviour
         Vector3 targetPosition = target.TransformPoint(new Vector3(0, 5, -10));
 
         // Smoothly move the camera towards that target position
-        transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
+        transform.position = targetPosition;
     }
 
     public void ChangeinVisual3D()

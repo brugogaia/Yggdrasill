@@ -24,11 +24,11 @@ public class FallDamage : MonoBehaviour
         
         Debug.Log("Relative velcity of collision"+collision.relativeVelocity.magnitude);
         
-        if(collision.collider != Puu && collision.relativeVelocity.magnitude > 25f)
+        if(collision.collider != Puu && collision.relativeVelocity.magnitude > 40f)
         {
             //Debug.Log("Collisione!");
             Damage =collision.relativeVelocity.magnitude;
-            Damage = Damage / 5;
+            Damage = Damage / 10;
             TakeDamage(Damage);
             //setHit();
         }
