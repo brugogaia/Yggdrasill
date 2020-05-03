@@ -7,6 +7,7 @@ public class Giocatore : MonoBehaviour
     public float speed = 20f;
     public float rotationSpeed = 100.0f;
     private bool vis3D = false;
+    private bool isGrounded = true;
 
     private Quaternion rotIniziale;
 
@@ -21,8 +22,16 @@ public class Giocatore : MonoBehaviour
 
     void Update()
     {
-        //Debug.Log("k giocatore = " + k);
-        if (!vis3D)
+        if (Input.GetKeyDown("space") && isGrounded)
+        {
+            Jump();
+        }
+        if (!isGrounded)
+        {
+            Atterra();
+        }
+            //Debug.Log("k giocatore = " + k);
+            if (!vis3D)
         {
             float movimentoOrizzontale = Input.GetAxis("Horizontal") * speed;
             movimentoOrizzontale *= Time.deltaTime;
@@ -63,21 +72,47 @@ public class Giocatore : MonoBehaviour
         }
         
         
+    }
 
-        
-        
-        
+    private void Jump()
+    {
+        this.GetComponent<Rigidbody>().AddForce(new Vector3(0f, 10f,0f), ForceMode.Impulse);
+    }
+
+    private void Atterra()
+    {
+        this.GetComponent<Rigidbody>().AddForce(new Vector3(0f, -0.2f, 0f), ForceMode.Impulse);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Ground")
+        {
+            isGrounded = true;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.tag == "Ground")
+        {
+            isGrounded = false;
+        }
     }
 
     public void CambiaVisualein3D()
     {
         vis3D = true;
         Debug.Log("Giocatore in 3D, vis3D vale "+vis3D);
+        this.GetComponent<PlayerShooting>().setDistanza3D();
+        
     }
 
     public void CambiaVisualein2D()
     {
         vis3D = false;
+        this.GetComponent<PlayerShooting>().resetDistanza2D();
+        
         if (transform.rotation != rotIniziale)
         {
             transform.rotation = rotIniziale;

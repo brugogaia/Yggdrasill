@@ -19,10 +19,11 @@ public class FallDamage : MonoBehaviour
     void OnCollisionEnter(Collision collision){
         
         Debug.Log("Relative velcity of collision"+collision.relativeVelocity.magnitude);
-        if(collision.collider != grabObj && collision.relativeVelocity.magnitude > 12.5f)
+        if(collision.collider != grabObj && collision.relativeVelocity.magnitude > 25f)
         {
             //Debug.Log("Collisione!");
             Damage =collision.relativeVelocity.magnitude;
+            Damage = Damage / 5;
             TakeDamage(Damage);
             //setHit();
         }
@@ -31,6 +32,11 @@ public class FallDamage : MonoBehaviour
     public void Cura()
     {
         healthbar.GetComponent<HealthBar>().Cura();
+    }
+
+    public void PiantaDamage()
+    {
+        healthbar.GetComponent<HealthBar>().PiantaDamage();
     }
 
     /*public void SetGrabObj(Collider collider)

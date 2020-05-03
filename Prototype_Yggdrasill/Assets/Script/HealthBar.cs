@@ -81,8 +81,25 @@ public class HealthBar : MonoBehaviour
         HBImage.GetComponent<Image>().fillAmount = CurrentHealth;
     }
 
+    public void PiantaDamage()
+    {
+        float danno = 0.4f;
+        CurrentHealth = CurrentHealth - danno;
 
-    public void Cura()
+        if (CurrentHealth <= 0)
+        {
+            CurrentHealth = 0;
+            isDead = true;
+            //animationDeathHit();
+
+            //HBText.GetComponent<Text>().text = "0";
+            GameObject.Destroy(character.gameObject);
+        }
+        HBImage.GetComponent<Image>().fillAmount = CurrentHealth;
+    }
+
+
+        public void Cura()
     {
         if(CurrentHealth < MaxHealth)
         {

@@ -16,6 +16,8 @@ public class PlayerShooting : MonoBehaviour
 
     private bool shooting = false;
 
+    private int distanza = 70;
+
 
     private void Awake()
     {
@@ -37,9 +39,9 @@ public class PlayerShooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(enemy != null)
+        if (enemy != null)
         {
-            if (Input.GetKeyDown(KeyCode.P) && !shooting && Vector3.Distance(transform.position, enemy.position) <= 70)
+            if (Input.GetMouseButtonDown(0) && !shooting && Vector3.Distance(transform.position, enemy.position) <= distanza)
             {
 
                 Shoot();
@@ -51,7 +53,7 @@ public class PlayerShooting : MonoBehaviour
                 laserShotLine.enabled = false;
             }
         }
-        
+
 
         spellLight.intensity = Mathf.Lerp(spellLight.intensity, 0f, fadeSpeed * Time.deltaTime);
 
@@ -60,7 +62,7 @@ public class PlayerShooting : MonoBehaviour
     void Shoot()
     {
         shooting = true;
-        float FractionalDistance = (100 - Vector3.Distance(transform.position, enemy.position)) / 100;
+        float FractionalDistance = (distanza - Vector3.Distance(transform.position, enemy.position)) / distanza;
         float damage = ScaleDamage * FractionalDistance + MinDamage;
         enemy.GetComponent<EnemyLife>().Damage(damage);
         ShotEffects();
@@ -77,11 +79,21 @@ public class PlayerShooting : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Enemy")
+        if (other.tag == "Enemy")
         {
             enemy = other.transform;
             Debug.Log("trovato nemico");
         }
     }
-    
+
+    public void setDistanza3D()
+    {
+        distanza = 120;
+    }
+
+    public void resetDistanza2D()
+    {
+        distanza = 70;
+    }
+
 }
