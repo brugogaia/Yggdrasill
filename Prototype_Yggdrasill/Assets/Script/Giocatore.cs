@@ -126,7 +126,7 @@ public class Giocatore : MonoBehaviour
 
     private void Fly()
     {
-        this.GetComponent<Rigidbody>().AddForce(new Vector3(0f, 0.3f, 0f), ForceMode.Impulse);
+        this.GetComponent<Rigidbody>().AddForce(new Vector3(0f, 0.45f, 0f), ForceMode.Impulse);
         Puu.GetComponent<Puu>().isFlying();
     }
 
