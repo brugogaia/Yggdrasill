@@ -16,6 +16,11 @@ public class Giocatore : MonoBehaviour
 
     private GameObject Puu;
 
+    private float waitTime = 0.2f;
+    private float timer = 0.0f;
+
+    private int k = 0;
+
     private void Start()
     {
         rotIniziale = transform.rotation;
@@ -24,7 +29,8 @@ public class Giocatore : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("is grounded " + isGrounded);
+        timer = timer + Time.deltaTime;
+        //Debug.Log("is grounded " + isGrounded);
         if (Input.GetKeyDown("space") && isGrounded)
         {
             Jump();
@@ -34,13 +40,20 @@ public class Giocatore : MonoBehaviour
             Atterra();
         }
 
-        if(Input.GetKey(KeyCode.F) && !isGrounded )
+        if(Input.GetKey(KeyCode.F) && !isGrounded && timer>=waitTime)
         {
             Fly();
+            if (k == 0)
+            {
+                Puu.GetComponent<Puu>().isFlying();
+                timer = 0;
+                k++;
+            }
         }
-        else
+        if (Input.GetKeyUp(KeyCode.F))
         {
             Puu.GetComponent<Puu>().StopFlying();
+            k = 0;
         }
         speed = 30f;
         //Debug.Log("k giocatore = " + k);
@@ -48,7 +61,7 @@ public class Giocatore : MonoBehaviour
         {
             
             float movimentoOrizzontale = Input.GetAxis("Horizontal") * Time.deltaTime * speed ;
-            Debug.Log(movimentoOrizzontale);
+            //Debug.Log(movimentoOrizzontale);
             transform.Translate(movimentoOrizzontale, 0, 0);
             
         }
@@ -127,7 +140,6 @@ public class Giocatore : MonoBehaviour
     private void Fly()
     {
         this.GetComponent<Rigidbody>().AddForce(new Vector3(0f, 0.45f, 0f), ForceMode.Impulse);
-        Puu.GetComponent<Puu>().isFlying();
     }
 
     public void CambiaVisualein3D()
