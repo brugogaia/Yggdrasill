@@ -33,6 +33,7 @@ public class Giocatore : MonoBehaviour
     void Update()
     {
         isDead = healthbar.GetComponent<HealthBar>().isDed();
+        if (isDead) Puu.GetComponent<Puu>().setNemico(null);
         timer = timer + Time.deltaTime;
         //Debug.Log("is grounded " + isGrounded);
         if (Input.GetKeyDown("space") && isGrounded &&!isDead)
