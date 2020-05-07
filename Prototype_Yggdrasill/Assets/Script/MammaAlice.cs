@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class MammaAlice : MonoBehaviour
 {
     public Transform player;
+    private GameObject Canvas;
     [SerializeField] Image UI_Image;
     private bool arrivato = false;
     // Start is called before the first frame update
@@ -14,6 +15,7 @@ public class MammaAlice : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         UI_Image.enabled = false;
+        Canvas = GameObject.FindGameObjectWithTag("Canvas");
     }
 
     // Update is called once per frame
@@ -22,6 +24,8 @@ public class MammaAlice : MonoBehaviour
         if (arrivato && Input.GetKeyDown(KeyCode.Z))
         {
             SceneManager.LoadScene("Labyrinth", LoadSceneMode.Single);
+            DontDestroyOnLoad(Canvas);
+            UI_Image.enabled = false;
         }
 
     }
