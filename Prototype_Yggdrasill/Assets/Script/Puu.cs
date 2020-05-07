@@ -67,8 +67,11 @@ public class Puu : MonoBehaviour
     }
     public void StopFlying()
     {
-        flying = false;
-        transform.Translate(-6.5f, 10f, 0);
+        if (flying)
+        {
+            flying = false;
+            transform.Translate(-6.5f, 10f, 0);
+        }
     }
 
     public void setNemico(Transform nemico)

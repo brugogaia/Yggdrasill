@@ -136,6 +136,7 @@ public class Giocatore : MonoBehaviour
         if (collision.gameObject.tag == "Ground")
         {
             isGrounded = true;
+            Puu.GetComponent<Puu>().StopFlying();
         }
     }
 
@@ -150,7 +151,7 @@ public class Giocatore : MonoBehaviour
 
     private void Fly()
     {
-        this.GetComponent<Rigidbody>().AddForce(new Vector3(0f, 0.3f, 0f), ForceMode.Impulse);
+        this.GetComponent<Rigidbody>().AddForce(new Vector3(0f, 0.22f, 0f), ForceMode.Impulse);
     }
 
     public void CambiaVisualein3D()

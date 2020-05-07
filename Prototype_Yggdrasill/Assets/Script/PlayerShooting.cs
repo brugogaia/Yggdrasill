@@ -49,7 +49,8 @@ public class PlayerShooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (enemy != null)
+        bool isDead = this.GetComponent<Giocatore>().isDed();
+        if (enemy != null && !isDead)
         {
             if (Input.GetMouseButtonDown(0) && !bacchettaScarica && !shooting && Vector3.Distance(transform.position, enemy.position) <= distanza)
             {
