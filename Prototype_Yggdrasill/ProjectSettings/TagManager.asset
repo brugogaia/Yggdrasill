@@ -11,6 +11,9 @@ TagManager:
   - Puu
   - Fly
   - TargetPuu
+  - DeadEnemy
+  - Bacchetta
+  - End
   layers:
   - Default
   - TransparentFX

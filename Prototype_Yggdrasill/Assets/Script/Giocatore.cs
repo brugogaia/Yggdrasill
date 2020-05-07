@@ -50,7 +50,7 @@ public class Giocatore : MonoBehaviour
                 k++;
             }
         }
-        if (Input.GetKeyUp(KeyCode.F))
+        if (Input.GetKeyUp(KeyCode.F) && !isGrounded)
         {
             Puu.GetComponent<Puu>().StopFlying();
             k = 0;
@@ -139,7 +139,7 @@ public class Giocatore : MonoBehaviour
 
     private void Fly()
     {
-        this.GetComponent<Rigidbody>().AddForce(new Vector3(0f, 0.45f, 0f), ForceMode.Impulse);
+        this.GetComponent<Rigidbody>().AddForce(new Vector3(0f, 0.5f, 0f), ForceMode.Impulse);
     }
 
     public void CambiaVisualein3D()

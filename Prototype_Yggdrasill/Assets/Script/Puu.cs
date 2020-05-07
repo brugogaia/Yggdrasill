@@ -21,7 +21,7 @@ public class Puu : MonoBehaviour
 
     public bool flying = false;
 
-    private float waitTime = 0.1f;
+    private float waitTime = 0.3f;
     private float timer = 0.0f;
     // Start is called before the first frame update
     void Start()
@@ -53,6 +53,10 @@ public class Puu : MonoBehaviour
                 laserShotLine.enabled = false;
             }
         }
+        else
+        {
+            laserShotLine.enabled = false;
+        }
         spellLight.intensity = Mathf.Lerp(spellLight.intensity, 0f, fadeSpeed * Time.deltaTime);
     }
 
@@ -77,7 +81,7 @@ public class Puu : MonoBehaviour
         shooting = true;
         float FractionalDistance = (distanza - Vector3.Distance(transform.position, enemy.position)) / distanza;
         float damage = ScaleDamage * FractionalDistance + MinDamage;
-        enemy.GetComponent<EnemyLife>().Damage(damage);
+        enemy.GetComponent<Enemy>().Damage(damage);
         ShotEffects();
     }
 
