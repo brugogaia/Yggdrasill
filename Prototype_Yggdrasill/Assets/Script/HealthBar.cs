@@ -47,25 +47,7 @@ public class HealthBar : MonoBehaviour
         //HBText.GetComponent<Text>().text = CurrentHealth.ToString()+"%";
         if (CurrentHealth <= 0)
         {
-            CurrentHealth = 0;
-            /*ScaleChange = new Vector3(0, HBImage.transform.localScale.y, HBImage.transform.localScale.z);
-            HBImage.transform.localScale = ScaleChange;*/
-
-            
-            //  Debug.Log("isShocked ---------->" + isShock);
-            //if (isShock)
-            //{
-            //    setShock();
-            //} else
-            //{
-            //    animationDeathHit();
-            //}
-
-            isDead = true;
-            //animationDeathHit();
-
-            //HBText.GetComponent<Text>().text = "0";
-            GameObject.Destroy(character.gameObject);
+            Dead();
         }
         HBImage.GetComponent<Image>().fillAmount = CurrentHealth;
     }
@@ -88,12 +70,7 @@ public class HealthBar : MonoBehaviour
 
         if (CurrentHealth <= 0)
         {
-            CurrentHealth = 0;
-            isDead = true;
-            //animationDeathHit();
-
-            //HBText.GetComponent<Text>().text = "0";
-            GameObject.Destroy(character.gameObject);
+            Dead();
         }
         HBImage.GetComponent<Image>().fillAmount = CurrentHealth;
     }
@@ -113,6 +90,16 @@ public class HealthBar : MonoBehaviour
 
         }
         
+    }
+
+    private void Dead()
+    {
+        CurrentHealth = 0;
+        isDead = true;
+        //animationDeathHit();
+
+        //HBText.GetComponent<Text>().text = "0";
+        //character.Rotate(0, 0, 0);
     }
     /*void animationHit()
     {
@@ -143,7 +130,7 @@ public class HealthBar : MonoBehaviour
     //     isShock = true;
     // }
     */
-    bool isDed()
+    public bool isDed()
     {
         return isDead;
     }

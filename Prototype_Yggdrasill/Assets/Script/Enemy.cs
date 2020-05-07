@@ -16,6 +16,8 @@ public class Enemy : MonoBehaviour
     public bool isDead = false;
     private float distanza = 100f;
 
+    private bool playerDead = false;
+
     [SerializeField] float MaxDamage;
     [SerializeField] float MinDamage;
     public float flashIntensity = 3f;
@@ -59,14 +61,14 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        playerDead = player.GetComponent<Giocatore>().isDed();
         Vector3 direction = player.position - transform.position;
         direction.Normalize();
         movement = direction;
         timer += Time.deltaTime;
         if (!little)
         {
-
-            if (player != null && timer >= waitTime && !shooting && !isDead && Vector3.Distance(transform.position, player.position) <= 70)
+            if (!playerDead && timer >= waitTime && !shooting && !isDead && Vector3.Distance(transform.position, player.position) <= 70)
             {
                 timer = 0f;
                 Shoot();
@@ -77,6 +79,8 @@ public class Enemy : MonoBehaviour
                 shooting = false;
                 laserShotLine.enabled = false;
             }
+            
+
 
             spellLight.intensity = Mathf.Lerp(spellLight.intensity, 0f, fadeSpeed * Time.deltaTime);
         }
@@ -124,7 +128,7 @@ public class Enemy : MonoBehaviour
         float FractionalDistance = (70 - Vector3.Distance(transform.position, player.position)) / 70;
         float damage = ScaleDamage * FractionalDistance + MinDamage;
         damage = damage / 2;
-        player.GetComponent<FallDamage>().TakeDamage(damage);
+        player.GetComponent<Giocatore>().TakeDamage(damage);
         ShotEffects();
     }
 
@@ -186,7 +190,7 @@ public class Enemy : MonoBehaviour
         
         if(collision.collider == player.GetComponent<Collider>() && little && !isDead)
         {
-            player.GetComponent<FallDamage>().TakeDamage(10f);
+            player.GetComponent<Giocatore>().TakeDamage(10f);
             colpito = true;
         }
         

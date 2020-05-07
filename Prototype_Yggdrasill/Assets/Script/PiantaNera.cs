@@ -21,7 +21,7 @@ public class PiantaNera : MonoBehaviour
     {
         if (other == player.GetComponent<Collider>())
         {
-            player.GetComponent<FallDamage>().PiantaDamage();
+            player.GetComponent<Giocatore>().PiantaDamage();
             GameObject.Destroy(this.gameObject);
         }
     }

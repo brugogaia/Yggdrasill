@@ -4,17 +4,20 @@ using UnityEngine;
 
 public class Giocatore : MonoBehaviour
 {
-    public float speed = 10000f;
+    public float speed = 50f;
     public float rotationSpeed = 100.0f;
     private bool vis3D = false;
     private bool isGrounded = true;
-
+    private bool isDead = false;
     private Quaternion rotIniziale;
 
     private float velocita_verticale_camera = 1.0f;
     private float velocita_orizzontale_camera = 1.0f;
 
     private GameObject Puu;
+    public Transform healthbar;
+
+    public float Damage;
 
     private float waitTime = 0.2f;
     private float timer = 0.0f;
@@ -29,9 +32,10 @@ public class Giocatore : MonoBehaviour
 
     void Update()
     {
+        isDead = healthbar.GetComponent<HealthBar>().isDed();
         timer = timer + Time.deltaTime;
         //Debug.Log("is grounded " + isGrounded);
-        if (Input.GetKeyDown("space") && isGrounded)
+        if (Input.GetKeyDown("space") && isGrounded &&!isDead)
         {
             Jump();
         }
@@ -40,29 +44,28 @@ public class Giocatore : MonoBehaviour
             Atterra();
         }
 
-        if(Input.GetKey(KeyCode.F) && !isGrounded && timer>=waitTime)
+        if(Input.GetKey(KeyCode.F) && !isGrounded && !isDead)
         {
             Fly();
             if (k == 0)
             {
                 Puu.GetComponent<Puu>().isFlying();
-                timer = 0;
                 k++;
             }
         }
-        if (Input.GetKeyUp(KeyCode.F) && !isGrounded)
+        if (Input.GetKeyUp(KeyCode.F) && !isGrounded && !isDead)
         {
             Puu.GetComponent<Puu>().StopFlying();
             k = 0;
         }
-        speed = 30f;
+        speed = 50f;
         //Debug.Log("k giocatore = " + k);
         if (!vis3D)
         {
             
             float movimentoOrizzontale = Input.GetAxis("Horizontal") * Time.deltaTime * speed ;
             //Debug.Log(movimentoOrizzontale);
-            transform.Translate(movimentoOrizzontale, 0, 0);
+            if(!isDead) transform.Translate(movimentoOrizzontale, 0, 0);
             
         }
         else
@@ -74,7 +77,7 @@ public class Giocatore : MonoBehaviour
             movimentoAvantiIndietro *= Time.deltaTime;
             Vector3 AD = transform.right*movimentoAvantiIndietro;
             Vector3 DxSx = transform.forward * -movimentoDxSx;
-            transform.position = transform.position + AD + DxSx;
+            if (!isDead)  transform.position = transform.position + AD + DxSx;
             
 
 
@@ -103,7 +106,7 @@ public class Giocatore : MonoBehaviour
 
     private void Jump()
     {
-        this.GetComponent<Rigidbody>().AddForce(new Vector3(0f, 12f,0f), ForceMode.Impulse);
+        this.GetComponent<Rigidbody>().AddForce(new Vector3(0f, 20f,0f), ForceMode.Impulse);
     }
 
     private void Atterra()
@@ -117,6 +120,14 @@ public class Giocatore : MonoBehaviour
         if (collision.gameObject.tag == "Ground")
         {
             isGrounded = true;
+        }
+        if (collision.collider != Puu.GetComponent<Collider>() && collision.relativeVelocity.magnitude > 40f)
+        {
+            //Debug.Log("Collisione!");
+            Damage = collision.relativeVelocity.magnitude;
+            Damage = Damage / 10;
+            TakeDamage(Damage);
+            //setHit();
         }
     }
     private void OnCollisionStay(Collision collision)
@@ -139,7 +150,7 @@ public class Giocatore : MonoBehaviour
 
     private void Fly()
     {
-        this.GetComponent<Rigidbody>().AddForce(new Vector3(0f, 0.5f, 0f), ForceMode.Impulse);
+        this.GetComponent<Rigidbody>().AddForce(new Vector3(0f, 0.3f, 0f), ForceMode.Impulse);
     }
 
     public void CambiaVisualein3D()
@@ -162,4 +173,22 @@ public class Giocatore : MonoBehaviour
         }
     }
 
+    public void TakeDamage(float DamageAmount)
+    {
+        healthbar.GetComponent<HealthBar>().FallDamage(DamageAmount);
+    }
+    public void Cura()
+    {
+        healthbar.GetComponent<HealthBar>().Cura();
+    }
+
+    public void PiantaDamage()
+    {
+        healthbar.GetComponent<HealthBar>().PiantaDamage();
+    }
+
+    public bool isDed()
+    {
+        return isDead;
+    }
 }

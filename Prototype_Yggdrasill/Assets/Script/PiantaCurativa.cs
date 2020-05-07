@@ -22,7 +22,7 @@ public class PiantaCurativa : MonoBehaviour
     {
         if(other == player.GetComponent<Collider>())
         {
-            player.GetComponent<FallDamage>().Cura();
+            player.GetComponent<Giocatore>().Cura();
             GameObject.Destroy(this.gameObject);
         }
     }
