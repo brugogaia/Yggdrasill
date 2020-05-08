@@ -10,6 +10,8 @@ public class MammaAlice : MonoBehaviour
     private GameObject Canvas;
     [SerializeField] Image UI_Image;
     private bool arrivato = false;
+    public Image white;
+    public Animator anim;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,11 +25,18 @@ public class MammaAlice : MonoBehaviour
     {
         if (arrivato && Input.GetKeyDown(KeyCode.Z))
         {
-            SceneManager.LoadScene("Labyrinth", LoadSceneMode.Single);
-            DontDestroyOnLoad(Canvas);
             UI_Image.enabled = false;
+            StartCoroutine(Fading());
         }
 
+    }
+    IEnumerator Fading()
+    {
+        anim.SetBool("Fade", true);
+        yield return new WaitUntil(() => white.color.a == 1);
+        SceneManager.LoadScene("Labyrinth", LoadSceneMode.Single);
+        DontDestroyOnLoad(Canvas);
+        
     }
 
     private void OnTriggerEnter(Collider other)
