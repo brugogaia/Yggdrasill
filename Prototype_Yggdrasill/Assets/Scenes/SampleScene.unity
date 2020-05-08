@@ -207,8 +207,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 10185292}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -984.6528, y: -445.25723, z: 125.28682}
-  m_LocalScale: {x: 1000, y: 100.00006, z: 10}
+  m_LocalPosition: {x: -588, y: -445.25723, z: 125.28682}
+  m_LocalScale: {x: 200, y: 100.00006, z: 10}
   m_Children: []
   m_Father: {fileID: 853814947}
   m_RootOrder: 45
@@ -3345,7 +3345,7 @@ MonoBehaviour:
   MaxHealth: 30
   CurrentHealth: 0
   isDead: 0
-  MaxDamage: 10
+  MaxDamage: 5
   MinDamage: 5
   flashIntensity: 3
   fadeSpeed: 10
@@ -3707,7 +3707,7 @@ MonoBehaviour:
   MaxHealth: 30
   CurrentHealth: 0
   isDead: 0
-  MaxDamage: 10
+  MaxDamage: 5
   MinDamage: 5
   flashIntensity: 3
   fadeSpeed: 10
@@ -4124,7 +4124,7 @@ MonoBehaviour:
   MaxHealth: 30
   CurrentHealth: 0
   isDead: 0
-  MaxDamage: 10
+  MaxDamage: 5
   MinDamage: 5
   flashIntensity: 3
   fadeSpeed: 10
@@ -4415,7 +4415,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 844888041}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1350, y: 3.27, z: 8.02}
+  m_LocalPosition: {x: -1337, y: 3.27, z: 8.02}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 472109590}
@@ -4544,7 +4544,7 @@ MonoBehaviour:
   MaxHealth: 30
   CurrentHealth: 0
   isDead: 0
-  MaxDamage: 10
+  MaxDamage: 5
   MinDamage: 5
   flashIntensity: 3
   fadeSpeed: 10
@@ -5423,7 +5423,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 803d39a967e02c448823fb64c32492d2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 132.3476
+      value: -15.1
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 803d39a967e02c448823fb64c32492d2,
         type: 3}
@@ -5662,7 +5662,7 @@ MonoBehaviour:
   MaxHealth: 30
   CurrentHealth: 0
   isDead: 0
-  MaxDamage: 10
+  MaxDamage: 5
   MinDamage: 5
   flashIntensity: 3
   fadeSpeed: 10
@@ -7228,7 +7228,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 803d39a967e02c448823fb64c32492d2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 117
+      value: -30.447586
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 803d39a967e02c448823fb64c32492d2,
         type: 3}
@@ -7540,7 +7540,7 @@ MonoBehaviour:
   MaxHealth: 30
   CurrentHealth: 0
   isDead: 0
-  MaxDamage: 10
+  MaxDamage: 5
   MinDamage: 5
   flashIntensity: 3
   fadeSpeed: 10
@@ -7671,7 +7671,7 @@ MonoBehaviour:
   MaxHealth: 30
   CurrentHealth: 0
   isDead: 0
-  MaxDamage: 10
+  MaxDamage: 5
   MinDamage: 5
   flashIntensity: 3
   fadeSpeed: 10
@@ -8374,7 +8374,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: -8.87e-43, z: -1.09e-42, w: -0.13721871}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -9585,7 +9585,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1696684224}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1820, y: 2.4616585, z: 3.2550564}
+  m_LocalPosition: {x: 1863, y: 2.4616585, z: 3.2550564}
   m_LocalScale: {x: 12, y: 16, z: 12}
   m_Children:
   - {fileID: 1025578471}
@@ -10788,7 +10788,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2061322596}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 180.34721, y: -477.38464, z: 26.386816}
   m_LocalScale: {x: 50, y: 1, z: 20}
   m_Children: []

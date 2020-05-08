@@ -50,6 +50,7 @@ public class PlayerShooting : MonoBehaviour
     void Update()
     {
         bool isDead = this.GetComponent<Giocatore>().isDed();
+        if (isDead) Puu.GetComponent<Puu>().setNemico(null);
         if (enemy != null && !isDead)
         {
             if (Input.GetMouseButtonDown(0) && !bacchettaScarica && !shooting && Vector3.Distance(transform.position, enemy.position) <= distanza)

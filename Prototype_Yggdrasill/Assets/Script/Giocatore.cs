@@ -10,6 +10,7 @@ public class Giocatore : MonoBehaviour
     private bool isGrounded = true;
     private bool isDead = false;
     private Quaternion rotIniziale;
+    private bool stavolando = false;
 
     private float velocita_verticale_camera = 1.0f;
     private float velocita_orizzontale_camera = 1.0f;
@@ -32,6 +33,8 @@ public class Giocatore : MonoBehaviour
 
     void Update()
     {
+        if (stavolando && !Puu.GetComponent<Puu>().flying) Puu.GetComponent<Puu>().isFlying();
+        
         isDead = healthbar.GetComponent<HealthBar>().isDed();
         if (isDead) Puu.GetComponent<Puu>().setNemico(null);
         timer = timer + Time.deltaTime;
@@ -54,8 +57,9 @@ public class Giocatore : MonoBehaviour
                 k++;
             }
         }
-        if (Input.GetKeyUp(KeyCode.F) && !isGrounded && !isDead)
+        if (Input.GetKeyUp(KeyCode.F) &&!isGrounded && !isDead)
         {
+            stavolando = false;
             Puu.GetComponent<Puu>().StopFlying();
             k = 0;
         }
@@ -121,6 +125,9 @@ public class Giocatore : MonoBehaviour
         if (collision.gameObject.tag == "Ground")
         {
             isGrounded = true;
+            stavolando = false;
+            k = 0;
+            Puu.GetComponent<Puu>().StopFlying();
         }
         if (collision.collider != Puu.GetComponent<Collider>() && collision.relativeVelocity.magnitude > 40f)
         {
@@ -137,6 +144,8 @@ public class Giocatore : MonoBehaviour
         if (collision.gameObject.tag == "Ground")
         {
             isGrounded = true;
+            k = 0;
+            stavolando = false;
             Puu.GetComponent<Puu>().StopFlying();
         }
     }
@@ -152,6 +161,7 @@ public class Giocatore : MonoBehaviour
 
     private void Fly()
     {
+        stavolando = true;
         this.GetComponent<Rigidbody>().AddForce(new Vector3(0f, 0.22f, 0f), ForceMode.Impulse);
     }
 

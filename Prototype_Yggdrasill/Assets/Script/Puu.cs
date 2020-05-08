@@ -37,7 +37,7 @@ public class Puu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      
+        
         timer += Time.deltaTime;
         if (enemy != null)
         {
