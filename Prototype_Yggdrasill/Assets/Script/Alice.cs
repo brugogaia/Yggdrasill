@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Alice : MonoBehaviour
 {
+    private GameObject MenuPausa;
+
     private float speed = 5f;
     private float waitTime = 2f;
     private float timer = 2f;
@@ -16,29 +18,41 @@ public class Alice : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         target = GameObject.FindGameObjectWithTag("TargetAlice").transform;
+        MenuPausa = GameObject.FindGameObjectWithTag("MenuPausa");
     }
 
     // Update is called once per frame
     void Update()
     {
-        timer = timer + Time.deltaTime;
-        if (!presa)
+        if (!MenuPausa.GetComponent<MenuPausa>().pausa)
         {
-            if (timer > waitTime)
-            {
-                position = new Vector3(Random.Range(-1.0f, 1.0f), 0, Random.Range(-1.0f, 1.0f));
+            GetComponent<AudioSource>().mute = false;
 
-                timer = 0.0f;
+            timer = timer + Time.deltaTime;
+            if (!presa)
+            {
+                if (timer > waitTime)
+                {
+                    position = new Vector3(Random.Range(-1.0f, 1.0f), 0, Random.Range(-1.0f, 1.0f));
+
+                    timer = 0.0f;
+                }
+                transform.Translate(position * Time.deltaTime * speed);
             }
-            transform.Translate(position * Time.deltaTime * speed);
+            else
+            {
+                speed = 10f;
+                transform.position = Vector3.MoveTowards(transform.position, target.position, speed);
+                /*transform.parent = target.transform;
+                Object.Destroy(this.GetComponent<Rigidbody>());*/
+            }
         }
         else
         {
-            speed = 10f;
-            transform.position = Vector3.MoveTowards(transform.position, target.position, speed);
-            /*transform.parent = target.transform;
-            Object.Destroy(this.GetComponent<Rigidbody>());*/
+            GetComponent<AudioSource>().mute = true;
         }
+
+            
 
     }
     private void OnTriggerEnter(Collider other)

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Giocatore : MonoBehaviour
 {
+    private GameObject MenuPausa;
+
     public float speed = 50f;
     public float rotationSpeed = 100.0f;
     private bool vis3D = false;
@@ -29,81 +31,92 @@ public class Giocatore : MonoBehaviour
     {
         rotIniziale = transform.rotation;
         Puu = GameObject.FindGameObjectWithTag("Puu");
+        MenuPausa = GameObject.FindGameObjectWithTag("MenuPausa");
     }
 
     void Update()
     {
-        if (stavolando && !Puu.GetComponent<Puu>().flying) Puu.GetComponent<Puu>().isFlying();
-        
-        isDead = healthbar.GetComponent<HealthBar>().isDed();
-        if (isDead) Puu.GetComponent<Puu>().setNemico(null);
-        timer = timer + Time.deltaTime;
-        //Debug.Log("is grounded " + isGrounded);
-        if (Input.GetKeyDown("space") && isGrounded && !isDead)
+        if (!MenuPausa.GetComponent<MenuPausa>().pausa)
         {
-            Jump();
-        }
-        if (!isGrounded)
-        {
-            Atterra();
-        }
+            this.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+            this.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
 
-        if(Input.GetKey(KeyCode.F) && !isGrounded && !isDead)
-        {
-            Fly();
-            if (k == 0)
+            if (stavolando && !Puu.GetComponent<Puu>().flying) Puu.GetComponent<Puu>().isFlying();
+
+            isDead = healthbar.GetComponent<HealthBar>().isDed();
+            if (isDead) Puu.GetComponent<Puu>().setNemico(null);
+            timer = timer + Time.deltaTime;
+            //Debug.Log("is grounded " + isGrounded);
+            if (Input.GetKeyDown("space") && isGrounded && !isDead)
             {
-                Puu.GetComponent<Puu>().isFlying();
-                k++;
+                Jump();
             }
-        }
-        if (Input.GetKeyUp(KeyCode.F) &&!isGrounded && !isDead)
-        {
-            stavolando = false;
-            Puu.GetComponent<Puu>().StopFlying();
-            k = 0;
-        }
-        speed = 50f;
-        //Debug.Log("k giocatore = " + k);
-        if (!vis3D)
-        {
-            
-            float movimentoOrizzontale = Input.GetAxis("Horizontal") * Time.deltaTime * speed ;
-            //Debug.Log(movimentoOrizzontale);
-            if(!isDead) transform.Translate(movimentoOrizzontale, 0, 0);
-            
+            if (!isGrounded)
+            {
+                Atterra();
+            }
+
+            if (Input.GetKey(KeyCode.F) && !isGrounded && !isDead)
+            {
+                Fly();
+                if (k == 0)
+                {
+                    Puu.GetComponent<Puu>().isFlying();
+                    k++;
+                }
+            }
+            if (Input.GetKeyUp(KeyCode.F) && !isGrounded && !isDead)
+            {
+                stavolando = false;
+                Puu.GetComponent<Puu>().StopFlying();
+                k = 0;
+            }
+            speed = 50f;
+            //Debug.Log("k giocatore = " + k);
+            if (!vis3D)
+            {
+
+                float movimentoOrizzontale = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
+                //Debug.Log(movimentoOrizzontale);
+                if (!isDead) transform.Translate(movimentoOrizzontale, 0, 0);
+
+            }
+            else
+            {
+
+                float movimentoAvantiIndietro = Input.GetAxis("Vertical") * speed;
+                float movimentoDxSx = Input.GetAxis("Horizontal") * speed;
+                movimentoDxSx *= Time.deltaTime;
+                movimentoAvantiIndietro *= Time.deltaTime;
+                Vector3 AD = transform.right * movimentoAvantiIndietro;
+                Vector3 DxSx = transform.forward * -movimentoDxSx;
+                if (!isDead) transform.position = transform.position + AD + DxSx;
+
+
+
+                Vector2 mouseMovement = new Vector2();
+                mouseMovement.x = Input.GetAxis("Mouse X");
+                mouseMovement.y = Input.GetAxis("Mouse Y");
+
+                float angolo_orizzontale_rotazione = 0.0f;
+                float angolo_verticale_rotazione = 0.0f;
+                if (mouseMovement.magnitude > 0.05)
+                {
+                    //Rotazione asse verticale camera
+                    angolo_verticale_rotazione -= mouseMovement.y * this.velocita_verticale_camera;
+
+                    //Rotazione asse orizzontale camera
+                    angolo_orizzontale_rotazione = mouseMovement.x * velocita_orizzontale_camera;
+                }
+
+
+                transform.Rotate(0, angolo_orizzontale_rotazione, 0);
+                //transform.Rotate(0, 0, angolo_verticale_rotazione);
+            }
         }
         else
         {
-            
-            float movimentoAvantiIndietro = Input.GetAxis("Vertical") * speed;
-            float movimentoDxSx = Input.GetAxis("Horizontal") * speed;
-            movimentoDxSx *= Time.deltaTime;
-            movimentoAvantiIndietro *= Time.deltaTime;
-            Vector3 AD = transform.right*movimentoAvantiIndietro;
-            Vector3 DxSx = transform.forward * -movimentoDxSx;
-            if (!isDead)  transform.position = transform.position + AD + DxSx;
-            
-
-
-            Vector2 mouseMovement = new Vector2();
-            mouseMovement.x = Input.GetAxis("Mouse X");
-            mouseMovement.y = Input.GetAxis("Mouse Y");
-
-            float angolo_orizzontale_rotazione = 0.0f;
-            float angolo_verticale_rotazione = 0.0f;
-            if (mouseMovement.magnitude > 0.05)
-            {
-                //Rotazione asse verticale camera
-                angolo_verticale_rotazione -= mouseMovement.y * this.velocita_verticale_camera;
-
-                //Rotazione asse orizzontale camera
-                angolo_orizzontale_rotazione = mouseMovement.x * velocita_orizzontale_camera;
-            }
-
-
-            transform.Rotate(0, angolo_orizzontale_rotazione, 0);
-            //transform.Rotate(0, 0, angolo_verticale_rotazione);
+            this.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
         }
         
         

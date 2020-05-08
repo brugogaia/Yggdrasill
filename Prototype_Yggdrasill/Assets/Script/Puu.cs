@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Puu : MonoBehaviour
 {
-
+    private GameObject MenuPausa;
 
     public float MaxDamage = 15f;
     public float MinDamage = 10f;
@@ -33,32 +33,37 @@ public class Puu : MonoBehaviour
         laserShotLine.enabled = false;
         spellLight.intensity = 0f;
         ScaleDamage = MaxDamage - MinDamage;
+
+        MenuPausa = GameObject.FindGameObjectWithTag("MenuPausa");
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-        timer += Time.deltaTime;
-        if (enemy != null && !isDead)
+        if (!MenuPausa.GetComponent<MenuPausa>().pausa)
         {
-            if (timer >= waitTime && !shooting && Vector3.Distance(transform.position, enemy.position) <= 70)
+            timer += Time.deltaTime;
+            if (enemy != null && !isDead)
             {
-                timer = 0f;
-                Shoot();
+                if (timer >= waitTime && !shooting && Vector3.Distance(transform.position, enemy.position) <= 70)
+                {
+                    timer = 0f;
+                    Shoot();
 
+                }
+                else
+                {
+                    shooting = false;
+                    laserShotLine.enabled = false;
+                }
             }
             else
             {
-                shooting = false;
                 laserShotLine.enabled = false;
             }
+            spellLight.intensity = Mathf.Lerp(spellLight.intensity, 0f, fadeSpeed * Time.deltaTime);
         }
-        else
-        {
-            laserShotLine.enabled = false;
-        }
-        spellLight.intensity = Mathf.Lerp(spellLight.intensity, 0f, fadeSpeed * Time.deltaTime);
+            
     }
 
     public void isFlying()

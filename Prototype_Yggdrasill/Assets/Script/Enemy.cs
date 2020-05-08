@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    private GameObject MenuPausa;
+
     public Transform player;
     public Rigidbody rb;
     private Transform end;
@@ -48,6 +50,8 @@ public class Enemy : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
         ScaleDamage = MaxDamage - MinDamage;
+
+        MenuPausa = GameObject.FindGameObjectWithTag("MenuPausa");
     }
     // Start is called before the first frame update
     void Start()
@@ -61,49 +65,53 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        playerDead = player.GetComponent<Giocatore>().isDed();
-        Vector3 direction = player.position - transform.position;
-        direction.Normalize();
-        movement = direction;
-        timer += Time.deltaTime;
-        if (!little)
+        if (!MenuPausa.GetComponent<MenuPausa>().pausa)
         {
-            if (!playerDead && timer >= waitTime && !shooting && !isDead && Vector3.Distance(transform.position, player.position) <= 70)
+            playerDead = player.GetComponent<Giocatore>().isDed();
+            Vector3 direction = player.position - transform.position;
+            direction.Normalize();
+            movement = direction;
+            timer += Time.deltaTime;
+            if (!little)
             {
-                timer = 0f;
-                Shoot();
+                if (!playerDead && timer >= waitTime && !shooting && !isDead && Vector3.Distance(transform.position, player.position) <= 70)
+                {
+                    timer = 0f;
+                    Shoot();
 
+                }
+                else
+                {
+                    shooting = false;
+                    laserShotLine.enabled = false;
+                }
+
+
+
+                spellLight.intensity = Mathf.Lerp(spellLight.intensity, 0f, fadeSpeed * Time.deltaTime);
             }
             else
             {
-                shooting = false;
-                laserShotLine.enabled = false;
+
+                /*if (colpito && timer > waitTime)
+                {
+                    altezzaSalto = 0;
+                    transform.Translate(0, -transform.position.y+1, 0);
+                    Debug.Log("sono nell if");
+                }
+
+                if(isDead && transform.position.y > 0) transform.Translate(0, -transform.position.y+1, 0);*/
+
             }
+        }
             
-
-
-            spellLight.intensity = Mathf.Lerp(spellLight.intensity, 0f, fadeSpeed * Time.deltaTime);
-        }
-        else
-        {
-
-            /*if (colpito && timer > waitTime)
-            {
-                altezzaSalto = 0;
-                transform.Translate(0, -transform.position.y+1, 0);
-                Debug.Log("sono nell if");
-            }
-
-            if(isDead && transform.position.y > 0) transform.Translate(0, -transform.position.y+1, 0);*/
-
-        }
         
         
     }
 
     private void FixedUpdate()
     {
-        if(!isDead && !playerDead)   moveEnemy(movement);
+        if(!isDead && !playerDead && !MenuPausa.GetComponent<MenuPausa>().pausa)   moveEnemy(movement);
     }
     void moveEnemy(Vector3 direction)
     {

@@ -17,6 +17,7 @@ TagManager:
   - Canvas
   - TargetAlice
   - MenuMorte
+  - MenuPausa
   layers:
   - Default
   - TransparentFX
