@@ -9,15 +9,16 @@ public class MenuPausa : MonoBehaviour
     // Start is called before the first frame update
     public bool pausa = false;
     [SerializeField] string NomeScena;
+    private Image MenuMorte;
     void Start()
     {
-        
+        MenuMorte = GameObject.FindGameObjectWithTag("MenuMorte").GetComponent<Image>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!pausa && Input.GetKeyDown("escape"))
+        if (!pausa && !MenuMorte.enabled && Input.GetKeyDown("escape"))
         {
             this.GetComponent<Image>().enabled = true;
             pausa = true;

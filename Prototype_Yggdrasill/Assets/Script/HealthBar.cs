@@ -34,7 +34,7 @@ public class HealthBar : MonoBehaviour
     public void FallDamage(float DamageAmount)
     {
         
-        damage = DamageAmount / 100;
+        damage = DamageAmount / 200;
         //Debug.Log("danno: " + damage);
         CurrentHealth = CurrentHealth - damage;
         //animationHit();

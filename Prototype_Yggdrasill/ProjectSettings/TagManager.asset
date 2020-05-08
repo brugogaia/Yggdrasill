@@ -18,6 +18,7 @@ TagManager:
   - TargetAlice
   - MenuMorte
   - MenuPausa
+  - VideoStoria
   layers:
   - Default
   - TransparentFX

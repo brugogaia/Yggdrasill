@@ -14,6 +14,8 @@ public class Giocatore : MonoBehaviour
     private Quaternion rotIniziale;
     private bool stavolando = false;
 
+    private Transform enemy;
+
     private float velocita_verticale_camera = 1.0f;
     private float velocita_orizzontale_camera = 1.0f;
 
@@ -38,6 +40,8 @@ public class Giocatore : MonoBehaviour
     {
         if (!MenuPausa.GetComponent<MenuPausa>().pausa)
         {
+            enemy = this.GetComponent<PlayerShooting>().enemy;
+
             this.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
             this.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
 
@@ -78,7 +82,11 @@ public class Giocatore : MonoBehaviour
 
                 float movimentoOrizzontale = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
                 //Debug.Log(movimentoOrizzontale);
-                if (!isDead) transform.Translate(movimentoOrizzontale, 0, 0);
+                if (!isDead)
+                {
+                    if(enemy == null || (enemy!= null && !enemy.GetComponent<Enemy>().isLittle() && Vector3.Distance(transform.position, enemy.position)>=40) || (enemy!=null && enemy.GetComponent<Enemy>().isLittle()))
+                        transform.Translate(movimentoOrizzontale, 0, 0);
+                }
 
             }
             else

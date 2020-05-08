@@ -11,7 +11,7 @@ public class PlayerShooting : MonoBehaviour
 
     private LineRenderer laserShotLine;
     private Light spellLight;
-    private Transform enemy;
+    public Transform enemy;
     private float ScaleDamage;
 
     private bool shooting = false;

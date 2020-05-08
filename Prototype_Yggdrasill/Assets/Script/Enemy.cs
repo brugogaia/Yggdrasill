@@ -111,15 +111,16 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(!isDead && !playerDead && !MenuPausa.GetComponent<MenuPausa>().pausa)   moveEnemy(movement);
+        if(!isDead && !playerDead && !MenuPausa.GetComponent<MenuPausa>().pausa)   
+            moveEnemy(movement);
     }
     void moveEnemy(Vector3 direction)
     {
-        if (!little)
+        if (!little && Vector3.Distance(transform.position, player.position) >= 40)
             rb.MovePosition((Vector3)transform.position + (direction * speed * Time.deltaTime));
         else
         {
-            if(Vector3.Distance(transform.position, player.position) <= distanza)
+            if(Vector3.Distance(transform.position, player.position) <= distanza )
             {
                 float step = speed * Time.deltaTime; 
                 if(!colpito) transform.position = Vector3.MoveTowards(transform.position, new Vector3(player.position.x,altezzaSalto,player.position.z), step);
@@ -212,5 +213,11 @@ public class Enemy : MonoBehaviour
             timer = 0.0f;
             waitTime = 0.25f;*/
         }
+    }
+
+    public bool isLittle()
+    {
+        return little;
+        
     }
 }
