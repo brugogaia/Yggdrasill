@@ -8,6 +8,8 @@ public class HealthBar : MonoBehaviour
 
     public Transform character;
     public Transform HBImage;
+    private GameObject Puu;
+    private Image MenuMorte;
     // public Transform privot;
     //public Transform HBText;
     public float MaxHealth;
@@ -20,11 +22,12 @@ public class HealthBar : MonoBehaviour
 
     void Start()
     {
-
+        MenuMorte = GameObject.FindGameObjectWithTag("MenuMorte").GetComponent<Image>();
         //HBText = gameObject.GetComponentInChildren<Text>().transform;
         MaxHealth = HBImage.transform.localScale.x;
         CurrentHealth = MaxHealth;
-   
+        Puu = GameObject.FindGameObjectWithTag("Puu");
+
         //if (GameObject.Find("Menu").GetComponent<Menu>().Riavviante()) SetCurrentHealth(GameObject.Find("Menu").GetComponent<Menu>().GetHealth());
     }
 
@@ -96,6 +99,8 @@ public class HealthBar : MonoBehaviour
     {
         CurrentHealth = 0;
         isDead = true;
+        Puu.GetComponent<Puu>().Morte();
+        MenuMorte.enabled = true;
         //animationDeathHit();
 
         //HBText.GetComponent<Text>().text = "0";

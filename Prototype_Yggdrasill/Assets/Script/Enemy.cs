@@ -103,7 +103,7 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(!isDead)   moveEnemy(movement);
+        if(!isDead && !playerDead)   moveEnemy(movement);
     }
     void moveEnemy(Vector3 direction)
     {

@@ -17,6 +17,7 @@ public class Puu : MonoBehaviour
     public float flashIntensity = 3f;
     public float fadeSpeed = 10f;
     private Transform enemy;
+    private bool isDead = false;
     private bool shooting = false;
 
     public bool flying = false;
@@ -39,7 +40,7 @@ public class Puu : MonoBehaviour
     {
         
         timer += Time.deltaTime;
-        if (enemy != null)
+        if (enemy != null && !isDead)
         {
             if (timer >= waitTime && !shooting && Vector3.Distance(transform.position, enemy.position) <= 70)
             {
@@ -62,8 +63,12 @@ public class Puu : MonoBehaviour
 
     public void isFlying()
     {
-        flying = true;
-        transform.Translate(6.5f, -10f, 0);
+        if (!isDead)
+        {
+            flying = true;
+            transform.Translate(6.5f, -10f, 0);
+        }
+        
     }
     public void StopFlying()
     {
@@ -95,5 +100,9 @@ public class Puu : MonoBehaviour
         laserShotLine.enabled = true;
         spellLight.intensity = flashIntensity;
 
+    }
+    public void Morte()
+    {
+        isDead = true;
     }
 }

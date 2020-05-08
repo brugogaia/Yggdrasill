@@ -39,7 +39,7 @@ public class Giocatore : MonoBehaviour
         if (isDead) Puu.GetComponent<Puu>().setNemico(null);
         timer = timer + Time.deltaTime;
         //Debug.Log("is grounded " + isGrounded);
-        if (Input.GetKeyDown("space") && isGrounded &&!isDead)
+        if (Input.GetKeyDown("space") && isGrounded && !isDead)
         {
             Jump();
         }

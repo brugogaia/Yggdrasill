@@ -16,6 +16,7 @@ TagManager:
   - End
   - Canvas
   - TargetAlice
+  - MenuMorte
   layers:
   - Default
   - TransparentFX

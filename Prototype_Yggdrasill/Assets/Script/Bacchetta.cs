@@ -25,7 +25,7 @@ public class Bacchetta : MonoBehaviour
     {
         timer = timer + Time.deltaTime;
 
-        if (scarica && timer > RechargeTime)
+        if (scarica && timer > RechargeTime && !player.GetComponent<Giocatore>().isDed())
         {
             CurrentIntensity = MaxIntensity;
             scarica = false;
