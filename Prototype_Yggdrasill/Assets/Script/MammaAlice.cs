@@ -9,6 +9,7 @@ public class MammaAlice : MonoBehaviour
 {
     private Transform player;
     private GameObject Canvas;
+    public GameObject panel;
     [SerializeField] Image UI_Image_Parla;
     [SerializeField] Image UI_Image_Aiuta;
     public VideoPlayer vid;
@@ -35,8 +36,8 @@ public class MammaAlice : MonoBehaviour
             UI_Image_Parla.enabled = false;
             canvas_video.enabled = true;
             arrivato = false;
-            //PlayVideo();
-            StartCoroutine(Fading());
+            PlayVideo();
+            //StartCoroutine(Fading());
 
         }
         else if(arrivato && Input.GetKeyDown(KeyCode.X))
@@ -45,10 +46,10 @@ public class MammaAlice : MonoBehaviour
             //Carichiamo scena labirinto senza Alice
         }
         
-        if (parlato && Input.GetKeyDown(KeyCode.E))
+        /*if (parlato && Input.GetKeyDown(KeyCode.E))
         {
-            UI_Image_Aiuta.enabled = false;
-            StartCoroutine(Fading());
+            //UI_Image_Aiuta.enabled = false;
+            //StartCoroutine(Fading());
             
 
         }
@@ -56,7 +57,7 @@ public class MammaAlice : MonoBehaviour
         {
             UI_Image_Aiuta.enabled = false;
             //Carichiamo scena labirinto con Alice invisibile che si sentono solo i passi
-        }
+        }*/
         
         
 
@@ -73,7 +74,9 @@ public class MammaAlice : MonoBehaviour
     {
         canvas_video.enabled = false;
         parlato = true;
-        UI_Image_Aiuta.enabled = true;
+        SceneManager.LoadScene("SampleScene - Copia", LoadSceneMode.Single);
+        Debug.Log("cambio scena");
+        DontDestroyOnLoad(Canvas);
     }
 
     IEnumerator Fading()

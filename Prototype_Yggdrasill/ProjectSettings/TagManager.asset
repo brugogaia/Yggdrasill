@@ -19,6 +19,7 @@ TagManager:
   - MenuMorte
   - MenuPausa
   - VideoStoria
+  - HealthBar
   layers:
   - Default
   - TransparentFX

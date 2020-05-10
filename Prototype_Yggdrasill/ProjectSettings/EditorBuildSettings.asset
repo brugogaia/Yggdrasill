@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
+    path: Assets/Scenes/SampleScene - Copia.unity
+    guid: 8fb12b4317f1c8b4388a5938310a09a8
+  - enabled: 1
     path: Assets/Scenes/Labyrinth.unity
     guid: fb7f6602a9391f8448b32cf0b237a8b0
   m_configObjects: {}

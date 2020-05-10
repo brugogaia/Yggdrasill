@@ -20,7 +20,7 @@ public class Giocatore : MonoBehaviour
     private float velocita_orizzontale_camera = 1.0f;
 
     private GameObject Puu;
-    public Transform healthbar;
+    private Transform healthbar;
 
     public float Damage;
 
@@ -34,6 +34,7 @@ public class Giocatore : MonoBehaviour
         rotIniziale = transform.rotation;
         Puu = GameObject.FindGameObjectWithTag("Puu");
         MenuPausa = GameObject.FindGameObjectWithTag("MenuPausa");
+        healthbar = GameObject.FindGameObjectWithTag("HealthBar").transform;
     }
 
     void Update()
