@@ -34,7 +34,7 @@ public class Enemy : MonoBehaviour
     private float altezzaSalto = 0f;
     private int k = 0;
 
-    private float waitTime = 0.5f;
+    private float waitTime = 1.5f;
     private float timer = 0.0f;
 
     private void Awake()
@@ -45,7 +45,8 @@ public class Enemy : MonoBehaviour
             spellLight = laserShotLine.gameObject.GetComponent<Light>();
             laserShotLine.enabled = false;
             spellLight.intensity = 0f;
-        }else end = GameObject.FindGameObjectWithTag("End").transform;
+        }
+        end = GameObject.FindGameObjectWithTag("End").transform;
 
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
@@ -77,7 +78,7 @@ public class Enemy : MonoBehaviour
                 if (!playerDead && timer >= waitTime && !shooting && !isDead && Vector3.Distance(transform.position, player.position) <= 70)
                 {
                     timer = 0f;
-                    Shoot();
+                    ShotEffects();
 
                 }
                 else
@@ -116,15 +117,18 @@ public class Enemy : MonoBehaviour
     }
     void moveEnemy(Vector3 direction)
     {
-        if (!little && Vector3.Distance(transform.position, player.position) >= 40)
-            rb.MovePosition((Vector3)transform.position + (direction * speed * Time.deltaTime));
+        if (!little)
+        {
+            float distanza = Vector3.Distance(transform.position, player.position);
+            if (distanza >= 40 && distanza <=100)
+                rb.MovePosition((Vector3)transform.position + (direction * speed * Time.deltaTime));
+        }    
         else
         {
             if(Vector3.Distance(transform.position, player.position) <= distanza )
             {
                 float step = speed * Time.deltaTime; 
-                if(!colpito) transform.position = Vector3.MoveTowards(transform.position, new Vector3(player.position.x,altezzaSalto,player.position.z), step);
-                else  transform.position = Vector3.MoveTowards(transform.position, new Vector3(end.position.x, altezzaSalto, end.position.z), step);
+                transform.position = Vector3.MoveTowards(transform.position, new Vector3(end.position.x, altezzaSalto, end.position.z), step);
 
             }
 
@@ -133,21 +137,33 @@ public class Enemy : MonoBehaviour
 
     void Shoot()
     {
-        shooting = true;
         float FractionalDistance = (70 - Vector3.Distance(transform.position, player.position)) / 70;
         float damage = ScaleDamage * FractionalDistance + MinDamage;
         damage = damage / 2;
         player.GetComponent<Giocatore>().TakeDamage(damage);
-        ShotEffects();
     }
 
     void ShotEffects()
     {
+        shooting = true;
         laserShotLine.SetPosition(0, laserShotLine.transform.position);
-        laserShotLine.SetPosition(1, player.position);
+        int layerMask = 1 << 8;
+        if (Physics.Raycast(transform.position, end.position - transform.position, Mathf.Infinity, layerMask))
+        {
+            laserShotLine.SetPosition(1, new Vector3(player.position.x,transform.position.y,player.position.z));
+            Debug.Log("Colpito giocatore");
+            Shoot();
+        }
+        else
+        {
+            Debug.Log("Did not Hit");
+            laserShotLine.SetPosition(1, end.position);
+        }
+
         laserShotLine.enabled = true;
         spellLight.intensity = flashIntensity;
-
+        
+        
     }
 
     public void Damage(float DamageAmount)

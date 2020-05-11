@@ -85,7 +85,7 @@ public class Giocatore : MonoBehaviour
                 //Debug.Log(movimentoOrizzontale);
                 if (!isDead)
                 {
-                    if(enemy == null || (enemy!= null && !enemy.GetComponent<Enemy>().isLittle() && Vector3.Distance(transform.position, enemy.position)>=40) || (enemy!=null && enemy.GetComponent<Enemy>().isLittle()))
+                    if(enemy == null || (enemy!= null && !enemy.GetComponent<Enemy>().isLittle() /*&& Vector3.Distance(transform.position, enemy.position)>=20)*/ ) || (enemy!=null && enemy.GetComponent<Enemy>().isLittle()))
                         transform.Translate(movimentoOrizzontale, 0, 0);
                 }
 
@@ -133,12 +133,12 @@ public class Giocatore : MonoBehaviour
 
     private void Jump()
     {
-        this.GetComponent<Rigidbody>().AddForce(new Vector3(0f, 20f,0f), ForceMode.Impulse);
+        this.GetComponent<Rigidbody>().AddForce(new Vector3(0f, 25f,0f), ForceMode.Impulse);
     }
 
     private void Atterra()
     {
-        this.GetComponent<Rigidbody>().AddForce(new Vector3(0f, -0.5f, 0f), ForceMode.Impulse);
+        this.GetComponent<Rigidbody>().AddForce(new Vector3(0f, -0.6f, 0f), ForceMode.Impulse);
     }
 
     private void OnCollisionEnter(Collision collision)

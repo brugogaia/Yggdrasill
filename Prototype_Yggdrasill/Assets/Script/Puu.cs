@@ -6,8 +6,8 @@ public class Puu : MonoBehaviour
 {
     private GameObject MenuPausa;
 
-    public float MaxDamage = 15f;
-    public float MinDamage = 10f;
+    public float MaxDamage = 10f;
+    public float MinDamage = 5f;
     private float ScaleDamage;
 
     private int distanza = 70;
