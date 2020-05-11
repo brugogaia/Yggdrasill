@@ -14,10 +14,13 @@ public class MammaAlice : MonoBehaviour
     [SerializeField] Image UI_Image_Aiuta;
     public VideoPlayer vid;
     public Canvas canvas_video;
+    public GameObject Dialogo;
     private bool arrivato = false;
     public bool parlato = false;
     public Image white;
     public Animator anim;
+    private bool staparlando = false;
+    private int k = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +29,7 @@ public class MammaAlice : MonoBehaviour
         UI_Image_Parla.enabled = false;
         Canvas = GameObject.FindGameObjectWithTag("Canvas");
         canvas_video.enabled = false;
+        Dialogo.GetComponent<Canvas>().enabled = false;
     }
 
     // Update is called once per frame
@@ -36,34 +40,65 @@ public class MammaAlice : MonoBehaviour
             UI_Image_Parla.enabled = false;
             canvas_video.enabled = true;
             arrivato = false;
-            PlayVideo();
-            //StartCoroutine(Fading());
-
+            //PlayVideo();
+            staparlando = true;
         }
         else if(arrivato && Input.GetKeyDown(KeyCode.X))
         {
             UI_Image_Parla.enabled = false;
             //Carichiamo scena labirinto senza Alice
         }
-        
-        /*if (parlato && Input.GetKeyDown(KeyCode.E))
+
+        if (staparlando)
         {
-            //UI_Image_Aiuta.enabled = false;
-            //StartCoroutine(Fading());
-            
+            if(!Dialogo.GetComponent<Canvas>().enabled && k==0)
+            {
+                Dialogo.GetComponent<Canvas>().enabled = true;
+
+            }
+            if (Input.GetKeyDown(KeyCode.E) && Dialogo.transform.GetChild(k).GetComponent<Image>().enabled)
+            {
+                Dialogo.transform.GetChild(k).GetComponent<Image>().enabled = false;
+                if (k < 4)
+                {
+                    k++;
+                    Dialogo.transform.GetChild(k).GetComponent<Image>().enabled = true;
+                }
+                else
+                {
+                    staparlando = false;
+                    Dialogo.GetComponent<Canvas>().enabled = false;
+                    UI_Image_Aiuta.enabled = true;
+                }
+            }
+            else if(Input.GetKeyDown(KeyCode.E) && !Dialogo.transform.GetChild(k).GetComponent<Image>().enabled)
+            {
+                Dialogo.transform.GetChild(k).GetComponent<Image>().enabled = true;
+            }
 
         }
-        else if (parlato && Input.GetKeyDown(KeyCode.X))
+        else
         {
-            UI_Image_Aiuta.enabled = false;
-            //Carichiamo scena labirinto con Alice invisibile che si sentono solo i passi
-        }*/
+            if (UI_Image_Aiuta.enabled && Input.GetKeyDown(KeyCode.E))
+            {
+                UI_Image_Aiuta.enabled = false;
+                StartCoroutine(Fading());
+
+
+            }
+            else if (UI_Image_Aiuta.enabled && Input.GetKeyDown(KeyCode.X))
+            {
+                UI_Image_Aiuta.enabled = false;
+                //Carichiamo scena labirinto con Alice invisibile che si sentono solo i passi
+            }
+        }
+        
+        
         
         
 
     }
     
-
     void PlayVideo()
     {
         Time.timeScale = 0;
