@@ -5,32 +5,64 @@ using UnityEngine.UI;
 
 public class Zaino : MonoBehaviour
 {
+    public Canvas padre;
+    public Canvas altroZaino;
     public Image red;
     public Image green;
     private GameObject MenuPausa;
+    private bool toltoacchiappa = false;
     // Start is called before the first frame update
     void Start()
     {
-        this.GetComponent<Image>().enabled = false;
+        padre.enabled = false;
+        altroZaino.enabled = false;
         MenuPausa = GameObject.FindGameObjectWithTag("MenuPausa");
+        red = GameObject.FindGameObjectWithTag("red").GetComponent<Image>();
+        green = GameObject.FindGameObjectWithTag("HealthBar").GetComponent<Image>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!this.GetComponent<Image>().enabled && Input.GetKeyDown(KeyCode.Q))
+        if (altroZaino.enabled) toltoacchiappa = true;
+        if (padre.enabled) toltoacchiappa = false;
+        if (!toltoacchiappa && !padre.enabled && Input.GetKeyDown(KeyCode.Q))
         {
-            this.GetComponent<Image>().enabled = true;
+            padre.enabled = true;
             red.enabled = false;
             green.enabled = false;
             MenuPausa.GetComponent<MenuPausa>().setPausa(true);
+            
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
         }
-        else if(this.GetComponent<Image>().enabled && Input.GetKeyDown(KeyCode.Q))
+        else if(!toltoacchiappa && padre.enabled && Input.GetKeyDown(KeyCode.Q))
         {
-            this.GetComponent<Image>().enabled = false;
             red.enabled = true;
             green.enabled = true;
             MenuPausa.GetComponent<MenuPausa>().setPausa(false);
+            padre.enabled = false;
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        else if(toltoacchiappa && !altroZaino.enabled && Input.GetKeyDown(KeyCode.Q))
+        {
+            altroZaino.enabled = true;
+            red.enabled = false;
+            green.enabled = false;
+            MenuPausa.GetComponent<MenuPausa>().setPausa(true);
+
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
+        else if (toltoacchiappa && altroZaino.enabled && Input.GetKeyDown(KeyCode.Q))
+        {
+            red.enabled = true;
+            green.enabled = true;
+            MenuPausa.GetComponent<MenuPausa>().setPausa(false);
+            altroZaino.enabled = false;
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
         }
     }
 }

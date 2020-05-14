@@ -22,12 +22,16 @@ public class MenuPausa : MonoBehaviour
         {
             this.GetComponent<Image>().enabled = true;
             pausa = true;
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
         }
         if (pausa) {
             if (Input.GetKeyDown(KeyCode.R))
             {
                 pausa = false;
                 this.GetComponent<Image>().enabled = false;
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
             }
             else if (Input.GetKeyDown(KeyCode.T)){
                 SceneManager.LoadScene(NomeScena, LoadSceneMode.Single);

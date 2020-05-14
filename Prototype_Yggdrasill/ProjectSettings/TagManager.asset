@@ -20,6 +20,9 @@ TagManager:
   - MenuPausa
   - VideoStoria
   - HealthBar
+  - acchiappasogni
+  - red
+  - green
   layers:
   - Default
   - TransparentFX
