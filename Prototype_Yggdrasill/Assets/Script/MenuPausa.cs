@@ -41,4 +41,9 @@ public class MenuPausa : MonoBehaviour
     {
         return NomeScena;
     }
+
+    public void setPausa(bool boolean)
+    {
+        pausa = boolean;
+    }
 }
