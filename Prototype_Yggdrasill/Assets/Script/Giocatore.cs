@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Giocatore : MonoBehaviour
 {
@@ -133,7 +134,7 @@ public class Giocatore : MonoBehaviour
 
     private void Jump()
     {
-        this.GetComponent<Rigidbody>().AddForce(new Vector3(0f, 25f,0f), ForceMode.Impulse);
+        this.GetComponent<Rigidbody>().AddForce(new Vector3(0f, 35f,0f), ForceMode.Impulse);
     }
 
     private void Atterra()
@@ -151,7 +152,12 @@ public class Giocatore : MonoBehaviour
             k = 0;
             Puu.GetComponent<Puu>().StopFlying();
         }
-        if (collision.collider != Puu.GetComponent<Collider>() && collision.relativeVelocity.magnitude > 40f)
+        else if(collision.gameObject.tag == "Enemy" && !collision.gameObject.GetComponent<Enemy>().little)
+        {
+            TakeDamage(100f);
+            
+        }
+        else if (collision.collider != Puu.GetComponent<Collider>() && collision.relativeVelocity.magnitude > 40f)
         {
             //Debug.Log("Collisione!");
             Damage = collision.relativeVelocity.magnitude;
@@ -160,6 +166,8 @@ public class Giocatore : MonoBehaviour
             //setHit();
         }
     }
+
+    
     private void OnCollisionStay(Collision collision)
     {
         //Debug.Log("sto collidendo con " + collision.collider);

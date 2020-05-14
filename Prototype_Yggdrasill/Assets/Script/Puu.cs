@@ -45,7 +45,7 @@ public class Puu : MonoBehaviour
             timer += Time.deltaTime;
             if (enemy != null && !isDead)
             {
-                if (timer >= waitTime && !shooting && Vector3.Distance(transform.position, enemy.position) <= 70)
+                if (timer >= waitTime && !shooting && Vector3.Distance(transform.position, enemy.position) <= 70 && !flying)
                 {
                     timer = 0f;
                     Shoot();

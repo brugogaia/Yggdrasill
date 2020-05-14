@@ -9,7 +9,8 @@ public class PlayerShooting : MonoBehaviour
     public float flashIntensity = 3f;
     public float fadeSpeed = 10f;
 
-    private LineRenderer laserShotLine;
+    [SerializeField] LineRenderer laserShotLine;
+    [SerializeField] Transform bacchetta;
     private Light spellLight;
     public Transform enemy;
     private float ScaleDamage;
@@ -29,7 +30,7 @@ public class PlayerShooting : MonoBehaviour
 
     private void Awake()
     {
-        laserShotLine = GetComponentInChildren<LineRenderer>();
+        //laserShotLine = GetComponentInChildren<LineRenderer>();
         spellLight = laserShotLine.gameObject.GetComponent<Light>();
         Puu = GameObject.FindGameObjectWithTag("Puu");
         Bacchetta = GameObject.FindGameObjectWithTag("Bacchetta").transform;
@@ -92,8 +93,8 @@ public class PlayerShooting : MonoBehaviour
 
     void ShotEffects()
     {
-        laserShotLine.SetPosition(0, laserShotLine.transform.position);
-        laserShotLine.SetPosition(1, enemy.position);
+        laserShotLine.SetPosition(0, bacchetta.position);
+        laserShotLine.SetPosition(1, new Vector3(enemy.position.x,bacchetta.position.y,enemy.position.z));
         laserShotLine.enabled = true;
         spellLight.intensity = flashIntensity;
 
@@ -124,6 +125,16 @@ public class PlayerShooting : MonoBehaviour
         if (other.tag == "Enemy")
         {
             enemy = other.transform;
+            Puu.GetComponent<Puu>().setNemico(enemy);
+            //Debug.Log("trovato nemico");
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Enemy")
+        {
+            enemy = null;
             Puu.GetComponent<Puu>().setNemico(enemy);
             //Debug.Log("trovato nemico");
         }

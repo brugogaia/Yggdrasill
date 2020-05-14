@@ -11,7 +11,8 @@ public class Enemy : MonoBehaviour
     private Transform end;
     public Vector2 movement;
     [SerializeField] float speed;
-    [SerializeField] bool little;
+    public bool little;
+    [SerializeField] bool volante;
     [SerializeField] float MaxHealth;
     public float CurrentHealth;
     private float damage;
@@ -30,7 +31,7 @@ public class Enemy : MonoBehaviour
     private float ScaleDamage;
 
     private bool shooting = false;
-    private bool colpito = false;
+    
     private float altezzaSalto = 0f;
     private int k = 0;
 
@@ -69,7 +70,7 @@ public class Enemy : MonoBehaviour
         if (!MenuPausa.GetComponent<MenuPausa>().pausa)
         {
             playerDead = player.GetComponent<Giocatore>().isDed();
-            Vector3 direction = player.position - transform.position;
+            Vector3 direction = end.position - transform.position;
             direction.Normalize();
             movement = direction;
             timer += Time.deltaTime;
@@ -114,14 +115,20 @@ public class Enemy : MonoBehaviour
     {
         if(!isDead && !playerDead && !MenuPausa.GetComponent<MenuPausa>().pausa)   
             moveEnemy(movement);
+        else if(playerDead && !little) this.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
     }
     void moveEnemy(Vector3 direction)
     {
         if (!little)
         {
             float distanza = Vector3.Distance(transform.position, player.position);
-            if (distanza >= 40 && distanza <=100)
+            if (distanza >= 40 && distanza <=100 && !volante)
                 rb.MovePosition((Vector3)transform.position + (direction * speed * Time.deltaTime));
+            else if (volante && distanza <=100)
+            {
+                Vector3 direccio = new Vector3(direction.x, 0, direction.z);
+                rb.MovePosition((Vector3)transform.position + (direccio * speed * Time.deltaTime));
+            }
         }    
         else
         {
@@ -156,8 +163,8 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            Debug.Log("Did not Hit");
-            laserShotLine.SetPosition(1, end.position);
+            //Debug.Log("Did not Hit");
+            laserShotLine.SetPosition(1, new Vector3(end.position.x, transform.position.y, end.position.z));
         }
 
         laserShotLine.enabled = true;
@@ -188,10 +195,20 @@ public class Enemy : MonoBehaviour
                 isDead = true;
 
                 if (!little)
+                {
                     transform.Rotate(0, 0, -90);
-                  
-                else 
+                    if (volante)
+                    {
+                        transform.Translate(0, -20, 0);
+                        Debug.Log("morto volante");
+                    }
+                }
+                else
+                {
                     transform.localScale += new Vector3(0, -2, 0);
+                    
+                }
+                    
 
                 transform.Translate(0, 0, 10);
                 transform.gameObject.tag = "DeadEnemy";
@@ -216,7 +233,6 @@ public class Enemy : MonoBehaviour
         if(collision.collider == player.GetComponent<Collider>() && little && !isDead)
         {
             player.GetComponent<Giocatore>().TakeDamage(10f);
-            colpito = true;
         }
         
     }

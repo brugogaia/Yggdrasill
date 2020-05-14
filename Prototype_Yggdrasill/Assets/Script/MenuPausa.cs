@@ -36,4 +36,9 @@ public class MenuPausa : MonoBehaviour
 
         }
     }
+
+    public string GetNomeScena()
+    {
+        return NomeScena;
+    }
 }
