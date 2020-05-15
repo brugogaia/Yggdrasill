@@ -33,7 +33,6 @@ public class Enemy : MonoBehaviour
     private bool shooting = false;
     
     private float altezzaSalto = 0f;
-    private int k = 0;
 
     private float waitTime = 1.5f;
     private float timer = 0.0f;
