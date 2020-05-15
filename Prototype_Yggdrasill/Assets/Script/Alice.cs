@@ -1,24 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Alice : MonoBehaviour
 {
     private GameObject MenuPausa;
 
-    private float speed = 5f;
+    private float speed = 10f;
     private float waitTime = 2f;
     private float timer = 2f;
     private Transform player;
     private Transform target;
     private Vector3 position;
     private bool presa = false;
+    private Image UI;
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         target = GameObject.FindGameObjectWithTag("TargetAlice").transform;
         MenuPausa = GameObject.FindGameObjectWithTag("MenuPausa");
+        UI = GameObject.FindGameObjectWithTag("UI_acchiappa").GetComponent<Image>();
+        UI.enabled = false;
     }
 
     // Update is called once per frame
@@ -41,7 +45,7 @@ public class Alice : MonoBehaviour
             }
             else
             {
-                speed = 10f;
+                speed = 100f;
                 transform.position = Vector3.MoveTowards(transform.position, target.position, speed);
                 /*transform.parent = target.transform;
                 Object.Destroy(this.GetComponent<Rigidbody>());*/
@@ -49,18 +53,17 @@ public class Alice : MonoBehaviour
         }
         else
         {
-            GetComponent<AudioSource>().mute = true;
+            
         }
 
             
 
     }
-    private void OnTriggerEnter(Collider other)
+
+    public void setPresa(bool boolena)
     {
-        if(other == player.GetComponent<Collider>())
-        {
-            presa = true;
-            this.GetComponent<AudioSource>().enabled = false;
-        }
+        presa = boolena;
+        UI.enabled = true;
     }
+    
 }

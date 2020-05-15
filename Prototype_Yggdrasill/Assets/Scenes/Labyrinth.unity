@@ -3809,6 +3809,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0cbe5b524c29b13489e36e72cf1f87e9, type: 3}
+--- !u!1 &495472886 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7868399221177410612, guid: 0cbe5b524c29b13489e36e72cf1f87e9,
+    type: 3}
+  m_PrefabInstance: {fileID: 495472885}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &495472887
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 495472886}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0038801455, y: 0.0049401373, z: 0.0019966848}
+  m_Center: {x: 0.00015946105, y: -0.0019136772, z: -0.00043316354}
+--- !u!114 &495472888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 495472886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dcaea824af47284c99405df81f3029d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Alice: {fileID: 1282530635}
 --- !u!1001 &497824799
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4489,7 +4521,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 636439729}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2.040001}
+  m_LocalPosition: {x: -0.02, y: -0, z: -2.82}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 789780109}
@@ -6373,7 +6405,7 @@ GameObject:
   - component: {fileID: 1047203589}
   m_Layer: 5
   m_Name: PrendiAcchiappa
-  m_TagString: Untagged
+  m_TagString: bottone_acchiappa
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8175,11 +8207,11 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1282530635}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.9288948
-  m_Center: {x: 0, y: -3.6806872, z: 0}
+  m_Radius: 1.1446556
+  m_Center: {x: -0.16228332, y: 0.28107965, z: 0.034733295}
 --- !u!54 &1282530637
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8408,7 +8440,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1282530635}
   m_LocalRotation: {x: 6.933465e-10, y: 0.7053289, z: -6.855311e-10, w: 0.70888025}
-  m_LocalPosition: {x: 790, y: 1.0264142, z: -172}
+  m_LocalPosition: {x: 28, y: 9.83, z: 34}
   m_LocalScale: {x: 9.92367, y: 2.5044365, z: 9.92367}
   m_Children: []
   m_Father: {fileID: 0}
@@ -11173,6 +11205,7 @@ GameObject:
   - component: {fileID: 1773138189}
   - component: {fileID: 1773138188}
   - component: {fileID: 1773138187}
+  - component: {fileID: 1773138191}
   m_Layer: 0
   m_Name: FirstPersonPlayer
   m_TagString: Player
@@ -11188,7 +11221,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1773138186}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 4.6213303}
@@ -11242,6 +11275,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 89.712006, z: 0}
+--- !u!114 &1773138191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1773138186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73955da3cf1e0c046b14aa21e35f83a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Alice: {fileID: 1282530635}
 --- !u!4 &1775953642 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4887789205634220081, guid: 92cbe7b09073f064f806d6a8dbcedf27,

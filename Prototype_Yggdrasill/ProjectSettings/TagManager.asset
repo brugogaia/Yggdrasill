@@ -23,6 +23,8 @@ TagManager:
   - acchiappasogni
   - red
   - green
+  - bottone_acchiappa
+  - UI_acchiappa
   layers:
   - Default
   - TransparentFX
