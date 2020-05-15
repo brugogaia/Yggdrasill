@@ -15,6 +15,7 @@ public class Giocatore : MonoBehaviour
     private Quaternion rotIniziale;
     private bool stavolando = false;
 
+
     private Transform enemy;
 
     private float velocita_verticale_camera = 1.0f;
@@ -29,6 +30,7 @@ public class Giocatore : MonoBehaviour
     private float timer = 0.0f;
 
     private int k = 0;
+
 
     private void Start()
     {
@@ -53,17 +55,13 @@ public class Giocatore : MonoBehaviour
             if (isDead) Puu.GetComponent<Puu>().setNemico(null);
             timer = timer + Time.deltaTime;
             //Debug.Log("is grounded " + isGrounded);
-            if (Input.GetKeyDown("space") && isGrounded && !isDead)
+            if (Input.GetKeyDown("space") && isGrounded && !isDead )
             {
                 Jump();
             }
-            if (!isGrounded)
+            else if (Input.GetKeyDown("space") && !isGrounded && !isDead)
             {
-                Atterra();
-            }
-
-            if (Input.GetKey(KeyCode.F) && !isGrounded && !isDead)
-            {
+                Debug.Log("sono nel volo");
                 Fly();
                 if (k == 0)
                 {
@@ -71,12 +69,22 @@ public class Giocatore : MonoBehaviour
                     k++;
                 }
             }
-            if (Input.GetKeyUp(KeyCode.F) && !isGrounded && !isDead)
+            if (Input.GetKey("space") && stavolando && !isDead) Fly();
+            if (Input.GetKeyUp("space") && stavolando && !isDead)
             {
                 stavolando = false;
                 Puu.GetComponent<Puu>().StopFlying();
                 k = 0;
             }
+
+
+            if (!isGrounded)
+            {
+                Atterra();
+            }
+            
+            
+            
             speed = 50f;
             //Debug.Log("k giocatore = " + k);
             if (!vis3D)
@@ -177,6 +185,7 @@ public class Giocatore : MonoBehaviour
             k = 0;
             stavolando = false;
             Puu.GetComponent<Puu>().StopFlying();
+            
         }
     }
 
@@ -211,7 +220,6 @@ public class Giocatore : MonoBehaviour
         if (transform.rotation != rotIniziale)
         {
             transform.rotation = rotIniziale;
-            Debug.Log("sono nell if");
         }
     }
 
