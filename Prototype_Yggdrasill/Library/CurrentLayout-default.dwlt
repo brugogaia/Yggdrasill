@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PixelRect:
     serializedVersion: 2
-    x: 0
-    y: 43.2
+    x: 479
+    y: 151
     width: 1536
-    height: 780.8
+    height: 781
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 2}
@@ -134,7 +134,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1101
+    width: 1059
     height: 731
   m_MinSize: {x: 406, y: 344}
   m_MaxSize: {x: 8006, y: 8044}
@@ -159,7 +159,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1101
+    width: 1059
     height: 398
   m_MinSize: {x: 406, y: 222}
   m_MaxSize: {x: 8006, y: 4022}
@@ -182,7 +182,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 269
+    width: 259
     height: 398
   m_MinSize: {x: 202, y: 222}
   m_MaxSize: {x: 4002, y: 4022}
@@ -206,9 +206,9 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 269
+    x: 259
     y: 0
-    width: 832
+    width: 800
     height: 398
   m_MinSize: {x: 204, y: 222}
   m_MaxSize: {x: 4004, y: 4022}
@@ -237,12 +237,13 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 398
-    width: 1101
+    width: 1059
     height: 333
   m_MinSize: {x: 102, y: 122}
   m_MaxSize: {x: 4002, y: 4022}
   m_ActualView: {fileID: 18}
   m_Panes:
+  - {fileID: 16}
   - {fileID: 17}
   - {fileID: 18}
   - {fileID: 19}
@@ -263,15 +264,15 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 1101
+    x: 1059
     y: 0
-    width: 435
+    width: 477
     height: 731
   m_MinSize: {x: 277, y: 72}
   m_MaxSize: {x: 4002, y: 4022}
   m_ActualView: {fileID: 20}
   m_Panes:
-  - {fileID: 20}
+  - {fileID: 19}
   m_Selected: 0
   m_LastSelected: 0
 --- !u!114 &12
@@ -301,7 +302,7 @@ MonoBehaviour:
     height: 379
   m_ViewDataDictionary: {fileID: 0}
   m_VSyncEnabled: 0
-  m_MaximizeOnPlay: 1
+  m_MaximizeOnPlay: 0
   m_Gizmos: 0
   m_Stats: 0
   m_SelectedSizes: 05000000000000000000000000000000000000000000000000000000000000000000000000000000
@@ -376,9 +377,9 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 0
-    y: 73.6
-    width: 269
+    x: 479
+    y: 181
+    width: 259
     height: 379
   m_ViewDataDictionary: {fileID: 0}
   m_SceneHierarchy:
@@ -431,9 +432,9 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 268.80002
-    y: 73.6
-    width: 830
+    x: 738
+    y: 181
+    width: 798
     height: 379
   m_ViewDataDictionary: {fileID: 0}
   m_ShowContextualTools: 0
@@ -671,9 +672,9 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 0
-    y: 471.2
-    width: 1101
+    x: 479
+    y: 579
+    width: 1059
     height: 314
   m_ViewDataDictionary: {fileID: 0}
   m_SearchFilter:
@@ -695,7 +696,7 @@ MonoBehaviour:
   m_LastFolders:
   - Assets/Script
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: D:\Poli\Game Design and Gamification\Progetto\Yggdrasill\Prototype_Yggdrasill
+  m_LastProjectPath: /Users/matteopellizzola/Desktop/Yggdrasill/Prototype_Yggdrasill
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
@@ -774,7 +775,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 0}
+      m_ClientGUIView: {fileID: 10}
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_InstanceID: 0
@@ -786,7 +787,7 @@ MonoBehaviour:
     m_GridSize: 64
   m_SkipHiddenPackages: 0
   m_DirectoriesAreaWidth: 220
---- !u!114 &18
+--- !u!114 &17
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -812,7 +813,7 @@ MonoBehaviour:
     width: 1101
     height: 314
   m_ViewDataDictionary: {fileID: 0}
---- !u!114 &19
+--- !u!114 &18
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -862,9 +863,9 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1100.8
-    y: 73.6
-    width: 433
+    x: 1538
+    y: 181
+    width: 475
     height: 712
   m_ViewDataDictionary: {fileID: 0}
   m_OpenAddComponentMenu: 0
