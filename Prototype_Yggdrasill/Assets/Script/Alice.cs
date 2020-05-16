@@ -10,7 +10,6 @@ public class Alice : MonoBehaviour
     private float speed = 10f;
     private float waitTime = 2f;
     private float timer = 2f;
-    private Transform player;
     private Transform target;
     private Vector3 position;
     private bool presa = false;
@@ -18,7 +17,6 @@ public class Alice : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
         target = GameObject.FindGameObjectWithTag("TargetAlice").transform;
         MenuPausa = GameObject.FindGameObjectWithTag("MenuPausa");
         UI = GameObject.FindGameObjectWithTag("UI_acchiappa").GetComponent<Image>();
@@ -30,11 +28,12 @@ public class Alice : MonoBehaviour
     {
         if (!MenuPausa.GetComponent<MenuPausa>().pausa)
         {
-            GetComponent<AudioSource>().mute = false;
+            
 
             timer = timer + Time.deltaTime;
             if (!presa)
             {
+                GetComponent<AudioSource>().mute = false;
                 if (timer > waitTime)
                 {
                     position = new Vector3(Random.Range(-1.0f, 1.0f), 0, Random.Range(-1.0f, 1.0f));
@@ -45,6 +44,7 @@ public class Alice : MonoBehaviour
             }
             else
             {
+                GetComponent<AudioSource>().mute = true;
                 speed = 100f;
                 transform.position = Vector3.MoveTowards(transform.position, target.position, speed);
                 /*transform.parent = target.transform;

@@ -13,19 +13,30 @@ public class MenuPausa : MonoBehaviour
     void Start()
     {
         MenuMorte = GameObject.FindGameObjectWithTag("MenuMorte").GetComponent<Image>();
+        this.GetComponentInParent<Canvas>().enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!pausa && !MenuMorte.enabled && Input.GetKeyDown("escape"))
+        if (this.GetComponentInParent<Canvas>().enabled)
         {
-            this.GetComponent<Image>().enabled = true;
             pausa = true;
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
         }
-        if (pausa) {
+        else
+        {
+            pausa = false;
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        if (!pausa && !MenuMorte.enabled && Input.GetKeyDown("escape"))
+        {
+            this.GetComponentInParent<Canvas>().enabled = true;
+
+        }
+        /*if (pausa) {
             if (Input.GetKeyDown(KeyCode.R))
             {
                 pausa = false;
@@ -38,7 +49,7 @@ public class MenuPausa : MonoBehaviour
             }
 
 
-        }
+        }*/
     }
 
     public string GetNomeScena()
@@ -49,5 +60,10 @@ public class MenuPausa : MonoBehaviour
     public void setPausa(bool boolean)
     {
         pausa = boolean;
+    }
+
+    public void LoadScena()
+    {
+        SceneManager.LoadScene(NomeScena, LoadSceneMode.Single);
     }
 }

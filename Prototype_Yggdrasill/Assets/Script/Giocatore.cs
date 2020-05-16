@@ -31,6 +31,9 @@ public class Giocatore : MonoBehaviour
 
     private int k = 0;
 
+    public Animator anim;
+    
+
 
     private void Start()
     {
@@ -38,6 +41,7 @@ public class Giocatore : MonoBehaviour
         Puu = GameObject.FindGameObjectWithTag("Puu");
         MenuPausa = GameObject.FindGameObjectWithTag("MenuPausa");
         healthbar = GameObject.FindGameObjectWithTag("HealthBar").transform;
+        anim = this.transform.GetComponentInChildren<Animator>();
     }
 
     void Update()
@@ -90,12 +94,30 @@ public class Giocatore : MonoBehaviour
             if (!vis3D)
             {
 
+                
+                    if(Input.GetKeyDown(KeyCode.D)|| Input.GetKeyDown(KeyCode.A))
+                    {
+                        Debug.Log("premuto");
+                        anim.SetBool("running", true);
+                    }
+                    else if(Input.GetKeyUp(KeyCode.D)|| Input.GetKeyUp(KeyCode.A))
+                    {
+                        Debug.Log("lasciato");
+                        anim.SetBool("running", false);
+                    }
+                
+
                 float movimentoOrizzontale = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
                 //Debug.Log(movimentoOrizzontale);
                 if (!isDead)
                 {
-                    if(enemy == null || (enemy!= null && !enemy.GetComponent<Enemy>().isLittle() /*&& Vector3.Distance(transform.position, enemy.position)>=20)*/ ) || (enemy!=null && enemy.GetComponent<Enemy>().isLittle()))
+                    
+                    if (enemy == null || (enemy!= null && !enemy.GetComponent<Enemy>().isLittle() /*&& Vector3.Distance(transform.position, enemy.position)>=20)*/ ) || (enemy!=null && enemy.GetComponent<Enemy>().isLittle()))
+                    {
                         transform.Translate(movimentoOrizzontale, 0, 0);
+                        
+                    }
+                        
                 }
 
             }
@@ -142,7 +164,7 @@ public class Giocatore : MonoBehaviour
 
     private void Jump()
     {
-        this.GetComponent<Rigidbody>().AddForce(new Vector3(0f, 35f,0f), ForceMode.Impulse);
+        this.GetComponent<Rigidbody>().AddForce(new Vector3(0f, 30f,0f), ForceMode.Impulse);
     }
 
     private void Atterra()
