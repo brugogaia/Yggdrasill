@@ -71,7 +71,7 @@ public class Puu : MonoBehaviour
         if (!isDead)
         {
             flying = true;
-            transform.Translate(0f, -5f, -4f);
+            transform.Translate(0, -3.5f, 5.5f);
         }
         
     }
@@ -80,7 +80,7 @@ public class Puu : MonoBehaviour
         if (flying)
         {
             flying = false;
-            transform.Translate(0f, 5f, 4f);
+            transform.Translate(0, 3.5f, -5.5f);
         }
     }
 
