@@ -165,6 +165,7 @@ public class Giocatore : MonoBehaviour
     private void Jump()
     {
         this.GetComponent<Rigidbody>().AddForce(new Vector3(0f, 30f,0f), ForceMode.Impulse);
+        anim.SetBool("Jump", true);
     }
 
     private void Atterra()
@@ -178,6 +179,7 @@ public class Giocatore : MonoBehaviour
         if (collision.gameObject.tag == "Ground")
         {
             isGrounded = true;
+            anim.SetBool("Jump", false);
             stavolando = false;
             k = 0;
             Puu.GetComponent<Puu>().StopFlying();
@@ -203,6 +205,7 @@ public class Giocatore : MonoBehaviour
         //Debug.Log("sto collidendo con " + collision.collider);
         if (collision.gameObject.tag == "Ground")
         {
+            anim.SetBool("Jump", false);
             isGrounded = true;
             k = 0;
             stavolando = false;
