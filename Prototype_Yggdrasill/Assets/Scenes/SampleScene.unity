@@ -4129,7 +4129,7 @@ GameObject:
   - component: {fileID: 477856570}
   - component: {fileID: 477856573}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Sfondo_MenuMorte
   m_TagString: MenuMorte
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4191,7 +4191,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 04f84f2603e8c584f9cc310c36ee9e55, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3f927fc924915ec4d98b19ed0339bcae, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -11911,7 +11911,7 @@ GameObject:
   - component: {fileID: 1424794269}
   - component: {fileID: 1424794271}
   m_Layer: 5
-  m_Name: Sfondo_Menu
+  m_Name: Sfondo_MenuPausa
   m_TagString: MenuPausa
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
