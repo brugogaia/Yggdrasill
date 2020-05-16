@@ -62,10 +62,10 @@ MonoBehaviour:
     m_VRangeLocked: 0
     hZoomLockedByDefault: 0
     vZoomLockedByDefault: 0
-    m_HBaseRangeMin: -255.2
-    m_HBaseRangeMax: 255.2
-    m_VBaseRangeMin: -143.6
-    m_VBaseRangeMax: 143.6
+    m_HBaseRangeMin: -318
+    m_HBaseRangeMax: 318
+    m_VBaseRangeMin: -179
+    m_VBaseRangeMax: 179
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -203,10 +203,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 0
-    y: 73.6
+    x: 195
+    y: 153
     width: 288
-    height: 379
+    height: 378
   m_ViewDataDictionary: {fileID: 0}
   m_SceneHierarchy:
     m_TreeViewState:
@@ -341,9 +341,9 @@ MonoBehaviour:
     speed: 2
     m_Value: 800.96246
   m_Ortho:
-    m_Target: 1
+    m_Target: 0
     speed: 2
-    m_Value: 1
+    m_Value: 0
   m_CameraSettings:
     m_Speed: 1
     m_SpeedNormalized: 0.5
@@ -412,9 +412,9 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 288
-    y: 73.6
-    width: 895
+    x: 483
+    y: 153
+    width: 896
     height: 379
   m_ViewDataDictionary: {fileID: 0}
   m_ViewTransforms:
@@ -423,14 +423,30 @@ MonoBehaviour:
     - {fileID: -4048553354368120849, guid: a362298370e99a74cb8fb2b2b9d08702, type: 2}
     - {fileID: 3896966866444354105, guid: c02da59d7aabeae4695b1b879986bb04, type: 2}
     m_ValueSerializationHelper:
-    - e00: 0.53347915
+    - e00: 0.5557895
       e01: 0
       e02: 0
-      e03: 94.888565
+      e03: -12.789459
       e10: 0
-      e11: 0.53347915
+      e11: 0.5557895
       e12: 0
-      e13: 88.97246
+      e13: 119.2
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    - e00: 0.6645326
+      e01: 0
+      e02: 0
+      e03: 11.520033
+      e10: 0
+      e11: 0.6645326
+      e12: 0
+      e13: 145.11057
       e20: 0
       e21: 0
       e22: 1
@@ -472,10 +488,10 @@ MonoBehaviour:
       e32: 0
       e33: 1
   m_PreviewAnimator: {fileID: 0}
-  m_AnimatorController: {fileID: 9100000, guid: c02da59d7aabeae4695b1b879986bb04,
+  m_AnimatorController: {fileID: 9100000, guid: 4636f089e825e4b0ca7068e9130032db,
     type: 2}
   m_BreadCrumbs:
-  - m_Target: {fileID: 3896966866444354105, guid: c02da59d7aabeae4695b1b879986bb04,
+  - m_Target: {fileID: 3742783826092214755, guid: 4636f089e825e4b0ca7068e9130032db,
       type: 2}
     m_ScrollPosition: {x: 0, y: 0}
   stateMachineGraph: {fileID: 0}
@@ -516,7 +532,7 @@ MonoBehaviour:
   - {fileID: 13}
   - {fileID: 14}
   m_Selected: 0
-  m_LastSelected: 1
+  m_LastSelected: 2
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -556,13 +572,13 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Images/UI
+    - Assets/Animations
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Images/UI
+  - Assets/Animations
   m_LastFoldersGridSize: -1
-  m_LastProjectPath: D:\Poli\Game Design and Gamification\Progetto\Yggdrasill\Prototype_Yggdrasill
+  m_LastProjectPath: /Users/matteopellizzola/Desktop/Yggdrasill/Prototype_Yggdrasill
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
@@ -597,7 +613,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000cc2e0000dc3300003c360000023700002a3c000000ca9a3b
+    m_ExpandedIDs: 00000000cc2e0000dc330000563600001c370000443c000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -641,7 +657,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 15}
+      m_ClientGUIView: {fileID: 0}
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_InstanceID: 0
@@ -766,7 +782,7 @@ MonoBehaviour:
   m_LockTracker:
     m_IsLocked: 0
   m_PreviewResizer:
-    m_CachedPref: 160
+    m_CachedPref: 350
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_PreviewWindow: {fileID: 0}
