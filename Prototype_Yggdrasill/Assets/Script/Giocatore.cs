@@ -142,7 +142,7 @@ public class Giocatore : MonoBehaviour
 
     private void Jump()
     {
-        this.GetComponent<Rigidbody>().AddForce(new Vector3(0f, 35f,0f), ForceMode.Impulse);
+        this.GetComponent<Rigidbody>().AddForce(new Vector3(0f, 30f,0f), ForceMode.Impulse);
     }
 
     private void Atterra()
