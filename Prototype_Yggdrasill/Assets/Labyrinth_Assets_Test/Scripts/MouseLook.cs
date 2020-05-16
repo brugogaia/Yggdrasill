@@ -14,7 +14,7 @@ public class MouseLook : MonoBehaviour
     void Start()
     {
         MenuPausa = GameObject.FindGameObjectWithTag("MenuPausa");
-        Cursor.lockState = CursorLockMode.Locked;
+        
     }
 
     // Update is called once per frame

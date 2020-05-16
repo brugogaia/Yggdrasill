@@ -9,17 +9,19 @@ public class MenuPausa : MonoBehaviour
     // Start is called before the first frame update
     public bool pausa = false;
     [SerializeField] string NomeScena;
-    private Image MenuMorte;
+    private Canvas MenuMorte;
+    public Canvas Zaino1;
+    public Canvas Zaino2;
     void Start()
     {
-        MenuMorte = GameObject.FindGameObjectWithTag("MenuMorte").GetComponent<Image>();
+        MenuMorte = GameObject.FindGameObjectWithTag("MenuMorte").GetComponentInParent<Canvas>();
         this.GetComponentInParent<Canvas>().enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (this.GetComponentInParent<Canvas>().enabled)
+        if (this.GetComponentInParent<Canvas>().enabled || MenuMorte.enabled || Zaino1.enabled || Zaino2.enabled)
         {
             pausa = true;
             Cursor.visible = true;

@@ -9,7 +9,7 @@ public class HealthBar : MonoBehaviour
     public Transform character;
     public Transform HBImage;
     private GameObject Puu;
-    private Image MenuMorte;
+    private Canvas MenuMorte;
     // public Transform privot;
     //public Transform HBText;
     public float MaxHealth;
@@ -22,7 +22,7 @@ public class HealthBar : MonoBehaviour
 
     void Start()
     {
-        MenuMorte = GameObject.FindGameObjectWithTag("MenuMorte").GetComponent<Image>();
+        MenuMorte = GameObject.FindGameObjectWithTag("MenuMorte").GetComponentInParent<Canvas>();
         //HBText = gameObject.GetComponentInChildren<Text>().transform;
         MaxHealth = HBImage.transform.localScale.x;
         CurrentHealth = MaxHealth;
