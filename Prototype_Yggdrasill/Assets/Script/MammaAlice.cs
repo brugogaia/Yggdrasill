@@ -15,6 +15,7 @@ public class MammaAlice : MonoBehaviour
     public VideoPlayer vid;
     public Canvas canvas_video;
     public GameObject Dialogo;
+    public GameObject Dialogo2;
     private bool arrivato = false;
     public bool parlato = false;
     public Image white;
@@ -30,6 +31,7 @@ public class MammaAlice : MonoBehaviour
         Canvas = GameObject.FindGameObjectWithTag("Canvas");
         canvas_video.enabled = false;
         Dialogo.GetComponent<Canvas>().enabled = false;
+        Dialogo2.GetComponent<Canvas>().enabled = false;
     }
 
     // Update is called once per frame
@@ -68,6 +70,7 @@ public class MammaAlice : MonoBehaviour
                 {
                     staparlando = false;
                     Dialogo.GetComponent<Canvas>().enabled = false;
+
                     UI_Image_Aiuta.enabled = true;
                 }
             }
@@ -81,10 +84,34 @@ public class MammaAlice : MonoBehaviour
         {
             if (UI_Image_Aiuta.enabled && Input.GetKeyDown(KeyCode.E))
             {
+                k = 0;
                 UI_Image_Aiuta.enabled = false;
-                StartCoroutine(Fading());
+                //StartCoroutine(Fading());
+                Dialogo2.GetComponent<Canvas>().enabled = true;
+                
 
-
+            }
+            else if (Dialogo2.GetComponent<Canvas>().enabled && Input.GetKeyDown(KeyCode.E) && Dialogo2.transform.GetChild(k).GetComponent<Image>().enabled)
+            {
+                Dialogo2.transform.GetChild(k).GetComponent<Image>().enabled = false;
+                if (k < 1)
+                {
+                    k++;
+                    Dialogo2.transform.GetChild(k).GetComponent<Image>().enabled = true;
+                    Dialogo2.transform.GetChild(2).GetComponent<Canvas>().enabled = false;
+                    Dialogo2.transform.GetChild(3).GetComponent<Canvas>().enabled = true;
+                }
+                else
+                {
+                    staparlando = false;
+                    Dialogo2.GetComponent<Canvas>().enabled = false;
+                    StartCoroutine(Fading());
+                    //UI_Image_Aiuta.enabled = true;
+                }
+            }
+            else if (Dialogo2.GetComponent<Canvas>().enabled  && !Dialogo2.transform.GetChild(k).GetComponent<Image>().enabled)
+            {
+                Dialogo2.transform.GetChild(k).GetComponent<Image>().enabled = true;
             }
             else if (UI_Image_Aiuta.enabled && Input.GetKeyDown(KeyCode.X))
             {

@@ -19,7 +19,7 @@ public class PlayerShooting : MonoBehaviour
 
     private bool bacchettaScarica = false;
 
-    private int distanza = 70;
+    private int distanza = 100;
 
     private GameObject Puu;
 
@@ -60,6 +60,7 @@ public class PlayerShooting : MonoBehaviour
             {
 
                 Shoot();
+                
 
             }
             else if(Input.GetMouseButtonDown(1) && !bacchettaScarica && !shooting && Vector3.Distance(transform.position, enemy.position) <= distanza)
@@ -76,6 +77,7 @@ public class PlayerShooting : MonoBehaviour
         else
         {
             laserShotLine.enabled = false;
+            anim.SetBool("spell", false);
         }
 
 
@@ -83,24 +85,33 @@ public class PlayerShooting : MonoBehaviour
 
     }
 
+    void StopShoot()
+    {
+        
+    }
+
     void Shoot()
     {
+        
         shooting = true;
         float FractionalDistance = (distanza - Vector3.Distance(transform.position, enemy.position)) / distanza;
         float damage = ScaleDamage * FractionalDistance + MinDamage;
         enemy.GetComponent<Enemy>().Damage(damage);
         Bacchetta.GetComponent<Bacchetta>().HaStordito();
         laserShotLine.material = Blu;
+        anim.SetBool("spell", true);
+        //Invoke("ShotEffects", 0.3f);
         ShotEffects();
     }
 
     void ShotEffects()
     {
+        
         laserShotLine.SetPosition(0, bacchetta.position);
         laserShotLine.SetPosition(1, new Vector3(enemy.position.x,bacchetta.position.y,enemy.position.z));
         laserShotLine.enabled = true;
         spellLight.intensity = flashIntensity;
-        anim.SetBool("spell", true);
+        
     }
 
     void Cura()
@@ -138,6 +149,7 @@ public class PlayerShooting : MonoBehaviour
         if (other.tag == "Enemy")
         {
             enemy = null;
+            anim.SetBool("spell", false);
             Puu.GetComponent<Puu>().setNemico(enemy);
             //Debug.Log("trovato nemico");
         }
@@ -156,6 +168,7 @@ public class PlayerShooting : MonoBehaviour
     public void StopShooting()
     {
         enemy = null;
+        anim.SetBool("spell", false);
         Puu.GetComponent<Puu>().setNemico(enemy);
     }
 

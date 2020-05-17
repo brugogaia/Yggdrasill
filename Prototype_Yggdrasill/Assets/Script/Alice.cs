@@ -14,6 +14,7 @@ public class Alice : MonoBehaviour
     private Vector3 position;
     private bool presa = false;
     private Image UI;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +22,8 @@ public class Alice : MonoBehaviour
         MenuPausa = GameObject.FindGameObjectWithTag("MenuPausa");
         UI = GameObject.FindGameObjectWithTag("UI_acchiappa").GetComponent<Image>();
         UI.enabled = false;
+        this.GetComponent<Animator>().SetBool("walk", false);
+        Debug.Log(this.GetComponent<Animator>().GetBool("walk"));
     }
 
     // Update is called once per frame
@@ -41,6 +44,7 @@ public class Alice : MonoBehaviour
                     timer = 0.0f;
                 }
                 transform.Translate(position * Time.deltaTime * speed);
+                this.GetComponent<Animator>().SetBool("walk", true);
             }
             else
             {
