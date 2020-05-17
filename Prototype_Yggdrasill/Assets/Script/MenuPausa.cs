@@ -21,14 +21,17 @@ public class MenuPausa : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (this.GetComponentInParent<Canvas>().enabled || MenuMorte.enabled || Zaino1.enabled || Zaino2.enabled)
         {
+            
             pausa = true;
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
         }
         else
         {
+            
             pausa = false;
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;

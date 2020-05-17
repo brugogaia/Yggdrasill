@@ -48,8 +48,6 @@ public class Zaino : MonoBehaviour
             green.enabled = false;
             MenuPausa.GetComponent<MenuPausa>().setPausa(true);
 
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
         }
         else if (toltoacchiappa && altroZaino.enabled && Input.GetKeyDown(KeyCode.Q))
         {
@@ -57,8 +55,7 @@ public class Zaino : MonoBehaviour
             green.enabled = true;
             MenuPausa.GetComponent<MenuPausa>().setPausa(false);
             altroZaino.enabled = false;
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
+           
         }
     }
 }

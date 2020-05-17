@@ -16,15 +16,7 @@ public class MenuMorte : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(this.transform.GetComponentInParent<Canvas>().enabled){
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-        }
-        else
-        {
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
-        }
+        
     }
 
     public void LoadScene()

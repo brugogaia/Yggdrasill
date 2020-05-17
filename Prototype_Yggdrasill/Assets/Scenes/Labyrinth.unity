@@ -3563,6 +3563,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Alice: {fileID: 1282530635}
+--- !u!23 &495472889 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1059932762348247163, guid: 0cbe5b524c29b13489e36e72cf1f87e9,
+    type: 3}
+  m_PrefabInstance: {fileID: 495472885}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &497824799
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5723,7 +5729,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11400004, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 3}
 --- !u!1001 &866826967
 PrefabInstance:
@@ -10994,8 +11001,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 495472886}
-        m_MethodName: 
+      - m_Target: {fileID: 495472889}
+        m_MethodName: set_enabled
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13229,8 +13236,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 495472886}
-        m_MethodName: 
+      - m_Target: {fileID: 495472889}
+        m_MethodName: set_enabled
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
