@@ -6762,7 +6762,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: e9a712be01d4747c9a29b641a5660540, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 06661a12decd94446921cb499383d557, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -6773,7 +6773,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 0
   MinDistance: 9.78
-  MaxDistance: 130.73434
+  MaxDistance: 955.5424
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -6783,58 +6783,22 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.07480819
-      value: 1
-      inSlope: -13.372886
-      outSlope: -13.372886
+      time: 0
+      value: 1.0000076
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
-    - serializedVersion: 3
-      time: 0.14961638
-      value: 0.5
-      inSlope: -3.3432214
-      outSlope: -3.3432214
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.29923275
-      value: 0.25
-      inSlope: -0.83580536
-      outSlope: -0.83580536
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.5984655
-      value: 0.125
-      inSlope: -0.20895134
-      outSlope: -0.20895134
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.94690675
-      value: 0.07892789
-      inSlope: -0.080940135
-      outSlope: -0.080940135
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
-      value: 0.022979736
-      inSlope: -0.0748381
-      outSlope: -0.0748381
+      value: 0.54605865
+      inSlope: -0.34977487
+      outSlope: -0.34977487
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.07540393
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
