@@ -9,7 +9,7 @@ public class Giocatore : MonoBehaviour
 
     public float speed = 50f;
     public float rotationSpeed = 100.0f;
-    private bool vis3D = false;
+    public bool vis3D = false;
     private bool isGrounded = true;
     private bool isDead = false;
     private Quaternion rotIniziale;
@@ -67,6 +67,8 @@ public class Giocatore : MonoBehaviour
             {
                 Debug.Log("sono nel volo");
                 Fly();
+                anim.SetBool("Flying", true);
+
                 if (k == 0)
                 {
                     Puu.GetComponent<Puu>().isFlying();
@@ -77,6 +79,7 @@ public class Giocatore : MonoBehaviour
             if (Input.GetKeyUp("space") && stavolando && !isDead)
             {
                 stavolando = false;
+                anim.SetBool("Flying", false);
                 Puu.GetComponent<Puu>().StopFlying();
                 k = 0;
             }
@@ -97,12 +100,10 @@ public class Giocatore : MonoBehaviour
                 
                     if(Input.GetKeyDown(KeyCode.D)|| Input.GetKeyDown(KeyCode.A))
                     {
-                        Debug.Log("premuto");
                         anim.SetBool("running", true);
                     }
                     else if(Input.GetKeyUp(KeyCode.D)|| Input.GetKeyUp(KeyCode.A))
                     {
-                        Debug.Log("lasciato");
                         anim.SetBool("running", false);
                     }
                 
@@ -181,6 +182,7 @@ public class Giocatore : MonoBehaviour
             isGrounded = true;
             anim.SetBool("Jump", false);
             stavolando = false;
+            anim.SetBool("Flying", false);
             k = 0;
             Puu.GetComponent<Puu>().StopFlying();
         }
@@ -206,6 +208,7 @@ public class Giocatore : MonoBehaviour
         if (collision.gameObject.tag == "Ground")
         {
             anim.SetBool("Jump", false);
+            anim.SetBool("Flying", false);
             isGrounded = true;
             k = 0;
             stavolando = false;
@@ -226,6 +229,7 @@ public class Giocatore : MonoBehaviour
     private void Fly()
     {
         stavolando = true;
+        
         this.GetComponent<Rigidbody>().AddForce(new Vector3(0f, 0.22f, 0f), ForceMode.Impulse);
     }
 

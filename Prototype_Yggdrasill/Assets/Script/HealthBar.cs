@@ -18,7 +18,7 @@ public class HealthBar : MonoBehaviour
     private Vector3 ScaleChange;
     private float damage;
     public bool isDead = false;
-    //[SerializeField] Animator animator;
+    [SerializeField] Animator anim;
 
     void Start()
     {
@@ -27,7 +27,7 @@ public class HealthBar : MonoBehaviour
         MaxHealth = HBImage.transform.localScale.x;
         CurrentHealth = MaxHealth;
         Puu = GameObject.FindGameObjectWithTag("Puu");
-
+        
         //if (GameObject.Find("Menu").GetComponent<Menu>().Riavviante()) SetCurrentHealth(GameObject.Find("Menu").GetComponent<Menu>().GetHealth());
     }
 
@@ -100,11 +100,19 @@ public class HealthBar : MonoBehaviour
         CurrentHealth = 0;
         isDead = true;
         Puu.GetComponent<Puu>().Morte();
-        MenuMorte.enabled = true;
+        anim.SetBool("Dead", true);
+        Invoke("OpenMenu", 3.0f);
+           
+        
         //animationDeathHit();
 
         //HBText.GetComponent<Text>().text = "0";
         //character.Rotate(0, 0, 0);
+    }
+
+    void OpenMenu()
+    {
+        MenuMorte.enabled = true;
     }
     /*void animationHit()
     {

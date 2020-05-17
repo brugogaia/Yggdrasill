@@ -26,6 +26,8 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] Material Blu;
     [SerializeField] Material Rosa;
 
+    [SerializeField] Animator anim;
+
     private Transform Bacchetta;
 
     private void Awake()
@@ -68,6 +70,7 @@ public class PlayerShooting : MonoBehaviour
             {
                 shooting = false;
                 laserShotLine.enabled = false;
+                anim.SetBool("spell", false);
             }
         }
         else
@@ -97,7 +100,7 @@ public class PlayerShooting : MonoBehaviour
         laserShotLine.SetPosition(1, new Vector3(enemy.position.x,bacchetta.position.y,enemy.position.z));
         laserShotLine.enabled = true;
         spellLight.intensity = flashIntensity;
-
+        anim.SetBool("spell", true);
     }
 
     void Cura()
