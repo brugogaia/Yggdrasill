@@ -5,9 +5,10 @@ using UnityEngine.UI;
 
 public class Alice : MonoBehaviour
 {
-    private GameObject MenuPausa;
+    private Canvas MenuPausa;
+    private Canvas MenuMorte;
 
-    private float speed = 10f;
+    private float speed = 20f;
     private float waitTime = 2f;
     private float timer = 2f;
     private Transform target;
@@ -19,19 +20,19 @@ public class Alice : MonoBehaviour
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("TargetAlice").transform;
-        MenuPausa = GameObject.FindGameObjectWithTag("MenuPausa");
+        MenuPausa = GameObject.FindGameObjectWithTag("MenuPausa").GetComponentInParent<Canvas>();
+        MenuMorte = GameObject.FindGameObjectWithTag("MenuMorte").GetComponentInParent<Canvas>();
         UI = GameObject.FindGameObjectWithTag("UI_acchiappa").GetComponent<Image>();
         UI.enabled = false;
         this.GetComponent<Animator>().SetBool("walk", false);
-        Debug.Log(this.GetComponent<Animator>().GetBool("walk"));
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!MenuPausa.GetComponent<MenuPausa>().pausa)
+        if (!MenuPausa.enabled && !MenuMorte.enabled)
         {
-            
 
             timer = timer + Time.deltaTime;
             if (!presa)
@@ -39,12 +40,23 @@ public class Alice : MonoBehaviour
                 GetComponent<AudioSource>().mute = false;
                 if (timer > waitTime)
                 {
-                    position = new Vector3(Random.Range(-1.0f, 1.0f), 0, Random.Range(-1.0f, 1.0f));
-
+                    position = new Vector3(Random.Range(-2.0f, 2.0f), 0, Random.Range(-2.0f, 2.0f));
+                    
                     timer = 0.0f;
                 }
                 transform.Translate(position * Time.deltaTime * speed);
-                this.GetComponent<Animator>().SetBool("walk", true);
+                if (position != Vector3.zero)
+                {
+                    Quaternion rotation = Quaternion.LookRotation(position, Vector3.up);
+                    transform.rotation = rotation;
+                    this.GetComponent<Animator>().SetBool("walk", true);
+                }
+                else
+                {
+                    this.GetComponent<Animator>().SetBool("walk", false);
+                    
+                }
+                
             }
             else
             {
@@ -57,7 +69,8 @@ public class Alice : MonoBehaviour
         }
         else
         {
-            
+            this.GetComponent<Animator>().SetBool("walk", false);
+            GetComponent<AudioSource>().mute = true;
         }
 
             
@@ -69,5 +82,10 @@ public class Alice : MonoBehaviour
         presa = boolena;
         UI.enabled = true;
     }
-    
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if(collision.transform.tag!="Ground")
+        this.GetComponent<Animator>().SetBool("walk", false);
+    }
 }

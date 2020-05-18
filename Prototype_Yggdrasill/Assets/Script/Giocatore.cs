@@ -116,7 +116,12 @@ public class Giocatore : MonoBehaviour
                     if (enemy == null || (enemy!= null && !enemy.GetComponent<Enemy>().isLittle() /*&& Vector3.Distance(transform.position, enemy.position)>=20)*/ ) || (enemy!=null && enemy.GetComponent<Enemy>().isLittle()))
                     {
                         transform.Translate(movimentoOrizzontale, 0, 0);
-                        
+                        if (movimentoOrizzontale > 0)
+                            GameObject.FindGameObjectWithTag("idle").transform.forward = Vector3.right;
+                        else if (movimentoOrizzontale == 0)
+                            GameObject.FindGameObjectWithTag("idle").transform.forward = GameObject.FindGameObjectWithTag("idle").transform.forward;
+                        else
+                            GameObject.FindGameObjectWithTag("idle").transform.forward = -Vector3.right;
                     }
                         
                 }

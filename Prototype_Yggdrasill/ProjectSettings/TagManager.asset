@@ -25,6 +25,7 @@ TagManager:
   - green
   - bottone_acchiappa
   - UI_acchiappa
+  - idle
   layers:
   - Default
   - TransparentFX

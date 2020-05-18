@@ -21,7 +21,14 @@ public class Acchiappasogni : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("trovato trigger con " + other);
+        if (other == Alice.GetComponent<Collider>() && attivo)
+        {
+            Alice.GetComponent<Alice>().setPresa(true);
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
         if (other == Alice.GetComponent<Collider>() && attivo)
         {
             Alice.GetComponent<Alice>().setPresa(true);
