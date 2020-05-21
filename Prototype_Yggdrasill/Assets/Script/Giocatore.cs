@@ -41,7 +41,7 @@ public class Giocatore : MonoBehaviour
         Puu = GameObject.FindGameObjectWithTag("Puu");
         MenuPausa = GameObject.FindGameObjectWithTag("MenuPausa");
         healthbar = GameObject.FindGameObjectWithTag("HealthBar").transform;
-        anim = this.transform.GetComponentInChildren<Animator>();
+        //anim = this.transform.GetComponentInChildren<Animator>();
     }
 
     void Update()
