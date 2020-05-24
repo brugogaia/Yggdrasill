@@ -12,9 +12,13 @@ public class MenuPausa : MonoBehaviour
     private Canvas MenuMorte;
     public Canvas Zaino1;
     public Canvas Zaino2;
+
+    public Image white;
+    public Animator anim;
     void Start()
     {
         MenuMorte = GameObject.FindGameObjectWithTag("MenuMorte").GetComponentInParent<Canvas>();
+        MenuMorte.enabled = false;
         this.GetComponentInParent<Canvas>().enabled = false;
     }
 
@@ -70,5 +74,22 @@ public class MenuPausa : MonoBehaviour
     public void LoadScena()
     {
         SceneManager.LoadScene(NomeScena, LoadSceneMode.Single);
+    }
+
+    public void OpenMenu()
+    {
+        this.GetComponentInParent<Canvas>().enabled = false;
+        MenuMorte.enabled = false;
+        StartCoroutine(Fading());
+        
+    }
+
+    IEnumerator Fading()
+    {
+        anim.SetBool("Fade", true);
+        yield return new WaitUntil(() => white.color.a == 1);
+        SceneManager.LoadScene("MenuPrincipale", LoadSceneMode.Single);
+        
+
     }
 }
