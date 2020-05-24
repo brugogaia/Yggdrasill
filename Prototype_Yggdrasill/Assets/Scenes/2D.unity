@@ -25567,6 +25567,7 @@ GameObject:
   - component: {fileID: 728798837}
   - component: {fileID: 728798839}
   - component: {fileID: 728798838}
+  - component: {fileID: 728798840}
   m_Layer: 5
   m_Name: Icona_Zaino
   m_TagString: green
@@ -25629,6 +25630,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 728798836}
   m_CullTransparentMesh: 0
+--- !u!95 &728798840
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 728798836}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 458de43955c92ad4f8df4b13a01448be, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!4 &729148444 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4547245439958966, guid: 97fa5d2e177822c4084dda50fa0986c6,
@@ -42237,6 +42257,7 @@ GameObject:
   - component: {fileID: 1278330276}
   - component: {fileID: 1278330278}
   - component: {fileID: 1278330277}
+  - component: {fileID: 1278330279}
   m_Layer: 5
   m_Name: HB_red
   m_TagString: red
@@ -42300,6 +42321,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1278330275}
   m_CullTransparentMesh: 0
+--- !u!95 &1278330279
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1278330275}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 458de43955c92ad4f8df4b13a01448be, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1279438113
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -47060,6 +47100,9 @@ MonoBehaviour:
   Zaino2: {fileID: 1446887195}
   white: {fileID: 73430181}
   anim: {fileID: 73430183}
+  anim1: {fileID: 1278330279}
+  anim2: {fileID: 1614684315}
+  anim3: {fileID: 728798840}
 --- !u!1001 &1424831667
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -52335,6 +52378,7 @@ GameObject:
   - component: {fileID: 1614684313}
   - component: {fileID: 1614684312}
   - component: {fileID: 1614684314}
+  - component: {fileID: 1614684315}
   m_Layer: 5
   m_Name: HB_green
   m_TagString: HealthBar
@@ -52415,6 +52459,25 @@ MonoBehaviour:
   CurrentHealth: 0
   isDead: 0
   anim: {fileID: 1105509863}
+--- !u!95 &1614684315
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1614684310}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 458de43955c92ad4f8df4b13a01448be, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1614745919
 GameObject:
   m_ObjectHideFlags: 0

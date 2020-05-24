@@ -15,6 +15,9 @@ public class MenuPausa : MonoBehaviour
 
     public Image white;
     public Animator anim;
+    public Animator anim1;
+    public Animator anim2;
+    public Animator anim3;
     void Start()
     {
         MenuMorte = GameObject.FindGameObjectWithTag("MenuMorte").GetComponentInParent<Canvas>();
@@ -87,6 +90,9 @@ public class MenuPausa : MonoBehaviour
     IEnumerator Fading()
     {
         anim.SetBool("Fade", true);
+        anim1.SetBool("Fade", true);
+        anim2.SetBool("Fade", true);
+        anim3.SetBool("Fade", true);
         yield return new WaitUntil(() => white.color.a == 1);
         SceneManager.LoadScene("MenuPrincipale", LoadSceneMode.Single);
         
