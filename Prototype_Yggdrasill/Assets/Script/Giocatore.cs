@@ -249,7 +249,7 @@ public class Giocatore : MonoBehaviour
     {
         stavolando = true;
         
-        this.GetComponent<Rigidbody>().AddForce(new Vector3(0f, 0.22f, 0f), ForceMode.Impulse);
+        this.GetComponent<Rigidbody>().AddForce(new Vector3(0f, 0.3f, 0f), ForceMode.Impulse);
     }
 
     public void CambiaVisualein3D()
