@@ -31,6 +31,8 @@ public class Giocatore : MonoBehaviour
 
     private int k = 0;
 
+    private bool stoCollidendo = false;
+
     public Animator anim;
     
 
@@ -170,7 +172,7 @@ public class Giocatore : MonoBehaviour
 
     private void Jump()
     {
-        this.GetComponent<Rigidbody>().AddForce(new Vector3(0f, 30f,0f), ForceMode.Impulse);
+        this.GetComponent<Rigidbody>().AddForce(new Vector3(0f, 25f,0f), ForceMode.Impulse);
         anim.SetBool("Jump", true);
     }
 
@@ -196,13 +198,17 @@ public class Giocatore : MonoBehaviour
             TakeDamage(100f);
             
         }
-        else if (collision.collider != Puu.GetComponent<Collider>() && collision.relativeVelocity.magnitude > 40f)
+        else if (collision.collider != Puu.GetComponent<Collider>())
         {
-            //Debug.Log("Collisione!");
-            Damage = collision.relativeVelocity.magnitude;
-            Damage = Damage / 10;
-            TakeDamage(Damage);
-            //setHit();
+            if(collision.relativeVelocity.magnitude > 40f)
+            {
+                //Debug.Log("Collisione!");
+                Damage = collision.relativeVelocity.magnitude;
+                Damage = Damage / 10;
+                TakeDamage(Damage);
+                //setHit();
+            }
+            stoCollidendo = true;
         }
     }
 
@@ -218,7 +224,11 @@ public class Giocatore : MonoBehaviour
             k = 0;
             stavolando = false;
             Puu.GetComponent<Puu>().StopFlying();
-            
+
+        }
+        else
+        {
+            stoCollidendo = true;
         }
     }
 
@@ -228,6 +238,10 @@ public class Giocatore : MonoBehaviour
         if (collision.gameObject.tag == "Ground")
         {
             isGrounded = false;
+        }
+        else
+        {
+            stoCollidendo = false;
         }
     }
 

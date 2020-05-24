@@ -5,6 +5,7 @@ using UnityEngine;
 public class PiantaNera : MonoBehaviour
 {
     public GameObject player;
+    public bool isFlower;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,10 +20,19 @@ public class PiantaNera : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other == player.GetComponent<Collider>())
+        if (other == player.GetComponent<Collider>() && !isFlower)
         {
             player.GetComponent<Giocatore>().PiantaDamage();
             GameObject.Destroy(this.gameObject);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider == player.GetComponent<Collider>() && isFlower)
+        {
+            player.GetComponent<Giocatore>().PiantaDamage();
+            //GameObject.Destroy(this.gameObject);
         }
     }
 }
