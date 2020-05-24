@@ -26,6 +26,7 @@ TagManager:
   - bottone_acchiappa
   - UI_acchiappa
   - idle
+  - Water
   layers:
   - Default
   - TransparentFX

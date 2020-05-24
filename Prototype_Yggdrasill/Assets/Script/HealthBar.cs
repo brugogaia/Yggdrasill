@@ -18,6 +18,7 @@ public class HealthBar : MonoBehaviour
     private Vector3 ScaleChange;
     private float damage;
     public bool isDead = false;
+    private bool affogato = false;
     [SerializeField] Animator anim;
 
     void Start()
@@ -52,7 +53,7 @@ public class HealthBar : MonoBehaviour
         {
             Dead();
         }
-        HBImage.GetComponent<Image>().fillAmount = CurrentHealth;
+        
     }
 
     public float GetCurrentHealth()
@@ -97,10 +98,16 @@ public class HealthBar : MonoBehaviour
 
     private void Dead()
     {
-        CurrentHealth = 0;
+        
+            CurrentHealth = 0;
+            HBImage.GetComponent<Image>().fillAmount = CurrentHealth;
+            
+            anim.SetBool("Dead", true);
+        
+        
+
         isDead = true;
         Puu.GetComponent<Puu>().Morte();
-        anim.SetBool("Dead", true);
         Invoke("OpenMenu", 3.0f);
            
         
@@ -146,5 +153,19 @@ public class HealthBar : MonoBehaviour
     public bool isDed()
     {
         return isDead;
+    }
+
+    public void Affoga()
+    {
+        anim.SetBool("Affoga", true);
+        //Invoke("Trasla", 0.1f);
+        isDead = true;
+        Puu.GetComponent<Puu>().Morte();
+        Invoke("OpenMenu", 1.0f);
+    }
+
+    void Trasla()
+    {
+        character.Translate(0, -18, 0);
     }
 }

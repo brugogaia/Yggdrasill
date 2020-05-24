@@ -6,6 +6,7 @@ public class ScriptCamera : MonoBehaviour
 {
     public Transform target;
     public GameObject Player;
+    private GameObject healthbar;
     public float smoothTime = 1F;
     private Vector3 velocity = Vector3.zero;
     private bool visual3D = false;
@@ -15,7 +16,7 @@ public class ScriptCamera : MonoBehaviour
     private void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
-
+        healthbar = GameObject.FindGameObjectWithTag("HealthBar");
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -40,7 +41,7 @@ public class ScriptCamera : MonoBehaviour
         Vector3 targetPosition = target.TransformPoint(new Vector3(0, 5, -10));
 
         // Smoothly move the camera towards that target position
-        transform.position = targetPosition;
+        if(!healthbar.GetComponent<HealthBar>().isDead) transform.position = targetPosition;
     }
 
     public void ChangeinVisual3D()
