@@ -38086,6 +38086,21 @@ PrefabInstance:
       propertyPath: m_TagString
       value: idle
       objectReference: {fileID: 0}
+    - target: {fileID: 7140794050776834866, guid: 1e40267bdbfac1746b6709f0838c858c,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 9db1d0bed1bf1ee468af2d77058ded23, type: 2}
+    - target: {fileID: 3758724014402868455, guid: 1e40267bdbfac1746b6709f0838c858c,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.2923908
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758724014402868455, guid: 1e40267bdbfac1746b6709f0838c858c,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.031920284
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4112513878767486186, guid: 1e40267bdbfac1746b6709f0838c858c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1e40267bdbfac1746b6709f0838c858c, type: 3}
