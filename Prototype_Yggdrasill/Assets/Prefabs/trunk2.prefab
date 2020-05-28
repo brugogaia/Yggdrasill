@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 3300949929907219080}
   - component: {fileID: 5806356837724278974}
   - component: {fileID: 263702112188017735}
-  - component: {fileID: 8648526986579765602}
+  - component: {fileID: 4879211926701290586}
   m_Layer: 0
   m_Name: trunk2
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -79,8 +79,8 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &8648526986579765602
-BoxCollider:
+--- !u!64 &4879211926701290586
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -89,6 +89,7 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.006077987, y: 0.0060779885, z: 0.010000004}
-  m_Center: {x: -8.1490725e-10, y: 0.0000000013969842, z: -4.656614e-10}
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: -7387706064836869012, guid: 46852ee822521bc44a6848d49e26ed40, type: 3}
