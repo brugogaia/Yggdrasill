@@ -1644,6 +1644,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Puu
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 0f2cc3a518e4646a8aa310aa05fb32cc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 0f2cc3a518e4646a8aa310aa05fb32cc,
         type: 3}
       propertyPath: m_LocalPosition.x
