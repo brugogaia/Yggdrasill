@@ -158,9 +158,11 @@ public class HealthBar : MonoBehaviour
     public void Affoga()
     {
         anim.SetBool("Affoga", true);
+        
         //Invoke("Trasla", 0.1f);
         isDead = true;
         Puu.GetComponent<Puu>().Morte();
+        character.transform.Translate(0, 0, -0.1f);
         Invoke("OpenMenu", 1.0f);
     }
 

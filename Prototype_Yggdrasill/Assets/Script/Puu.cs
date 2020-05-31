@@ -5,6 +5,7 @@ using UnityEngine;
 public class Puu : MonoBehaviour
 {
     private GameObject MenuPausa;
+    public Animator anim;
 
     public float MaxDamage = 10f;
     public float MinDamage = 5f;
@@ -71,6 +72,7 @@ public class Puu : MonoBehaviour
         if (!isDead)
         {
             flying = true;
+            anim.SetBool("Flying", true);
             transform.Translate(0, -3.5f, 5.5f);
         }
         
@@ -79,6 +81,7 @@ public class Puu : MonoBehaviour
     {
         if (flying)
         {
+            anim.SetBool("Flying", false);
             flying = false;
             transform.Translate(0, 3.5f, -5.5f);
         }

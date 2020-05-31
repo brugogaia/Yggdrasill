@@ -233,13 +233,12 @@ public class Giocatore : MonoBehaviour
     private void ForzaSalto()
     {
         
-        this.GetComponent<Rigidbody>().AddForce(new Vector3(0f, 14f,0f), ForceMode.Impulse);
+        this.GetComponent<Rigidbody>().AddForce(new Vector3(0f, 25f,0f), ForceMode.Impulse);
     }
 
     private void Atterra()
     {
-        Debug.Log("lo sto tirando giù");
-        this.GetComponent<Rigidbody>().AddForce(new Vector3(0f, -0.6f, 0f), ForceMode.Impulse);
+        this.GetComponent<Rigidbody>().AddForce(new Vector3(0f, -1f, 0f), ForceMode.Impulse);
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -291,7 +290,7 @@ public class Giocatore : MonoBehaviour
     {
         stavolando = true;
         
-        this.GetComponent<Rigidbody>().AddForce(new Vector3(0f, 0.3f, 0f), ForceMode.Impulse);
+        this.GetComponent<Rigidbody>().AddForce(new Vector3(0f, 0.7f, 0f), ForceMode.Impulse);
     }
 
     public void CambiaVisualein3D()

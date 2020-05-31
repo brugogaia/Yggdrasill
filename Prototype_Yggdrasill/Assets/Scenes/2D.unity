@@ -6392,6 +6392,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 420f81b4ec2c753419dbe474a2a78d94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   MaxDamage: 30
   MinDamage: 10
   flashIntensity: 3
@@ -38115,6 +38116,11 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.031920284
       objectReference: {fileID: 0}
+    - target: {fileID: 7430428192484275154, guid: 1e40267bdbfac1746b6709f0838c858c,
+        type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 2146383337}
     m_RemovedComponents:
     - {fileID: 4112513878767486186, guid: 1e40267bdbfac1746b6709f0838c858c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1e40267bdbfac1746b6709f0838c858c, type: 3}
@@ -69842,6 +69848,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7943b8da41d75045a6bd919f15691ec, type: 3}
+--- !u!95 &2146383337 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1802261217780062729, guid: 1e40267bdbfac1746b6709f0838c858c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1105509860}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2146872500
 GameObject:
   m_ObjectHideFlags: 0
