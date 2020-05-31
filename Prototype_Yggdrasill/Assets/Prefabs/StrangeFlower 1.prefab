@@ -125,6 +125,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3528570761559586719}
     m_Modifications:
+    - target: {fileID: 6423579568354531221, guid: 56301b972bf27724f87ba8f5a66d26b2,
+        type: 3}
+      propertyPath: m_Name
+      value: StrangeFlower_MESH
+      objectReference: {fileID: 0}
     - target: {fileID: 6584710384432810670, guid: 56301b972bf27724f87ba8f5a66d26b2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -179,11 +184,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6423579568354531221, guid: 56301b972bf27724f87ba8f5a66d26b2,
-        type: 3}
-      propertyPath: m_Name
-      value: StrangeFlower_MESH
       objectReference: {fileID: 0}
     - target: {fileID: 8927874146821793501, guid: 56301b972bf27724f87ba8f5a66d26b2,
         type: 3}
@@ -297,6 +297,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3528570761559586719}
     m_Modifications:
+    - target: {fileID: 5503394564718297427, guid: 0dfb39b67ea876e438c82537dbc3cd5e,
+        type: 3}
+      propertyPath: m_Name
+      value: bramble (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 5503394564718297426, guid: 0dfb39b67ea876e438c82537dbc3cd5e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -351,11 +356,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 18.327988
-      objectReference: {fileID: 0}
-    - target: {fileID: 5503394564718297427, guid: 0dfb39b67ea876e438c82537dbc3cd5e,
-        type: 3}
-      propertyPath: m_Name
-      value: bramble (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0dfb39b67ea876e438c82537dbc3cd5e, type: 3}

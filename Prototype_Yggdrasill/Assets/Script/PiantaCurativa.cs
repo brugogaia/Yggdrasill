@@ -20,7 +20,7 @@ public class PiantaCurativa : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other == player.GetComponent<Collider>())
+        if(other.CompareTag("CollPlayer"))
         {
             player.GetComponent<Giocatore>().Cura();
             GameObject.Destroy(this.gameObject);
