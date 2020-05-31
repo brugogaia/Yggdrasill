@@ -22,7 +22,7 @@ public class Affogamento : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if(other == player.GetComponent<Collider>())
+        if(other.tag == "CollPlayer")
         {
 
             healthbar.GetComponent<HealthBar>().Affoga();

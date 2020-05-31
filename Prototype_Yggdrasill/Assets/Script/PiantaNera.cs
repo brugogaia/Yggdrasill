@@ -20,7 +20,7 @@ public class PiantaNera : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other == player.GetComponent<Collider>() && !isFlower)
+        if (other.tag == "CollPlayer" && !isFlower)
         {
             player.GetComponent<Giocatore>().PiantaDamage();
             GameObject.Destroy(this.gameObject);
@@ -29,7 +29,7 @@ public class PiantaNera : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider == player.GetComponent<Collider>() && isFlower)
+        if (collision.collider.tag == "CollPlayer" && isFlower)
         {
             player.GetComponent<Giocatore>().PiantaDamage();
             //GameObject.Destroy(this.gameObject);

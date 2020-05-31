@@ -20,6 +20,9 @@ public class Giocatore : MonoBehaviour
     private bool staDecollando = false;
     private bool staAtterrando = false;
 
+    private bool GroundDestro = true;
+    private bool GroundSinistro = true;
+    private bool GroundCentrale = true;
 
     private Transform enemy;
 
@@ -55,19 +58,33 @@ public class Giocatore : MonoBehaviour
 
     void Update()
     {
+        Debug.Log("isGrounded = " + isGrounded);
+        if (GroundDestro || GroundSinistro || GroundCentrale) isGrounded = true;
+        else isGrounded = false;
+        if (isGrounded)
+        {
+            anim.SetBool("Jump", false);
+            stavolando = false;
+            anim.SetBool("Flying", false);
+            k = 0;
+            Puu.GetComponent<Puu>().StopFlying();
+        }
+        else
+        {
+            anim.SetBool("Grounded", false);
+        }
+
         y_prec = y_now;
         y_now = transform.position.y;
         if (y_now > y_prec)
         {
             staDecollando = true;
             staAtterrando = false;
-            Debug.Log("sta decollando");
         }
         else if (y_now < y_prec)
         {
             staDecollando = false;
             staAtterrando = true;
-            Debug.Log("Sta atterrando");
         }
         else if(y_now == y_prec)
         {
@@ -199,6 +216,7 @@ public class Giocatore : MonoBehaviour
 
     private void Jump()
     {
+        Debug.Log("Lo sto spingendo su");
         anim.SetBool("Jump", true);
         if (anim.GetBool("running"))
         {
@@ -214,27 +232,21 @@ public class Giocatore : MonoBehaviour
 
     private void ForzaSalto()
     {
+        
         this.GetComponent<Rigidbody>().AddForce(new Vector3(0f, 14f,0f), ForceMode.Impulse);
     }
 
     private void Atterra()
     {
+        Debug.Log("lo sto tirando giù");
         this.GetComponent<Rigidbody>().AddForce(new Vector3(0f, -0.6f, 0f), ForceMode.Impulse);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         //Debug.Log("sto collidendo con " + collision.collider);
-        if (collision.gameObject.tag == "Ground")
-        {
-            isGrounded = true;
-            anim.SetBool("Jump", false);
-            stavolando = false;
-            anim.SetBool("Flying", false);
-            k = 0;
-            Puu.GetComponent<Puu>().StopFlying();
-        }
-        else if(collision.gameObject.tag == "Enemy" && !collision.gameObject.GetComponent<Enemy>().little)
+        
+        if(collision.gameObject.tag == "Enemy" && !collision.gameObject.GetComponent<Enemy>().little)
         {
             TakeDamage(100f);
             
@@ -257,34 +269,22 @@ public class Giocatore : MonoBehaviour
     private void OnCollisionStay(Collision collision)
     {
         //Debug.Log("sto collidendo con " + collision.collider);
-        if (collision.gameObject.tag == "Ground")
-        {
-            anim.SetBool("Jump", false);
-            anim.SetBool("Flying", false);
-            isGrounded = true;
-            k = 0;
-            stavolando = false;
-            Puu.GetComponent<Puu>().StopFlying();
-
-        }
-        else
+        if (collision.gameObject.tag != "Ground")
         {
             stoCollidendo = true;
+
         }
+        
     }
 
     private void OnCollisionExit(Collision collision)
     {
         //Debug.Log("non sto piu collidendo con " + collision.collider);
-        if (collision.gameObject.tag == "Ground")
-        {
-            isGrounded = false;
-            anim.SetBool("Grounded", false);
-        }
-        else
+        if (collision.gameObject.tag != "Ground")
         {
             stoCollidendo = false;
         }
+        
     }
 
     private void Fly()
@@ -330,5 +330,20 @@ public class Giocatore : MonoBehaviour
     public bool isDed()
     {
         return isDead;
+    }
+
+    public void setGroundDestro(bool bolena)
+    {
+        GroundDestro= bolena;
+    }
+
+    public void setGroundSinistro(bool bolena)
+    {
+        GroundSinistro = bolena;
+    }
+
+    public void setGroundCentrale(bool bolena)
+    {
+        GroundCentrale = bolena;
     }
 }

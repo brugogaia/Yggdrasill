@@ -27,6 +27,7 @@ TagManager:
   - UI_acchiappa
   - idle
   - Water
+  - CollPlayer
   layers:
   - Default
   - TransparentFX
