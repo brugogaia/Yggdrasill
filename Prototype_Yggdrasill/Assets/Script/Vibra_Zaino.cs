@@ -31,7 +31,7 @@ public class Vibra_Zaino : MonoBehaviour
         bottone = GameObject.FindGameObjectWithTag("bottone_acchiappa").GetComponent<Image>();
         acchiappa = GameObject.FindGameObjectWithTag("acchiappasogni");
         timer = timer + Time.deltaTime;
-        if (!stop && presaAlice && timer>=waitime && !GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().fermo)
+        if (!stop && presaAlice && timer>=waitime && !acchiappa.GetComponent<MeshRenderer>().enabled && !GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().fermo)
         {
             timer = 0.0f;
             if(zaino.color.r == 1)

@@ -19,6 +19,7 @@ public class MammaAlice2 : MonoBehaviour
     public Animator anim;
     private bool staparlando = false;
     private int k = 0;
+    private Canvas Orologio;
 
     // Start is called before the first frame update
     void Start()
@@ -27,13 +28,13 @@ public class MammaAlice2 : MonoBehaviour
         Canvas = GameObject.FindGameObjectWithTag("Canvas");
         canvas_video.enabled = false;
         Dialogo.GetComponent<Canvas>().enabled = false;
+        Orologio = GameObject.FindGameObjectWithTag("Orologio").GetComponent<Canvas>();
+        Orologio.enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-
-      
 
         if (arrivato)
         {
@@ -54,8 +55,8 @@ public class MammaAlice2 : MonoBehaviour
                 else
                 {
                     staparlando = false;
-                    Dialogo.GetComponent<Canvas>().enabled = false;
-
+                    GameObject.Destroy(Dialogo);
+                    Orologio.enabled = true;
                 }
             }
             else if (Input.GetKeyDown(KeyCode.E) && !Dialogo.transform.GetChild(k).GetComponent<Image>().enabled)
@@ -69,12 +70,9 @@ public class MammaAlice2 : MonoBehaviour
 
 
 
-
-
-    
-
     void PlayVideo()
     {
+        Debug.Log("sono in play video");
         Time.timeScale = 0;
         vid.Play();
         vid.loopPointReached += EndReached;
@@ -83,9 +81,11 @@ public class MammaAlice2 : MonoBehaviour
     {
         canvas_video.enabled = false;
         parlato = true;
+        /*
+        
         SceneManager.LoadScene("SampleScene - Copia", LoadSceneMode.Single);
         Debug.Log("cambio scena");
-        DontDestroyOnLoad(Canvas);
+        DontDestroyOnLoad(Canvas);*/
     }
 
     IEnumerator Fading()

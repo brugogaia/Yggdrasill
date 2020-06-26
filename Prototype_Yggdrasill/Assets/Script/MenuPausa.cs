@@ -12,6 +12,8 @@ public class MenuPausa : MonoBehaviour
     private Canvas MenuMorte;
     public Canvas Zaino1;
     public Canvas Zaino2;
+    private Canvas Orologio;
+    public bool orol;
 
     public Image white;
     public Animator anim;
@@ -23,26 +25,51 @@ public class MenuPausa : MonoBehaviour
         MenuMorte = GameObject.FindGameObjectWithTag("MenuMorte").GetComponentInParent<Canvas>();
         MenuMorte.enabled = false;
         this.GetComponentInParent<Canvas>().enabled = false;
+        if (orol) Orologio = GameObject.FindGameObjectWithTag("Orologio").GetComponent<Canvas>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        if (this.GetComponentInParent<Canvas>().enabled || MenuMorte.enabled || Zaino1.enabled || Zaino2.enabled)
+        if (!orol)
         {
-            
-            pausa = true;
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
+            if (this.GetComponentInParent<Canvas>().enabled || MenuMorte.enabled || Zaino1.enabled || Zaino2.enabled)
+            {
+
+                pausa = true;
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+            }
+            else
+            {
+
+                pausa = false;
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
+            }
         }
         else
         {
-            
-            pausa = false;
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
+            if (this.GetComponentInParent<Canvas>().enabled || MenuMorte.enabled || Zaino1.enabled || Zaino2.enabled || Orologio.enabled)
+            {
+
+                pausa = true;
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+            }
+            else
+            {
+
+                pausa = false;
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
+            }
         }
+        
+
+
+
         if (!pausa && !MenuMorte.enabled && Input.GetKeyDown("escape"))
         {
             this.GetComponentInParent<Canvas>().enabled = true;

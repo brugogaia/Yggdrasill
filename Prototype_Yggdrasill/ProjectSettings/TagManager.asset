@@ -28,6 +28,7 @@ TagManager:
   - idle
   - Water
   - CollPlayer
+  - Orologio
   layers:
   - Default
   - TransparentFX
