@@ -25,7 +25,7 @@ public class CambioVisualein3D : MonoBehaviour
     {
         if (other = GameObject.FindGameObjectWithTag("Player").GetComponent<Collider>())
         {
-            Camera.GetComponent<ScriptCamera>().ChangeinVisual3D();
+            //Camera.GetComponent<ScriptCamera>().ChangeinVisual3D();
             Debug.Log("TRIGGER TO 3D");
         }
     }

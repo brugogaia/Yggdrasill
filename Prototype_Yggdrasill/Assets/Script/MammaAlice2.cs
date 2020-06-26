@@ -9,12 +9,8 @@ public class MammaAlice2 : MonoBehaviour
 {
     private Transform player;
     private GameObject Canvas;
-    public GameObject panel;
-    public VideoPlayer vid;
-    public Canvas canvas_video;
     public GameObject Dialogo;
-    private bool arrivato = false;
-    public bool parlato = false;
+    private bool arrivato = true;
     public Image white;
     public Animator anim;
     private bool staparlando = false;
@@ -27,8 +23,6 @@ public class MammaAlice2 : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         Canvas = GameObject.FindGameObjectWithTag("Canvas");
-        canvas_video.enabled = false;
-        Dialogo.GetComponent<Canvas>().enabled = false;
         Orologio = GameObject.FindGameObjectWithTag("Orologio").GetComponent<Canvas>();
         Orologio.enabled = false;
     }
@@ -42,13 +36,10 @@ public class MammaAlice2 : MonoBehaviour
             canvas_video.enabled = true;
             PlayVideo();
         }*/
-       
-
-
         if (arrivato)
         {
-                player.GetComponent<Giocatore>().StaiFermo();
-                if (!Dialogo.GetComponent<Canvas>().enabled && k == 0)
+            player.GetComponent<Giocatore>().StaiFermo();
+            if (!Dialogo.GetComponent<Canvas>().enabled && k == 0)
             {
                 Dialogo.GetComponent<Canvas>().enabled = true;
 
@@ -67,7 +58,7 @@ public class MammaAlice2 : MonoBehaviour
                     GameObject.Destroy(Dialogo);
                     Orologio.enabled = true;
                     arrivato = false;
-                    StartCoroutine(Fading());
+                    //StartCoroutine(Fading());
                 }
             }
             else if (Input.GetKeyDown(KeyCode.E) && !Dialogo.transform.GetChild(k).GetComponent<Image>().enabled)
@@ -80,48 +71,17 @@ public class MammaAlice2 : MonoBehaviour
         }
 
 
-    void PlayVideo()
-    {
-        Debug.Log("sono in play video");
-        Time.timeScale = 0;
-        vid.Play();
-        vid.loopPointReached += EndReached;
-    }
-    void EndReached(UnityEngine.Video.VideoPlayer vp)
-    {
-        canvas_video.enabled = false;
-        parlato = true;
-        /*
-        
-        SceneManager.LoadScene("SampleScene - Copia", LoadSceneMode.Single);
-        Debug.Log("cambio scena");
-        DontDestroyOnLoad(Canvas);*/
-    }
+    
+    
 
     IEnumerator Fading()
     {
-        anim.SetBool("Fade", true);
+        anim.SetBool("Fadee", true);
         yield return new WaitUntil(() => white.color.a == 1);
         SceneManager.LoadScene("Labyrinth", LoadSceneMode.Single);
         DontDestroyOnLoad(Canvas);
 
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other == player.GetComponent<Collider>())
-        {
-
-            arrivato = true;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other == player.GetComponent<Collider>())
-        {
-
-            arrivato = false;
-        }
-    }
+    
 }

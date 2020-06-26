@@ -5,7 +5,6 @@ TagManager:
   serializedVersion: 2
   tags:
   - Target2D
-  - Target3D
   - Enemy
   - Ground
   - Puu
@@ -29,6 +28,8 @@ TagManager:
   - Water
   - CollPlayer
   - Orologio
+  - Target_ricognizione
+  - Target3D
   layers:
   - Default
   - TransparentFX

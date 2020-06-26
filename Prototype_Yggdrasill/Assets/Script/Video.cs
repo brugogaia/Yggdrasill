@@ -11,8 +11,7 @@ public class Video : MonoBehaviour
     public Canvas canvas_video;
     private GameObject Canvas;
     private bool start = true;
-    public Image white;
-    public Animator anim;
+    
     // Start is called before the first frame update
     void Start()
     {

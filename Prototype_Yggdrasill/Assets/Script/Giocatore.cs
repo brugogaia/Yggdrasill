@@ -45,8 +45,12 @@ public class Giocatore : MonoBehaviour
     public Animator anim;
 
     private bool fermo = false;
-    
 
+    private Transform target_ricognizione;
+    private Vector3 pos_iniziale;
+    private int j = 0;
+    private float waitTime2 = 5.0f;
+    private float timer2 = 0.0f;
 
     private void Start()
     {
@@ -56,6 +60,7 @@ public class Giocatore : MonoBehaviour
         healthbar = GameObject.FindGameObjectWithTag("HealthBar").transform;
         //anim = this.transform.GetComponentInChildren<Animator>();
         y_now = transform.position.y;
+        target_ricognizione = GameObject.FindGameObjectWithTag("Target2D").transform;
         anim.SetBool("Grounded", true);
     }
 
@@ -139,8 +144,33 @@ public class Giocatore : MonoBehaviour
                 {
                     Atterra();
                 }
-
-
+            
+            if (Input.GetKey(KeyCode.R) && timer2<=waitTime2)
+            {
+                timer2 = timer2 + Time.deltaTime;
+                if (j == 0) 
+                {
+                    pos_iniziale = target_ricognizione.position; 
+                    j++;
+                }
+                if(target_ricognizione.position.z>=-13 && target_ricognizione.position.y <= -30)
+                {
+                    target_ricognizione.Translate(Input.GetAxis("Horizontal2") * Time.deltaTime * speed, 0, 0);
+                    
+                }
+                else
+                {
+                    target_ricognizione.Translate(0, -Input.GetAxis("Horizontal2") * Time.deltaTime * speed, Input.GetAxis("Horizontal2") * Time.deltaTime * speed * 0.5f);
+                    
+                }
+                //GameObject.FindGameObjectWithTag("MainCamera").GetComponent<ScriptCamera>().Ricognizione();
+            }else if (Input.GetKeyUp(KeyCode.R) || timer2>waitTime2)
+            {
+                timer = 0.0f;
+                j = 0;
+                target_ricognizione.position = pos_iniziale;
+                //GameObject.FindGameObjectWithTag("MainCamera").GetComponent<ScriptCamera>().StopRicognizione();
+            }
 
                 speed = 50f;
                 //Debug.Log("k giocatore = " + k);
