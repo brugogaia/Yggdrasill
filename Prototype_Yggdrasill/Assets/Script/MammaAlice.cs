@@ -37,6 +37,7 @@ public class MammaAlice : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (arrivato) player.GetComponent<Giocatore>().StaiFermo();
         if(arrivato && Input.GetKeyDown(KeyCode.E))
         {
             UI_Image_Parla.enabled = false;

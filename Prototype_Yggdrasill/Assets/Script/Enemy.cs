@@ -6,8 +6,8 @@ public class Enemy : MonoBehaviour
 {
     private GameObject MenuPausa;
 
-    public Transform player;
-    public Rigidbody rb;
+    private Transform player;
+    private Rigidbody rb;
     private Transform end;
     public Vector2 movement;
     [SerializeField] float speed;
@@ -121,7 +121,7 @@ public class Enemy : MonoBehaviour
         if (!little)
         {
             float distanza = Vector3.Distance(transform.position, player.position);
-            if (distanza >= 40 && distanza <=100 && !volante)
+            if (distanza <=100 && !volante)
                 rb.MovePosition((Vector3)transform.position + (direction * speed * Time.deltaTime));
             else if (volante && distanza <=100)
             {
@@ -146,6 +146,7 @@ public class Enemy : MonoBehaviour
         float FractionalDistance = (70 - Vector3.Distance(transform.position, player.position)) / 70;
         float damage = ScaleDamage * FractionalDistance + MinDamage;
         damage = damage / 2;
+        //Debug.Log(damage);
         player.GetComponent<Giocatore>().TakeDamage(damage);
     }
 
@@ -229,7 +230,7 @@ public class Enemy : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         
-        if(collision.collider == player.GetComponent<Collider>() && little && !isDead)
+        if(collision.collider.tag == "CollPlayer" && little && !isDead)
         {
             player.GetComponent<Giocatore>().TakeDamage(10f);
         }
@@ -238,7 +239,7 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other == player.GetComponent<Collider>() && little && !isDead)
+        if(other.tag == "CollPlayer" && little && !isDead)
         {
             /*altezzaSalto = 17f;
             timer = 0.0f;

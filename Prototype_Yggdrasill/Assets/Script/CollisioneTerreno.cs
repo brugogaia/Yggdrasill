@@ -30,7 +30,7 @@ public class CollisioneTerreno : MonoBehaviour
     {
         if (other.tag == "Ground")
         {
-            Debug.Log("a terra");
+            //Debug.Log("a terra");
             if (destro) player.GetComponent<Giocatore>().setGroundDestro(true);
             else player.GetComponent<Giocatore>().setGroundSinistro(true);
         }
@@ -40,7 +40,7 @@ public class CollisioneTerreno : MonoBehaviour
     {
         if (collision.tag == "Ground")
         {
-            Debug.Log("non più a terra");
+            //Debug.Log("non più a terra");
             if (destro) player.GetComponent<Giocatore>().setGroundDestro(false);
             else player.GetComponent<Giocatore>().setGroundSinistro(false);
         }

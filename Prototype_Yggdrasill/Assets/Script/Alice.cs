@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Alice : MonoBehaviour
@@ -14,7 +15,13 @@ public class Alice : MonoBehaviour
     private Transform target;
     private Vector3 position;
     private bool presa = false;
-    private Image UI;
+    [SerializeField] Canvas Dialogo;
+    private bool staparlando = false;
+    private int k = 0;
+
+    private GameObject Canvas;
+    public Image white;
+    public Animator anim;
 
     // Start is called before the first frame update
     void Start()
@@ -22,9 +29,9 @@ public class Alice : MonoBehaviour
         target = GameObject.FindGameObjectWithTag("TargetAlice").transform;
         MenuPausa = GameObject.FindGameObjectWithTag("MenuPausa").GetComponentInParent<Canvas>();
         MenuMorte = GameObject.FindGameObjectWithTag("MenuMorte").GetComponentInParent<Canvas>();
-        UI = GameObject.FindGameObjectWithTag("UI_acchiappa").GetComponent<Image>();
-        UI.enabled = false;
+        Canvas = GameObject.FindGameObjectWithTag("Canvas");
         this.GetComponent<Animator>().SetBool("walk", false);
+        Dialogo.enabled = false;
         
     }
 
@@ -33,6 +40,37 @@ public class Alice : MonoBehaviour
     {
         if (!MenuPausa.enabled && !MenuMorte.enabled)
         {
+            if (staparlando)
+            {
+                GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().Staifermo();
+                if (!Dialogo.GetComponent<Canvas>().enabled && k == 0)
+                {
+                    Dialogo.GetComponent<Canvas>().enabled = true;
+
+                }
+                if (Input.GetKeyDown(KeyCode.E) && Dialogo.transform.GetChild(k).GetComponent<Image>().enabled)
+                {
+                    Dialogo.transform.GetChild(k).GetComponent<Image>().enabled = false;
+                    if (k < 4)
+                    {
+                        k++;
+                        Dialogo.transform.GetChild(k).GetComponent<Image>().enabled = true;
+                    }
+                    else
+                    {
+                        staparlando = false;
+                        Dialogo.GetComponent<Canvas>().enabled = false;
+                        StartCoroutine(Fading());
+
+                    }
+                }
+                else if (Input.GetKeyDown(KeyCode.E) && !Dialogo.transform.GetChild(k).GetComponent<Image>().enabled)
+                {
+                    Dialogo.transform.GetChild(k).GetComponent<Image>().enabled = true;
+                }
+
+            }
+        
 
             timer = timer + Time.deltaTime;
             if (!presa)
@@ -61,8 +99,9 @@ public class Alice : MonoBehaviour
             else
             {
                 GetComponent<AudioSource>().mute = true;
-                speed = 100f;
-                transform.position = Vector3.MoveTowards(transform.position, target.position, speed);
+                this.GetComponent<Animator>().SetBool("walk", false);
+                //speed = 100f;
+                //transform.position = Vector3.MoveTowards(transform.position, target.position, speed);
                 /*transform.parent = target.transform;
                 Object.Destroy(this.GetComponent<Rigidbody>());*/
             }
@@ -80,7 +119,7 @@ public class Alice : MonoBehaviour
     public void setPresa(bool boolena)
     {
         presa = boolena;
-        UI.enabled = true;
+        staparlando = true;
     }
 
     private void OnCollisionStay(Collision collision)
@@ -88,4 +127,14 @@ public class Alice : MonoBehaviour
         if(collision.transform.tag!="Ground")
         this.GetComponent<Animator>().SetBool("walk", false);
     }
+
+    IEnumerator Fading()
+    {
+        anim.SetBool("Fade", true);
+        yield return new WaitUntil(() => white.color.a == 1);
+        SceneManager.LoadScene("UscitaLabirinto", LoadSceneMode.Single);
+        DontDestroyOnLoad(Canvas);
+
+    }
+
 }

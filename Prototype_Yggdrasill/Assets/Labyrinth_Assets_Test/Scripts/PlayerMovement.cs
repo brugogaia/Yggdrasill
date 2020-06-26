@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     public CharacterController controller;
     public float speed = 0.5f;
     private GameObject MenuPausa;
+    public bool fermo = false;
 
 
     // Start is called before the first frame update
@@ -18,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!MenuPausa.GetComponent<MenuPausa>().pausa)
+        if (!MenuPausa.GetComponent<MenuPausa>().pausa && !fermo)
         {
             float x = Input.GetAxis("Horizontal");
             float z = Input.GetAxis("Vertical");
@@ -29,5 +30,10 @@ public class PlayerMovement : MonoBehaviour
         }
 
             
+    }
+
+    public void Staifermo()
+    {
+        fermo = true;
     }
 }

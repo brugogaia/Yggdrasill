@@ -14,6 +14,7 @@ public class Giocatore : MonoBehaviour
     private bool isDead = false;
     private Quaternion rotIniziale;
     private bool stavolando = false;
+    bool ContattoTerra = true;
 
     private float y_prec = 0f;
     private float y_now = 0f;
@@ -42,6 +43,8 @@ public class Giocatore : MonoBehaviour
     private bool stoCollidendo = false;
 
     public Animator anim;
+
+    private bool fermo = false;
     
 
 
@@ -58,7 +61,7 @@ public class Giocatore : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("isGrounded = " + isGrounded);
+        //Debug.Log("isGrounded = " + isGrounded);
         if (GroundDestro || GroundSinistro || GroundCentrale) isGrounded = true;
         else isGrounded = false;
         if (isGrounded)
@@ -91,8 +94,9 @@ public class Giocatore : MonoBehaviour
             staDecollando = false;
             staAtterrando = false;
         }
-        if (staAtterrando && transform.position.y < 15) anim.SetBool("Grounded", true);
-            if (!MenuPausa.GetComponent<MenuPausa>().pausa)
+        if (staAtterrando && ContattoTerra) anim.SetBool("Grounded", true);
+        if (fermo) anim.SetBool("running", false);
+            if (!MenuPausa.GetComponent<MenuPausa>().pausa && !fermo)
             {
                 enemy = this.GetComponent<PlayerShooting>().enemy;
 
@@ -156,7 +160,7 @@ public class Giocatore : MonoBehaviour
 
                     float movimentoOrizzontale = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
                     //Debug.Log(movimentoOrizzontale);
-                    if (!isDead)
+                    if (!isDead && !fermo)
                     {
 
                         if (enemy == null || (enemy != null && !enemy.GetComponent<Enemy>().isLittle() /*&& Vector3.Distance(transform.position, enemy.position)>=20)*/ ) || (enemy != null && enemy.GetComponent<Enemy>().isLittle()))
@@ -214,9 +218,11 @@ public class Giocatore : MonoBehaviour
         
     }
 
+    
+
     private void Jump()
     {
-        Debug.Log("Lo sto spingendo su");
+        //Debug.Log("Lo sto spingendo su");
         anim.SetBool("Jump", true);
         if (anim.GetBool("running"))
         {
@@ -286,6 +292,21 @@ public class Giocatore : MonoBehaviour
         
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Ground") ContattoTerra = true;
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "Ground") ContattoTerra = true;
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Ground") ContattoTerra = false;
+    }
+
     private void Fly()
     {
         stavolando = true;
@@ -344,5 +365,10 @@ public class Giocatore : MonoBehaviour
     public void setGroundCentrale(bool bolena)
     {
         GroundCentrale = bolena;
+    }
+
+    public void StaiFermo()
+    {
+        fermo = true;
     }
 }

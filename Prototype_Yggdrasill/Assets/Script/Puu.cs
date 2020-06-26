@@ -23,7 +23,7 @@ public class Puu : MonoBehaviour
 
     public bool flying = false;
 
-    private float waitTime = 0.3f;
+    private float waitTime = 0.7f;
     private float timer = 0.0f;
     // Start is called before the first frame update
     void Start()

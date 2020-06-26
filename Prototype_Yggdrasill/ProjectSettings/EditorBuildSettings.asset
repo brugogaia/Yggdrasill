@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Labyrinth.unity
     guid: 58f107a1cceb3774cbaedf84b43893fd
+  - enabled: 1
+    path: Assets/Scenes/UscitaLabirinto.unity
+    guid: faaeec7853621d54db9250bd2d42db82
   m_configObjects: {}
