@@ -2322,7 +2322,7 @@ Animator:
   m_GameObject: {fileID: 73430179}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a362298370e99a74cb8fb2b2b9d08702, type: 2}
+  m_Controller: {fileID: 9100000, guid: 042f7ea068532f44f9ce1391167d51d3, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -15846,7 +15846,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0.03515625, y: 0.1796875, z: 0.03515625, w: -0.046875}
+  m_BoundingSphereOverride: {x: 0, y: 0.1875, z: 0.0390625, w: -0.046875}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -23616,22 +23616,22 @@ PrefabInstance:
     - target: {fileID: 8650206724120072913, guid: 1e40267bdbfac1746b6709f0838c858c,
         type: 3}
       propertyPath: m_BoundingSphereOverride.x
-      value: 6.06e-42
-      objectReference: {fileID: 0}
-    - target: {fileID: 8650206724120072913, guid: 1e40267bdbfac1746b6709f0838c858c,
-        type: 3}
-      propertyPath: m_BoundingSphereOverride.w
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8650206724120072913, guid: 1e40267bdbfac1746b6709f0838c858c,
         type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 1e-45
+      objectReference: {fileID: 0}
+    - target: {fileID: 8650206724120072913, guid: 1e40267bdbfac1746b6709f0838c858c,
+        type: 3}
       propertyPath: m_BoundingSphereOverride.y
-      value: 1.02e-43
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8650206724120072913, guid: 1e40267bdbfac1746b6709f0838c858c,
         type: 3}
       propertyPath: m_BoundingSphereOverride.z
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4307807677519821915, guid: 1e40267bdbfac1746b6709f0838c858c,
         type: 3}

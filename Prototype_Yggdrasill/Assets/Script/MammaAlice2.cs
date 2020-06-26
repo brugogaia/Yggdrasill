@@ -21,6 +21,7 @@ public class MammaAlice2 : MonoBehaviour
     private int k = 0;
     private Canvas Orologio;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +36,14 @@ public class MammaAlice2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*if (white.color.a==0 && start)
+        {
+            start = false;
+            canvas_video.enabled = true;
+            PlayVideo();
+        }*/
+       
+
 
         if (arrivato)
         {
@@ -57,6 +66,8 @@ public class MammaAlice2 : MonoBehaviour
                     staparlando = false;
                     GameObject.Destroy(Dialogo);
                     Orologio.enabled = true;
+                    arrivato = false;
+                    StartCoroutine(Fading());
                 }
             }
             else if (Input.GetKeyDown(KeyCode.E) && !Dialogo.transform.GetChild(k).GetComponent<Image>().enabled)
@@ -67,7 +78,6 @@ public class MammaAlice2 : MonoBehaviour
         }
             
         }
-
 
 
     void PlayVideo()
