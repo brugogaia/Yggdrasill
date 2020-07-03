@@ -35950,8 +35950,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6620376aeacd0ed45b33ef4c54dfe9bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  Player: {fileID: 0}
   smoothTime: 0.3
 --- !u!4 &963792937 stripped
 Transform:
@@ -40765,7 +40763,7 @@ PrefabInstance:
     - target: {fileID: 8872362812345718044, guid: 1e40267bdbfac1746b6709f0838c858c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3042
+      value: -4587
       objectReference: {fileID: 0}
     - target: {fileID: 8872362812345718044, guid: 1e40267bdbfac1746b6709f0838c858c,
         type: 3}
@@ -41191,22 +41189,22 @@ PrefabInstance:
     - target: {fileID: 8650206724120072913, guid: 1e40267bdbfac1746b6709f0838c858c,
         type: 3}
       propertyPath: m_BoundingSphereOverride.x
-      value: 0
+      value: 7.09e-43
       objectReference: {fileID: 0}
     - target: {fileID: 8650206724120072913, guid: 1e40267bdbfac1746b6709f0838c858c,
         type: 3}
       propertyPath: m_BoundingSphereOverride.w
-      value: -8.792546e+36
+      value: 1e-45
       objectReference: {fileID: 0}
     - target: {fileID: 8650206724120072913, guid: 1e40267bdbfac1746b6709f0838c858c,
         type: 3}
       propertyPath: m_BoundingSphereOverride.y
-      value: -1007.0156
+      value: 3.9064608e-27
       objectReference: {fileID: 0}
     - target: {fileID: 8650206724120072913, guid: 1e40267bdbfac1746b6709f0838c858c,
         type: 3}
       propertyPath: m_BoundingSphereOverride.z
-      value: NaN
+      value: 7.09e-43
       objectReference: {fileID: 0}
     - target: {fileID: 4307807677519821915, guid: 1e40267bdbfac1746b6709f0838c858c,
         type: 3}
