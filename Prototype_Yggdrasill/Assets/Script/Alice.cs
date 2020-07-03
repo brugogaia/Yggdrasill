@@ -51,7 +51,7 @@ public class Alice : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.E) && Dialogo.transform.GetChild(k).GetComponent<Image>().enabled)
                 {
                     Dialogo.transform.GetChild(k).GetComponent<Image>().enabled = false;
-                    if (k < 4)
+                    if (k < 0)
                     {
                         k++;
                         Dialogo.transform.GetChild(k).GetComponent<Image>().enabled = true;

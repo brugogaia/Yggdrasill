@@ -47,7 +47,7 @@ public class MammaAlice2 : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E) && Dialogo.transform.GetChild(k).GetComponent<Image>().enabled)
             {
                 Dialogo.transform.GetChild(k).GetComponent<Image>().enabled = false;
-                if (k < 4)
+                if (k < 1)
                 {
                     k++;
                     Dialogo.transform.GetChild(k).GetComponent<Image>().enabled = true;
