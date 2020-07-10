@@ -17822,11 +17822,10 @@ MonoBehaviour:
   Zaino1: {fileID: 127854373}
   Zaino2: {fileID: 2121173638}
   orol: 0
-  white: {fileID: 0}
-  anim: {fileID: 0}
+  white: {fileID: 2133028504}
+  anim: {fileID: 2133028503}
   anim1: {fileID: 0}
   anim2: {fileID: 0}
-  anim3: {fileID: 0}
 --- !u!114 &1275190693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20454,7 +20453,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1275190692}
         m_MethodName: OpenMenu
         m_Mode: 1
         m_Arguments:
