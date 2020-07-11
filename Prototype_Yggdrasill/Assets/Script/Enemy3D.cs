@@ -4,25 +4,32 @@ using UnityEngine;
 
 public class Enemy3D : MonoBehaviour
 {
-    public Transform player;
-    public Rigidbody rb;
-    public Vector3 movement;
-    public float speed = 10f;
+    private GameObject player;
+    private Rigidbody rb;
+    private Vector3 movement;
+    private float speed = 10f;
+    private GameObject target;
+    private GameObject PathTarget;
 
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = GameObject.FindGameObjectWithTag("Player");
         rb = this.GetComponent<Rigidbody>();
+        PathTarget = GameObject.FindGameObjectWithTag("EnemyTarget1");
+        target = PathTarget;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 direction = player.position - transform.position;
+        Vector3 direction = target.transform.position - transform.position;
         float angle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+            
+        Quaternion rotation = Quaternion.LookRotation(target.transform.position, Vector3.forward);
         
-        this.transform.Rotate(0, angle, 0);
+        transform.LookAt(target.transform);
+        this.transform.Rotate(-90, 0, 0);
         direction.Normalize();
         movement = direction;
         
@@ -35,5 +42,14 @@ public class Enemy3D : MonoBehaviour
     void moveEnemy(Vector3 direction)
     {
         rb.MovePosition(transform.position + (direction * speed * Time.deltaTime));
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Player")
+        {
+            Debug.Log("Trovato player");
+            target = player.gameObject;
+        }
     }
 }
