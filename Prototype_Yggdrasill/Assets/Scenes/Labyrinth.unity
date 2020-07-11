@@ -8098,6 +8098,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: idle
       objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: c099a4f09f28747818e09882cc6fc729,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: c099a4f09f28747818e09882cc6fc729,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8167,11 +8172,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.0741
-      objectReference: {fileID: 0}
-    - target: {fileID: -6057140222963153312, guid: c099a4f09f28747818e09882cc6fc729,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c099a4f09f28747818e09882cc6fc729, type: 3}
@@ -15086,7 +15086,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 0
   MinDistance: 9.78
-  MaxDistance: 955.5424
+  MaxDistance: 976.87646
   Pan2D: 0
   rolloffMode: 2
   BypassEffects: 0
@@ -15106,7 +15106,7 @@ AudioSource:
       outWeight: 0.23268698
     - serializedVersion: 3
       time: 1
-      value: 0.54605865
+      value: 0
       inSlope: -0.017343143
       outSlope: -0.017343143
       tangentMode: 0
@@ -23355,6 +23355,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: 0f2cc3a518e4646a8aa310aa05fb32cc,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 4636f089e825e4b0ca7068e9130032db, type: 2}
     - target: {fileID: -4216859302048453862, guid: 0f2cc3a518e4646a8aa310aa05fb32cc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -23425,11 +23430,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 15.860422
       objectReference: {fileID: 0}
-    - target: {fileID: -6057140222963153312, guid: 0f2cc3a518e4646a8aa310aa05fb32cc,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 4636f089e825e4b0ca7068e9130032db, type: 2}
     - target: {fileID: 5840255483787996955, guid: 0f2cc3a518e4646a8aa310aa05fb32cc,
         type: 3}
       propertyPath: m_Enabled
