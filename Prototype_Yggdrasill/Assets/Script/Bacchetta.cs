@@ -30,7 +30,7 @@ public class Bacchetta : MonoBehaviour
             CurrentIntensity = MaxIntensity;
             scarica = false;
         }
-        player.GetComponent<PlayerShooting>().SetBacchetta(scarica);
+        //player.GetComponent<PlayerShooting>().SetBacchetta(scarica);
         transform.GetComponent<Light>().intensity = CurrentIntensity;
     }
 

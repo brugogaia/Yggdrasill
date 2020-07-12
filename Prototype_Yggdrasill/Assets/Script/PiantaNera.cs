@@ -6,6 +6,7 @@ public class PiantaNera : MonoBehaviour
 {
     public GameObject player;
     public bool isFlower;
+    public bool treD;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +23,9 @@ public class PiantaNera : MonoBehaviour
     {
         if (other.tag == "CollPlayer" && !isFlower)
         {
-            player.GetComponent<Giocatore>().PiantaDamage();
+            Debug.Log("colpito player");
+            if (!treD) player.GetComponent<Giocatore>().PiantaDamage();
+            else player.GetComponent<PlayerMovement>().PiantaDamage();
             GameObject.Destroy(this.gameObject);
         }
     }
@@ -31,7 +34,9 @@ public class PiantaNera : MonoBehaviour
     {
         if (collision.collider.tag == "CollPlayer" && isFlower)
         {
-            player.GetComponent<Giocatore>().PiantaDamage();
+            Debug.Log("colpito player");
+            if(!treD) player.GetComponent<Giocatore>().PiantaDamage();
+            else player.GetComponent<PlayerMovement>().PiantaDamage();
             //GameObject.Destroy(this.gameObject);
         }
     }

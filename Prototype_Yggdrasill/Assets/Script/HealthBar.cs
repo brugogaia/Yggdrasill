@@ -19,17 +19,25 @@ public class HealthBar : MonoBehaviour
     private float damage;
     public bool isDead = false;
     private bool affogato = false;
-    [SerializeField] Animator anim;
+    private Animator anim;
+
+    private bool treD = false;
 
     void Start()
     {
-        MenuMorte = GameObject.FindGameObjectWithTag("MenuMorte").GetComponentInParent<Canvas>();
+        
         //HBText = gameObject.GetComponentInChildren<Text>().transform;
         MaxHealth = HBImage.transform.localScale.x;
         CurrentHealth = MaxHealth;
         Puu = GameObject.FindGameObjectWithTag("Puu");
         
         //if (GameObject.Find("Menu").GetComponent<Menu>().Riavviante()) SetCurrentHealth(GameObject.Find("Menu").GetComponent<Menu>().GetHealth());
+    }
+
+    private void Update()
+    {
+        MenuMorte = GameObject.FindGameObjectWithTag("MenuMorte").GetComponentInParent<Canvas>();
+        anim = GameObject.FindGameObjectWithTag("idle").GetComponent<Animator>();
     }
 
     public void FallDamage(float DamageAmount)
@@ -109,8 +117,9 @@ public class HealthBar : MonoBehaviour
         
 
         isDead = true;
-        Puu.GetComponent<Puu>().Morte();
-        Invoke("OpenMenu", 3.0f);
+        if(Puu!=null) Puu.GetComponent<Puu>().Morte();
+        if (!treD) Invoke("OpenMenu", 3.0f);
+        else OpenMenu();
            
         
         //animationDeathHit();
@@ -171,5 +180,10 @@ public class HealthBar : MonoBehaviour
     void Trasla()
     {
         character.Translate(0, -18, 0);
+    }
+
+    public void setTreD(bool bolena)
+    {
+        treD = bolena;
     }
 }

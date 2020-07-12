@@ -40989,7 +40989,7 @@ PrefabInstance:
     - target: {fileID: 8872362812345718044, guid: 1e40267bdbfac1746b6709f0838c858c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3195
+      value: -2994
       objectReference: {fileID: 0}
     - target: {fileID: 8872362812345718044, guid: 1e40267bdbfac1746b6709f0838c858c,
         type: 3}
@@ -41415,7 +41415,7 @@ PrefabInstance:
     - target: {fileID: 8650206724120072913, guid: 1e40267bdbfac1746b6709f0838c858c,
         type: 3}
       propertyPath: m_BoundingSphereOverride.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8650206724120072913, guid: 1e40267bdbfac1746b6709f0838c858c,
         type: 3}
@@ -41425,12 +41425,12 @@ PrefabInstance:
     - target: {fileID: 8650206724120072913, guid: 1e40267bdbfac1746b6709f0838c858c,
         type: 3}
       propertyPath: m_BoundingSphereOverride.y
-      value: 0
+      value: 0.001234481
       objectReference: {fileID: 0}
     - target: {fileID: 8650206724120072913, guid: 1e40267bdbfac1746b6709f0838c858c,
         type: 3}
       propertyPath: m_BoundingSphereOverride.z
-      value: 0
+      value: NaN
       objectReference: {fileID: 0}
     - target: {fileID: 4307807677519821915, guid: 1e40267bdbfac1746b6709f0838c858c,
         type: 3}
@@ -51814,9 +51814,6 @@ MonoBehaviour:
   orol: 0
   white: {fileID: 73430181}
   anim: {fileID: 73430183}
-  anim1: {fileID: 1278330279}
-  anim2: {fileID: 1614684315}
-  anim3: {fileID: 0}
 --- !u!1001 &1424831667
 PrefabInstance:
   m_ObjectHideFlags: 0
