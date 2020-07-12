@@ -34,9 +34,7 @@ public class Enemy3D : MonoBehaviour
 
     private bool shooting = false;
 
-    private float altezzaSalto = 0f;
-
-    private float waitTime = 1.5f;
+    private float waitTime = 0.7f;
     private float timer = 0.0f;
 
     // Start is called before the first frame update
@@ -44,16 +42,26 @@ public class Enemy3D : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         rb = this.GetComponent<Rigidbody>();
+        MenuPausa = GameObject.FindGameObjectWithTag("MenuPausa");
         PathTarget = GameObject.FindGameObjectWithTag("EnemyTarget1");
         target = PathTarget;
         CurrentHealth = MaxHealth;
+
+        laserShotLine = GetComponentInChildren<LineRenderer>();
+        spellLight = laserShotLine.gameObject.GetComponent<Light>();
+        laserShotLine.enabled = false;
+        spellLight.intensity = 0f;
+
+        ScaleDamage = MaxDamage - MinDamage;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!isDead)
+        playerDead = player.GetComponent<PlayerMovement>().isDed();
+        if (!isDead && !playerDead && !MenuPausa.GetComponent<MenuPausa>().pausa)
         {
+            timer += Time.deltaTime;
             Vector3 direction = target.transform.position - transform.position;
             float angle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
 
@@ -63,10 +71,27 @@ public class Enemy3D : MonoBehaviour
             this.transform.Rotate(-90, 0, 0);
             direction.Normalize();
             movement = direction;
+
+            if (timer >= waitTime && !shooting && target==player.gameObject)
+            {
+                timer = 0f;
+                ShotEffects();
+
+            }
+            else
+            {
+                shooting = false;
+                laserShotLine.enabled = false;
+            }
+
+
+
+            spellLight.intensity = Mathf.Lerp(spellLight.intensity, 0f, fadeSpeed * Time.deltaTime);
         }
-        
-        
+
     }
+        
+        
 
     private void FixedUpdate()
     {
@@ -99,12 +124,11 @@ public class Enemy3D : MonoBehaviour
     {
         shooting = true;
         laserShotLine.SetPosition(0, laserShotLine.transform.position);
-            laserShotLine.SetPosition(1, new Vector3(player.position.x, transform.position.y, player.position.z));
-            Debug.Log("Colpito giocatore");
-            Shoot();
-        
+        laserShotLine.SetPosition(1, new Vector3(player.position.x, transform.position.y, player.position.z));
+        Debug.Log("Colpito giocatore");
         laserShotLine.enabled = true;
         spellLight.intensity = flashIntensity;
+        Shoot();
 
 
     }

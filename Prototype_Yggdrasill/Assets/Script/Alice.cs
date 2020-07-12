@@ -9,11 +9,13 @@ public class Alice : MonoBehaviour
     private Canvas MenuPausa;
     private Canvas MenuMorte;
 
+    private Rigidbody rb;
     private float speed = 20f;
     private float waitTime = 2f;
     private float timer = 2f;
     private Transform target;
-    private Vector3 position;
+    private Vector3 movement;
+
     private bool presa = false;
     [SerializeField] Canvas Dialogo;
     private bool staparlando = false;
@@ -31,7 +33,9 @@ public class Alice : MonoBehaviour
         Canvas = GameObject.FindGameObjectWithTag("Canvas");
         this.GetComponent<Animator>().SetBool("walk", false);
         Dialogo.enabled = false;
-        
+        target = GameObject.FindGameObjectWithTag("TargetAlice").transform;
+        rb = this.GetComponent<Rigidbody>();
+
     }
 
     // Update is called once per frame
@@ -71,29 +75,16 @@ public class Alice : MonoBehaviour
             }
         
 
-            timer = timer + Time.deltaTime;
             if (!presa)
             {
                 GetComponent<AudioSource>().mute = false;
-                if (timer > waitTime)
-                {
-                    position = new Vector3(Random.Range(-2.0f, 2.0f), 0, Random.Range(-2.0f, 2.0f));
-                    
-                    timer = 0.0f;
-                }
-                transform.Translate(position * Time.deltaTime * speed);
-                if (position != Vector3.zero)
-                {
-                    Quaternion rotation = Quaternion.LookRotation(position, Vector3.up);
-                    transform.rotation = rotation;
-                    this.GetComponent<Animator>().SetBool("walk", true);
-                }
-                else
-                {
-                    this.GetComponent<Animator>().SetBool("walk", false);
-                    
-                }
-                
+
+                /*Vector3 direction = target.transform.position - transform.position;
+                transform.LookAt(target.transform);
+                direction.Normalize();
+                movement = direction;*/
+                this.GetComponent<Animator>().SetBool("walk", true);
+
             }
             else
             {
@@ -111,8 +102,15 @@ public class Alice : MonoBehaviour
             GetComponent<AudioSource>().mute = true;
         }
 
-            
+    }
 
+    private void FixedUpdate()
+    {
+        //moveAlice(movement);
+    }
+    void moveAlice(Vector3 direction)
+    {
+        //rb.MovePosition(transform.position + (direction * speed * Time.deltaTime));
     }
 
     public void setPresa(bool boolena)
