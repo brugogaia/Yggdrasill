@@ -114,7 +114,7 @@ MonoBehaviour:
   m_MinSize: {x: 683, y: 494}
   m_MaxSize: {x: 14004, y: 14044}
   vertical: 0
-  controlID: 1181
+  controlID: 7814
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -139,7 +139,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 494}
   m_MaxSize: {x: 10002, y: 14044}
   vertical: 1
-  controlID: 1158
+  controlID: 7815
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -164,7 +164,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 222}
   m_MaxSize: {x: 8006, y: 4022}
   vertical: 0
-  controlID: 1159
+  controlID: 7816
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -383,9 +383,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: c45effffea93ffffb0acffff6efbffff4a4f01005ab20100
+      m_SelectedIDs: b2d90400
+      m_LastClickedID: 317874
+      m_ExpandedIDs: de79fcff7eeefcffd603fdff087afdff6e90fdff92f1fdff3007feff863cfeffae54feff6a8afeff2aa0feff30a0feff34a0feff40a0feff44a0feff46a0feff4ca0feff52a0feff3ca3feff52c3feffb2d6feffb8d6feffbcd6feffc8d6feffccd6feffced6feffd4d6feffdad6feffc4d9feffaaeafeffb0eafeffb2eafeffc0eafeffc6eafeffd0eafeffd4eafeffdceafeffe0eafeffe6eafeff66ebfeff42fafeff940effff321fffff381fffff3a1fffff481fffff4e1fffff581fffff5c1fffff641fffff681fffff6e1fffffee1fffffca2effffb043ffffae63ffffa878ffff5c89ffff828affff888affff8a8affff988affff9e8affffa88affffac8affffb48affffb88affffbe8affff3e8bffff1a9affff1cd4ffff42d5ffff48d5ffff4ad5ffff58d5ffff5ed5ffff68d5ffff6cd5ffff74d5ffff78d5ffff7ed5fffffed5ffffdae4ffff6efbffff1eb00000c40b0100d40b01003e1001005430010064300100ce340100
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -445,9 +445,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 857.4518, y: -82.87008, z: 9.59375}
+    m_Target: {x: -140.16663, y: 5.1900005, z: 29.2}
     speed: 2
-    m_Value: {x: 857.4518, y: -82.87008, z: 9.59375}
+    m_Value: {x: -140.16663, y: 5.1900005, z: 29.2}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -468,21 +468,21 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
     yGrid:
-      m_Target: 0
-      speed: 2
-      m_Value: 0
-    zGrid:
       m_Target: 1
       speed: 2
       m_Value: 1
+    zGrid:
+      m_Target: 0
+      speed: 2
+      m_Value: 0
   m_Rotation:
-    m_Target: {x: 0, y: 0, z: 0, w: 1}
+    m_Target: {x: 0.5710511, y: 0.35086936, z: -0.294036, w: 0.68142474}
     speed: 2
-    m_Value: {x: 0.0000006085739, y: 0, z: 0, w: 0.99999994}
+    m_Value: {x: 0.5710511, y: 0.3508694, z: -0.29403603, w: 0.68142474}
   m_Size:
-    m_Target: 1205.3085
+    m_Target: 71.60608
     speed: 2
-    m_Value: 1153.4053
+    m_Value: 71.60608
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -573,20 +573,20 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Images/UI_English
+    - Assets/Scenes
   m_ViewMode: 1
   m_StartGridSize: 96
   m_LastFolders:
-  - Assets/Images/UI_English
+  - Assets/Scenes
   m_LastFoldersGridSize: 96
   m_LastProjectPath: D:\Poli\Game Design and Gamification\Progetto\Yggdrasill\Prototype_Yggdrasill
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 58430000
-    m_LastClickedID: 17240
-    m_ExpandedIDs: 00000000322f0000fe310000da3300009a3a0000b23b0000f83b0000183c0000c43c0000c83e0000de3e000000ca9a3b
+    scrollPos: {x: 0, y: 226}
+    m_SelectedIDs: 14380000
+    m_LastClickedID: 14356
+    m_ExpandedIDs: 00000000302f0000fc310000d8330000983a0000b03b0000f63b0000163c0000c23c0000ca3e0000e03e000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -614,7 +614,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000322f0000fe310000da3300009a3a0000f83b0000183c0000c43c0000c83e0000de3e000000ca9a3b
+    m_ExpandedIDs: 00000000302f0000fc310000d8330000983a0000b03b0000f63b0000163c0000c23c0000ca3e0000e03e000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -658,7 +658,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 10}
+      m_ClientGUIView: {fileID: 11}
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_InstanceID: 0

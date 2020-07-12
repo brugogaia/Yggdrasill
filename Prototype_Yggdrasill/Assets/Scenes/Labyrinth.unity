@@ -869,6 +869,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: mostriciattolo
       objectReference: {fileID: 0}
+    - target: {fileID: 7554216926966541749, guid: 1ae6989a883a4cb4ea1aea59d9a73e5c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 6813560984213626790, guid: 1ae6989a883a4cb4ea1aea59d9a73e5c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -26512,6 +26517,7 @@ GameObject:
   - component: {fileID: 1773138189}
   - component: {fileID: 1773138188}
   - component: {fileID: 1773138187}
+  - component: {fileID: 1773138193}
   - component: {fileID: 1773138191}
   - component: {fileID: 1773138192}
   m_Layer: 8
@@ -26532,8 +26538,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 4.6213303}
-  m_Center: {x: 0, y: 0, z: 1.8106651}
+  m_Size: {x: 5.6351557, y: 1, z: 7.0015826}
+  m_Center: {x: -0.57194537, y: 1.7427049e-16, z: 3.0007908}
 --- !u!114 &1773138188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26616,6 +26622,28 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &1773138193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1773138186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc576ebe6eb333145968e48fc455cf94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxDamage: 20
+  MinDamage: 10
+  flashIntensity: 3
+  fadeSpeed: 10
+  laserShotLine: {fileID: 1928553031}
+  bacchetta: {fileID: 1928553032}
+  enemy: {fileID: 0}
+  Blu: {fileID: 2100000, guid: 0f21eb0f64530bd4fb1c72ce0d36a3cf, type: 2}
+  Rosa: {fileID: 2100000, guid: dd384efc3cbb96c43981e09848f0edb8, type: 2}
+  anim: {fileID: 251873641}
 --- !u!4 &1773625752 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3528570761559586719, guid: 21f3190882df73040a840b1a9023573a,
@@ -29863,6 +29891,12 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!4 &1928553032 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 45ec771a8b2e11443a41e1be3b84924d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1928553025}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1929571280
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33110,6 +33144,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ed57beb79ef90d4fada1560ca61e003, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  little: 0
+  volante: 0
+  MaxHealth: 50
+  isDead: 0
+  MaxDamage: 30
+  MinDamage: 10
+  flashIntensity: 3
+  fadeSpeed: 10
 --- !u!54 &2125679712
 Rigidbody:
   m_ObjectHideFlags: 0

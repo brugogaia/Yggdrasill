@@ -166,6 +166,11 @@ public class HealthBar : MonoBehaviour
         return isDead;
     }
 
+    public void setIsDead(bool bolena)
+    {
+        isDead = bolena;
+    }
+
     public void Affoga()
     {
         anim.SetBool("Affoga", true);

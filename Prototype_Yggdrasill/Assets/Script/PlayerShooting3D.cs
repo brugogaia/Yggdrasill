@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerShooting : MonoBehaviour
+public class PlayerShooting3D : MonoBehaviour
 {
     public float MaxDamage = 20f;
     public float MinDamage = 10f;
@@ -21,8 +21,6 @@ public class PlayerShooting : MonoBehaviour
 
     private int distanza = 100;
 
-    private GameObject Puu;
-
     [SerializeField] Material Blu;
     [SerializeField] Material Rosa;
 
@@ -34,7 +32,6 @@ public class PlayerShooting : MonoBehaviour
     {
         //laserShotLine = GetComponentInChildren<LineRenderer>();
         spellLight = laserShotLine.gameObject.GetComponent<Light>();
-        Puu = GameObject.FindGameObjectWithTag("Puu");
         Bacchetta = GameObject.FindGameObjectWithTag("Bacchetta").transform;
 
         laserShotLine.enabled = false;
@@ -52,19 +49,18 @@ public class PlayerShooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bool isDead = this.GetComponent<Giocatore>().isDed();
-        if (isDead) Puu.GetComponent<Puu>().setNemico(null);
+        bool isDead = this.GetComponent<PlayerMovement>().isDed();
         if (enemy != null && !isDead)
         {
             if (Input.GetMouseButtonDown(0) && !bacchettaScarica && !shooting && Vector3.Distance(transform.position, enemy.position) <= distanza)
             {
 
                 ShotEffects();
-                
+
 
             }
-            else if(Input.GetMouseButtonDown(1) && !bacchettaScarica && !shooting && Vector3.Distance(transform.position, enemy.position) <= distanza)
-            { 
+            else if (Input.GetMouseButtonDown(1) && !bacchettaScarica && !shooting && Vector3.Distance(transform.position, enemy.position) <= distanza)
+            {
                 Cura();
             }
             else
@@ -87,27 +83,28 @@ public class PlayerShooting : MonoBehaviour
 
     void StopShoot()
     {
-        
+
     }
 
     void Shoot()
     {
-        
+
         shooting = true;
         float FractionalDistance = (distanza - Vector3.Distance(transform.position, enemy.position)) / distanza;
         float damage = ScaleDamage * FractionalDistance + MinDamage;
-        enemy.GetComponent<Enemy>().Damage(damage);
+        enemy.GetComponent<Enemy3D>().Damage(damage);
         Bacchetta.GetComponent<Bacchetta>().HaStordito();
         laserShotLine.material = Blu;
 
         //Invoke("ShotEffects", 0.3f);
+        
     }
 
     void ShotEffects()
     {
         anim.SetBool("spell", true);
         laserShotLine.SetPosition(0, bacchetta.position);
-        laserShotLine.SetPosition(1, new Vector3(enemy.position.x,bacchetta.position.y,enemy.position.z));
+        laserShotLine.SetPosition(1, enemy.position);
         laserShotLine.enabled = true;
         spellLight.intensity = flashIntensity;
         Shoot();
@@ -128,7 +125,6 @@ public class PlayerShooting : MonoBehaviour
         if (other.tag == "Enemy")
         {
             enemy = other.transform;
-            Puu.GetComponent<Puu>().setNemico(enemy);
             Debug.Log("trovato nemico");
         }
     }
@@ -138,7 +134,6 @@ public class PlayerShooting : MonoBehaviour
         if (other.tag == "Enemy")
         {
             enemy = other.transform;
-            Puu.GetComponent<Puu>().setNemico(enemy);
             //Debug.Log("trovato nemico");
         }
     }
@@ -149,7 +144,6 @@ public class PlayerShooting : MonoBehaviour
         {
             enemy = null;
             anim.SetBool("spell", false);
-            Puu.GetComponent<Puu>().setNemico(enemy);
             //Debug.Log("trovato nemico");
         }
     }
@@ -168,7 +162,6 @@ public class PlayerShooting : MonoBehaviour
     {
         enemy = null;
         anim.SetBool("spell", false);
-        Puu.GetComponent<Puu>().setNemico(enemy);
     }
 
     public void SetBacchetta(bool carica)

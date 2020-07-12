@@ -110,6 +110,7 @@ public class MenuPausa : MonoBehaviour
     {
         SceneManager.LoadScene(NomeScena, LoadSceneMode.Single);
         healthbar.GetComponent<HealthBar>().SetCurrentHealth(1);
+        healthbar.GetComponent<HealthBar>().setIsDead(false);
     }
 
     public void OpenMenu()
