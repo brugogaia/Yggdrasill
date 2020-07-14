@@ -39381,7 +39381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e012eff82b034dceb81f0435db364f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorArrow: {fileID: 2800000, guid: 70fc8d556420b432cbd906decec4ff4b, type: 3}
+  cursorArrow: {fileID: 2800000, guid: 98ddf17c675d9440683219e1ac676588, type: 3}
 --- !u!1001 &1062239264
 PrefabInstance:
   m_ObjectHideFlags: 0
