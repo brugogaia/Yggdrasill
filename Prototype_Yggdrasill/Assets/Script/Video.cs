@@ -9,6 +9,7 @@ public class Video : MonoBehaviour
 {
     public VideoPlayer vid;
     private GameObject Canvas;
+    public Canvas canvas_video;
     private bool isplaying = true;
     
     // Start is called before the first frame update
@@ -33,7 +34,8 @@ public class Video : MonoBehaviour
     {
         //vid.Stop();
         isplaying = false;
-        SceneManager.LoadScene("UscitaLabirinto", LoadSceneMode.Single);
+        canvas_video.enabled = false;
+        //SceneManager.LoadScene("UscitaLabirinto", LoadSceneMode.Single);
         //DontDestroyOnLoad(Canvas);
     }
 

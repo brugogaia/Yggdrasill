@@ -124,8 +124,8 @@ public class MenuPausa : MonoBehaviour
     IEnumerator Fading()
     {
         anim.SetBool("Fade", true);
-        if(anim1!=null) anim1.SetBool("Fade", true);
-        if(anim2!=null) anim2.SetBool("Fade", true);
+        //if(anim1!=null) anim1.SetBool("Fade", true);
+        //if(anim2!=null) anim2.SetBool("Fade", true);
         //anim3.SetBool("Fade", true);
         yield return new WaitUntil(() => white.color.a == 1);
         SceneManager.LoadScene("MenuPrincipale", LoadSceneMode.Single);

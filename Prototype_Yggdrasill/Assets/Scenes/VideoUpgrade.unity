@@ -588,6 +588,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vid: {fileID: 920424925}
+  canvas_video: {fileID: 456755619}
 --- !u!328 &920424925
 VideoPlayer:
   m_ObjectHideFlags: 0

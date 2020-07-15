@@ -115,7 +115,7 @@ public class Alice : MonoBehaviour
     {
         anim.SetBool("Fade", true);
         yield return new WaitUntil(() => white.color.a == 1);
-        SceneManager.LoadScene("VideoUpgrade", LoadSceneMode.Single);
+        SceneManager.LoadScene("UscitaLabirinto", LoadSceneMode.Single);
         //DontDestroyOnLoad(Canvas);
 
     }
