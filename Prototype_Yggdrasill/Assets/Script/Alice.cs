@@ -23,7 +23,7 @@ public class Alice : MonoBehaviour
     {
         MenuPausa = GameObject.FindGameObjectWithTag("MenuPausa").GetComponentInParent<Canvas>();
         MenuMorte = GameObject.FindGameObjectWithTag("MenuMorte").GetComponentInParent<Canvas>();
-        Canvas = GameObject.FindGameObjectWithTag("Canvas");
+        //Canvas = GameObject.FindGameObjectWithTag("Canvas");
         this.GetComponent<Animator>().SetBool("walk", false);
         Dialogo.enabled = false;
 
@@ -115,8 +115,8 @@ public class Alice : MonoBehaviour
     {
         anim.SetBool("Fade", true);
         yield return new WaitUntil(() => white.color.a == 1);
-        SceneManager.LoadScene("UscitaLabirinto", LoadSceneMode.Single);
-        DontDestroyOnLoad(Canvas);
+        SceneManager.LoadScene("VideoUpgrade", LoadSceneMode.Single);
+        //DontDestroyOnLoad(Canvas);
 
     }
 

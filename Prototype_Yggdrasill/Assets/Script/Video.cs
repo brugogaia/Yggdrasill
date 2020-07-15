@@ -8,34 +8,33 @@ using UnityEngine.Video;
 public class Video : MonoBehaviour
 {
     public VideoPlayer vid;
-    public Canvas canvas_video;
     private GameObject Canvas;
+    private bool isplaying = true;
     
     // Start is called before the first frame update
     void Start()
     {
         Canvas = GameObject.FindGameObjectWithTag("Canvas");
-        PlayVideo();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (isplaying)
+        {
+            vid.loopPointReached += EndReached;
+        }
+            
     }
 
-    void PlayVideo()
-    {
-        Time.timeScale = 0;
-        vid.Play();
-        vid.loopPointReached += EndReached;
-    }
+
+        
     void EndReached(UnityEngine.Video.VideoPlayer vp)
     {
-        vid.Stop();
-        canvas_video.enabled = false;
+        //vid.Stop();
+        isplaying = false;
         SceneManager.LoadScene("UscitaLabirinto", LoadSceneMode.Single);
-        DontDestroyOnLoad(Canvas);
+        //DontDestroyOnLoad(Canvas);
     }
 
     

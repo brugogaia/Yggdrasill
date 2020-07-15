@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.2963134, g: 0.24455184, b: 0.22886425, a: 1}
+  m_IndirectSpecularColor: {r: 0.2964301, g: 0.24455005, b: 0.22900942, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -13265,7 +13265,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &322854232 stripped
 Transform:
@@ -27268,7 +27268,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0.03515625, y: 0.1796875, z: 0.03515625, w: -0.046875}
+  m_BoundingSphereOverride: {x: 6e-45, y: 1.3e-44, z: 1.1754945e-38, w: 0}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -39372,7 +39372,7 @@ RectTransform:
   - {fileID: 728798837}
   - {fileID: 1610876307}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -41967,22 +41967,22 @@ PrefabInstance:
     - target: {fileID: 8650206724120072913, guid: 1e40267bdbfac1746b6709f0838c858c,
         type: 3}
       propertyPath: m_BoundingSphereOverride.x
-      value: 8.79e-43
+      value: 6.67e-43
       objectReference: {fileID: 0}
     - target: {fileID: 8650206724120072913, guid: 1e40267bdbfac1746b6709f0838c858c,
         type: 3}
       propertyPath: m_BoundingSphereOverride.w
-      value: -2.3399717e-33
+      value: 1e-45
       objectReference: {fileID: 0}
     - target: {fileID: 8650206724120072913, guid: 1e40267bdbfac1746b6709f0838c858c,
         type: 3}
       propertyPath: m_BoundingSphereOverride.y
-      value: 1.009742e-28
+      value: -824185860
       objectReference: {fileID: 0}
     - target: {fileID: 8650206724120072913, guid: 1e40267bdbfac1746b6709f0838c858c,
         type: 3}
       propertyPath: m_BoundingSphereOverride.z
-      value: 7.883867e-37
+      value: 6.67e-43
       objectReference: {fileID: 0}
     - target: {fileID: 6354621097631206253, guid: 1e40267bdbfac1746b6709f0838c858c,
         type: 3}
@@ -47081,7 +47081,6 @@ GameObject:
   - component: {fileID: 1278330276}
   - component: {fileID: 1278330278}
   - component: {fileID: 1278330277}
-  - component: {fileID: 1278330279}
   m_Layer: 5
   m_Name: HB_red
   m_TagString: red
@@ -47145,25 +47144,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1278330275}
   m_CullTransparentMesh: 0
---- !u!95 &1278330279
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1278330275}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 458de43955c92ad4f8df4b13a01448be, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1279237567
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -57979,7 +57959,6 @@ GameObject:
   - component: {fileID: 1614684313}
   - component: {fileID: 1614684312}
   - component: {fileID: 1614684314}
-  - component: {fileID: 1614684315}
   m_Layer: 5
   m_Name: HB_green
   m_TagString: HealthBar
@@ -58059,25 +58038,6 @@ MonoBehaviour:
   MaxHealth: 0
   CurrentHealth: 0
   isDead: 0
---- !u!95 &1614684315
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1614684310}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 458de43955c92ad4f8df4b13a01448be, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1614745919
 GameObject:
   m_ObjectHideFlags: 0
