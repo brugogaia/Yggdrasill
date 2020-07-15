@@ -9,13 +9,6 @@ public class Alice : MonoBehaviour
     private Canvas MenuPausa;
     private Canvas MenuMorte;
 
-    private Rigidbody rb;
-    private float speed = 20f;
-    private float waitTime = 2f;
-    private float timer = 2f;
-    private Transform target;
-    private Vector3 movement;
-
     private bool presa = false;
     [SerializeField] Canvas Dialogo;
     private bool staparlando = false;
@@ -33,8 +26,6 @@ public class Alice : MonoBehaviour
         Canvas = GameObject.FindGameObjectWithTag("Canvas");
         this.GetComponent<Animator>().SetBool("walk", false);
         Dialogo.enabled = false;
-        target = GameObject.FindGameObjectWithTag("TargetAlice").transform;
-        rb = this.GetComponent<Rigidbody>();
 
     }
 
@@ -119,17 +110,12 @@ public class Alice : MonoBehaviour
         staparlando = true;
     }
 
-    private void OnCollisionStay(Collision collision)
-    {
-        if(collision.transform.tag!="Ground")
-        this.GetComponent<Animator>().SetBool("walk", false);
-    }
 
     IEnumerator Fading()
     {
         anim.SetBool("Fade", true);
         yield return new WaitUntil(() => white.color.a == 1);
-        SceneManager.LoadScene("VideoUpgrade", LoadSceneMode.Single);
+        SceneManager.LoadScene("UscitaLabirinto", LoadSceneMode.Single);
         DontDestroyOnLoad(Canvas);
 
     }

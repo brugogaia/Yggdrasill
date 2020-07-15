@@ -10,23 +10,18 @@ public class Video : MonoBehaviour
     public VideoPlayer vid;
     public Canvas canvas_video;
     private GameObject Canvas;
-    private bool start = true;
     
     // Start is called before the first frame update
     void Start()
     {
         Canvas = GameObject.FindGameObjectWithTag("Canvas");
+        PlayVideo();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (start)
-        {
-            start = false;
-            canvas_video.enabled = true;
-            PlayVideo();
-        }
+        
     }
 
     void PlayVideo()
@@ -37,6 +32,7 @@ public class Video : MonoBehaviour
     }
     void EndReached(UnityEngine.Video.VideoPlayer vp)
     {
+        vid.Stop();
         canvas_video.enabled = false;
         SceneManager.LoadScene("UscitaLabirinto", LoadSceneMode.Single);
         DontDestroyOnLoad(Canvas);
