@@ -21,8 +21,6 @@ public class Vibra_Zaino : MonoBehaviour
     void Start()
     {
         zaino = GameObject.FindGameObjectWithTag("green").GetComponent<Image>();
-        
-        
     }
 
     // Update is called once per frame

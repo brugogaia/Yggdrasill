@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PiantaCurativa : MonoBehaviour
 {
-
-    public GameObject player;
+    public bool treD;
+    private GameObject player;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +22,8 @@ public class PiantaCurativa : MonoBehaviour
     {
         if(other.CompareTag("CollPlayer"))
         {
-            player.GetComponent<Giocatore>().Cura();
+            if (!treD) player.GetComponent<Giocatore>().Cura();
+            else player.GetComponent<PlayerMovement>().Cura();
             GameObject.Destroy(this.gameObject);
         }
     }

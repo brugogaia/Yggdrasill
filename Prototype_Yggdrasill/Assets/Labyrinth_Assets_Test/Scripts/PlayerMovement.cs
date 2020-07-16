@@ -30,6 +30,9 @@ public class PlayerMovement : MonoBehaviour
         isDead = healthbar.GetComponent<HealthBar>().isDed();
         if (!MenuPausa.GetComponent<MenuPausa>().pausa && !fermo && !isDead)
         {
+            this.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+            this.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+
             float x = Input.GetAxis("Horizontal");
             float z = Input.GetAxis("Vertical");
             if (x == 0 && z == 0) anim.SetBool("running", false);
@@ -37,6 +40,10 @@ public class PlayerMovement : MonoBehaviour
             Vector3 move = transform.right * x + transform.forward * z;
 
             controller.Move(move * speed * Time.deltaTime);
+        }
+        else
+        {
+            this.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
         }
 
             

@@ -26,8 +26,8 @@ public class MenuPausa : MonoBehaviour
     {
         MenuMorte = GameObject.FindGameObjectWithTag("MenuMorte").GetComponentInParent<Canvas>();
         MenuMorte.enabled = false;
-        anim1 = GameObject.FindGameObjectWithTag("red").GetComponent<Animator>();
-        anim2 = GameObject.FindGameObjectWithTag("HealthBar").GetComponent<Animator>();
+        //anim1 = GameObject.FindGameObjectWithTag("red").GetComponent<Animator>();
+        //anim2 = GameObject.FindGameObjectWithTag("HealthBar").GetComponent<Animator>();
         healthbar = GameObject.FindGameObjectWithTag("HealthBar").transform;
         this.GetComponentInParent<Canvas>().enabled = false;
         if (orol) Orologio = GameObject.FindGameObjectWithTag("Orologio").GetComponent<Canvas>();
