@@ -5,28 +5,28 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MenuPrincipale.unity
     guid: 6d89b92fbad46a04d8d695b5ad6288d8
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Inizio.unity
     guid: b771a2c82a1127848be5cefcae402931
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/2D.unity
     guid: 054182b2c38faae42ae202c81df67a39
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Labyrinth.unity
     guid: 58f107a1cceb3774cbaedf84b43893fd
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/UscitaLabirinto.unity
     guid: faaeec7853621d54db9250bd2d42db82
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/VideoUpgrade.unity
     guid: 6aa43eea2243a354580f94c2fcb442a1
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/RientroLabirinto.unity
     guid: 128e2c0b2ede48742a6e839b7b3bc637
   m_configObjects: {}
