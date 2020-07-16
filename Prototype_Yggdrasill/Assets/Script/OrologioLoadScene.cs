@@ -9,6 +9,7 @@ public class OrologioLoadScene : MonoBehaviour
     public Canvas canvas;
     public Image white;
     public Animator anim;
+    private bool attivo = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,11 +19,17 @@ public class OrologioLoadScene : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(canvas.enabled && Input.GetKeyDown(KeyCode.W))
+        if(canvas.enabled && !attivo)
         {
-            canvas.enabled = false;
-            StartCoroutine(Fading());
+            attivo = true;
+            Invoke("LaunchVideo",1);
         }
+    }
+
+    private void LaunchVideo()
+    {
+        canvas.enabled = false;
+        StartCoroutine(Fading());
     }
 
     IEnumerator Fading()

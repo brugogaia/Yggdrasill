@@ -8,14 +8,14 @@ using UnityEngine.Video;
 public class Video : MonoBehaviour
 {
     public VideoPlayer vid;
-    private GameObject Canvas;
+    public Canvas Canvas_dialogo;
     public Canvas canvas_video;
     private bool isplaying = true;
     
     // Start is called before the first frame update
     void Start()
     {
-        Canvas = GameObject.FindGameObjectWithTag("Canvas");
+        Canvas_dialogo.enabled = false;
     }
 
     // Update is called once per frame
@@ -35,6 +35,7 @@ public class Video : MonoBehaviour
         //vid.Stop();
         isplaying = false;
         canvas_video.enabled = false;
+        //Canvas_dialogo.enabled = true;
         //SceneManager.LoadScene("UscitaLabirinto", LoadSceneMode.Single);
         //DontDestroyOnLoad(Canvas);
     }
