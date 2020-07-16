@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using PathCreation.Examples;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -81,6 +82,8 @@ public class Alice : MonoBehaviour
             {
                 GetComponent<AudioSource>().mute = true;
                 this.GetComponent<Animator>().SetBool("walk", false);
+                this.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+                this.GetComponentInParent<PathFollower>().speed = 0;
                 //speed = 100f;
                 //transform.position = Vector3.MoveTowards(transform.position, target.position, speed);
                 /*transform.parent = target.transform;
