@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Video;
 
 public class OrologioLoadScene : MonoBehaviour
 {
@@ -10,10 +11,14 @@ public class OrologioLoadScene : MonoBehaviour
     public Image white;
     public Animator anim;
     private bool attivo = false;
+    public VideoPlayer vid;
+    public Canvas Canvas_dialogo;
+    public Canvas canvas_video;
+    private bool isplaying = false;
     // Start is called before the first frame update
     void Start()
     {
-        
+        Canvas_dialogo.enabled = false;
     }
 
     // Update is called once per frame
@@ -24,20 +29,27 @@ public class OrologioLoadScene : MonoBehaviour
             attivo = true;
             Invoke("LaunchVideo",1);
         }
+        if (isplaying)
+        {
+            vid.loopPointReached += EndReached;
+        }
     }
 
     private void LaunchVideo()
     {
         canvas.enabled = false;
-        StartCoroutine(Fading());
+        isplaying = true;
+        canvas_video.enabled = true;
+        vid.Play();
     }
 
-    IEnumerator Fading()
+    void EndReached(UnityEngine.Video.VideoPlayer vp)
     {
-        anim.SetBool("Fade", true);
-        yield return new WaitUntil(() => white.color.a == 1);
-        SceneManager.LoadScene("RientroLabirinto", LoadSceneMode.Single);
+        //vid.Stop();
+        isplaying = false;
+        canvas_video.enabled = false;
+        Canvas_dialogo.enabled = true;
+        //SceneManager.LoadScene("UscitaLabirinto", LoadSceneMode.Single);
         //DontDestroyOnLoad(Canvas);
-
     }
 }

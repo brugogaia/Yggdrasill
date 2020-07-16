@@ -61,7 +61,6 @@ public class Vibra_Zaino : MonoBehaviour
         if (lampeggia && timer >= wattime)
         {
             timer = 0.0f;
-            Debug.Log(a);
             if (a >= 0.2 && scendi)
             {
                 a = a - 0.1f;
