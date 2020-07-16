@@ -59,7 +59,7 @@ public class PlayerShooting : MonoBehaviour
             if (Input.GetMouseButtonDown(0) && !bacchettaScarica && !shooting && Vector3.Distance(transform.position, enemy.position) <= distanza)
             {
 
-                Shoot();
+                ShotEffects();
                 
 
             }
@@ -99,19 +99,18 @@ public class PlayerShooting : MonoBehaviour
         enemy.GetComponent<Enemy>().Damage(damage);
         Bacchetta.GetComponent<Bacchetta>().HaStordito();
         laserShotLine.material = Blu;
-        anim.SetBool("spell", true);
+
         //Invoke("ShotEffects", 0.3f);
-        ShotEffects();
     }
 
     void ShotEffects()
     {
-        
+        anim.SetBool("spell", true);
         laserShotLine.SetPosition(0, bacchetta.position);
         laserShotLine.SetPosition(1, new Vector3(enemy.position.x,bacchetta.position.y,enemy.position.z));
         laserShotLine.enabled = true;
         spellLight.intensity = flashIntensity;
-        
+        Shoot();
     }
 
     void Cura()

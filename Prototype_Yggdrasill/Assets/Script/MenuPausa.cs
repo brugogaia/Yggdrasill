@@ -15,6 +15,8 @@ public class MenuPausa : MonoBehaviour
     private Canvas Orologio;
     public bool orol;
 
+    private Transform healthbar;
+
     public Image white;
     public Animator anim;
     private Animator anim1;
@@ -26,6 +28,7 @@ public class MenuPausa : MonoBehaviour
         MenuMorte.enabled = false;
         anim1 = GameObject.FindGameObjectWithTag("red").GetComponent<Animator>();
         anim2 = GameObject.FindGameObjectWithTag("HealthBar").GetComponent<Animator>();
+        healthbar = GameObject.FindGameObjectWithTag("HealthBar").transform;
         this.GetComponentInParent<Canvas>().enabled = false;
         if (orol) Orologio = GameObject.FindGameObjectWithTag("Orologio").GetComponent<Canvas>();
 
@@ -106,6 +109,8 @@ public class MenuPausa : MonoBehaviour
     public void LoadScena()
     {
         SceneManager.LoadScene(NomeScena, LoadSceneMode.Single);
+        healthbar.GetComponent<HealthBar>().SetCurrentHealth(1);
+        healthbar.GetComponent<HealthBar>().setIsDead(false);
     }
 
     public void OpenMenu()
@@ -119,8 +124,8 @@ public class MenuPausa : MonoBehaviour
     IEnumerator Fading()
     {
         anim.SetBool("Fade", true);
-        if(anim1!=null) anim1.SetBool("Fade", true);
-        if(anim2!=null) anim2.SetBool("Fade", true);
+        //if(anim1!=null) anim1.SetBool("Fade", true);
+        //if(anim2!=null) anim2.SetBool("Fade", true);
         //anim3.SetBool("Fade", true);
         yield return new WaitUntil(() => white.color.a == 1);
         SceneManager.LoadScene("MenuPrincipale", LoadSceneMode.Single);

@@ -30,6 +30,7 @@ TagManager:
   - Orologio
   - Target_ricognizione
   - Target3D
+  - EnemyTarget1
   layers:
   - Default
   - TransparentFX

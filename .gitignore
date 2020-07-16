@@ -2,7 +2,7 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/master/Unity.gitignore
 #
-/[Ll]ibrary/
+[Ll]ibrary/
 /[Tt]emp/
 /[Oo]bj/
 /[Bb]uild/
@@ -59,3 +59,4 @@ sysinfo.txt
 crashlytics-build.properties
 
 Prototype_Yggdrasill/Temp/UnityLockfile
+Prototype_Yggdrasill/Assets/Video/Premessa.mp4

@@ -8,9 +8,9 @@ using UnityEngine.Video;
 public class Video : MonoBehaviour
 {
     public VideoPlayer vid;
-    public Canvas canvas_video;
     private GameObject Canvas;
-    private bool start = true;
+    public Canvas canvas_video;
+    private bool isplaying = true;
     
     // Start is called before the first frame update
     void Start()
@@ -21,25 +21,22 @@ public class Video : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (start)
+        if (isplaying)
         {
-            start = false;
-            canvas_video.enabled = true;
-            PlayVideo();
+            vid.loopPointReached += EndReached;
         }
+            
     }
 
-    void PlayVideo()
-    {
-        Time.timeScale = 0;
-        vid.Play();
-        vid.loopPointReached += EndReached;
-    }
+
+        
     void EndReached(UnityEngine.Video.VideoPlayer vp)
     {
+        //vid.Stop();
+        isplaying = false;
         canvas_video.enabled = false;
-        SceneManager.LoadScene("UscitaLabirinto", LoadSceneMode.Single);
-        DontDestroyOnLoad(Canvas);
+        //SceneManager.LoadScene("UscitaLabirinto", LoadSceneMode.Single);
+        //DontDestroyOnLoad(Canvas);
     }
 
     

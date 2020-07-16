@@ -20,7 +20,7 @@ public class MouseLook : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!MenuPausa.GetComponent<MenuPausa>().pausa && !GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().fermo) {
+        if (!MenuPausa.GetComponent<MenuPausa>().pausa && !GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().fermo && !GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().isDead) {
             float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
             float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
