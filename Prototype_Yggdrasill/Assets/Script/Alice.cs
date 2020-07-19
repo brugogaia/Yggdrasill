@@ -10,6 +10,7 @@ public class Alice : MonoBehaviour
     private Canvas MenuPausa;
     private Canvas MenuMorte;
 
+    private GameObject player;
     private bool presa = false;
     [SerializeField] Canvas Dialogo;
     private bool staparlando = false;
@@ -27,7 +28,7 @@ public class Alice : MonoBehaviour
         //Canvas = GameObject.FindGameObjectWithTag("Canvas");
         this.GetComponent<Animator>().SetBool("walk", false);
         Dialogo.enabled = false;
-
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
@@ -122,5 +123,27 @@ public class Alice : MonoBehaviour
         //DontDestroyOnLoad(Canvas);
 
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "CollPlayer" && !presa)
+        {
+            Vector3 direction = transform.position - player.transform.position;
+            //float distanza = Vector3.Distance(player.transform.position, transform.position);
+            player.transform.Translate(direction * 3);
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "CollPlayer" && !presa)
+        {
+            Vector3 direction = player.transform.position - transform.position;
+            //float distanza = Vector3.Distance(player.transform.position, transform.position);
+            player.transform.Translate(direction * 3);
+        }
+    }
+
+    
 
 }

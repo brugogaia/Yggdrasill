@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour
     public bool little;
     [SerializeField] bool volante;
     [SerializeField] float MaxHealth;
-    public float CurrentHealth;
+    private float CurrentHealth;
     private float damage;
     public bool isDead = false;
     private float distanza = 100f;
@@ -34,8 +34,10 @@ public class Enemy : MonoBehaviour
     
     private float altezzaSalto = 0f;
 
-    private float waitTime = 1.5f;
+    private float waitTime = 1f;
     private float timer = 0.0f;
+
+    public Animator anim;
 
     private void Awake()
     {
@@ -78,13 +80,15 @@ public class Enemy : MonoBehaviour
                 if (!playerDead && timer >= waitTime && !shooting && !isDead && Vector3.Distance(transform.position, player.position) <= 70)
                 {
                     timer = 0f;
-                    ShotEffects();
+                    anim.SetBool("spara", true);
+                    Invoke("ShotEffects",0.3f);
 
                 }
                 else
                 {
                     shooting = false;
                     laserShotLine.enabled = false;
+                    anim.SetBool("spara", false);
                 }
 
 
@@ -121,7 +125,7 @@ public class Enemy : MonoBehaviour
         if (!little)
         {
             float distanza = Vector3.Distance(transform.position, player.position);
-            if (distanza <=100 && !volante)
+            if (distanza >=50 &&distanza <=100 && !volante)
                 rb.MovePosition((Vector3)transform.position + (direction * speed * Time.deltaTime));
             else if (volante && distanza <=100)
             {
@@ -194,14 +198,11 @@ public class Enemy : MonoBehaviour
 
                 isDead = true;
 
+                anim.SetBool("morto", true);
+
                 if (!little)
                 {
-                    transform.Rotate(0, 0, -90);
-                    if (volante)
-                    {
-                        transform.Translate(0, -20, 0);
-                        Debug.Log("morto volante");
-                    }
+                    
                 }
                 else
                 {
@@ -210,7 +211,7 @@ public class Enemy : MonoBehaviour
                 }
                     
 
-                transform.Translate(0, 0, 10);
+                transform.Translate(0, 0, 20);
                 transform.gameObject.tag = "DeadEnemy";
                 player.GetComponent<PlayerShooting>().StopShooting();
             }

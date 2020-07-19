@@ -31,6 +31,7 @@ TagManager:
   - Target_ricognizione
   - Target3D
   - EnemyTarget1
+  - istruzioni
   layers:
   - Default
   - TransparentFX

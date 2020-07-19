@@ -55,6 +55,11 @@ public class PlayerMovement : MonoBehaviour
         anim.SetBool("running", false);
     }
 
+    public void Muoviti()
+    {
+        fermo = false;
+    }
+
     public void TakeDamage(float DamageAmount)
     {
         healthbar.GetComponent<HealthBar>().FallDamage(DamageAmount);
