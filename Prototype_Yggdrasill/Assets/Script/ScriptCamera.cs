@@ -19,14 +19,14 @@ public class ScriptCamera : MonoBehaviour
         healthbar = GameObject.FindGameObjectWithTag("HealthBar");
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        target = GameObject.FindGameObjectWithTag("Target2D").transform;
     }
 
     void Update()
     {
         //Debug.Log("visul3D camera " + ricognizione);
-        
-            target = GameObject.FindGameObjectWithTag("Target2D").transform;
-            this.transform.right = Player.transform.right;
+
+        this.transform.right = Player.transform.right;
             
         
         // Define a target position above and behind the target transform
@@ -34,6 +34,11 @@ public class ScriptCamera : MonoBehaviour
 
         // Smoothly move the camera towards that target position
         if(!healthbar.GetComponent<HealthBar>().isDead) transform.position = targetPosition;
+    }
+
+    public void GetTarget(Transform target_camera)
+    {
+        target = target_camera;
     }
 
     

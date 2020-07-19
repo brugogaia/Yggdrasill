@@ -44,7 +44,7 @@ public class HealthBar : MonoBehaviour
     {
         
         damage = DamageAmount / 100;
-        Debug.Log(damage);
+        //Debug.Log(damage);
         //Debug.Log("danno: " + damage);
         CurrentHealth = CurrentHealth - damage;
         

@@ -34,7 +34,7 @@ public class Enemy : MonoBehaviour
     
     private float altezzaSalto = 0f;
 
-    private float waitTime = 1.5f;
+    private float waitTime = 1f;
     private float timer = 0.0f;
 
     public Animator anim;
@@ -81,7 +81,7 @@ public class Enemy : MonoBehaviour
                 {
                     timer = 0f;
                     anim.SetBool("spara", true);
-                    Invoke("ShotEffects",0.7f);
+                    Invoke("ShotEffects",0.5f);
 
                 }
                 else
@@ -198,16 +198,9 @@ public class Enemy : MonoBehaviour
 
                 anim.SetBool("morto", true);
 
-                if (!little)
-                {
-                    transform.Translate(10, 0, 0);
-                }
-                else
-                {
-                    transform.localScale += new Vector3(0, -2, 0);
-                    
-                }
-                    
+                transform.Translate(10, 0, 0);
+                if (volante) this.GetComponent<Rigidbody>().useGravity = true;
+   
                 transform.gameObject.tag = "DeadEnemy";
                 player.GetComponent<PlayerShooting>().StopShooting();
             }

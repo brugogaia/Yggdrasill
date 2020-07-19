@@ -41,16 +41,26 @@ public class Giocatore : MonoBehaviour
     private int k = 0;
 
     private bool stoCollidendo = false;
+    private bool stoPrecipitando = false;
 
     public Animator anim;
 
+    private bool Puu_Carico_Onda = true;
+
     private bool fermo = false;
 
+    private Transform target;
     private Transform target_ricognizione;
+    private Transform target_camera;
+
+    private GameObject Camera;
     private Vector3 pos_iniziale;
-    private int j = 0;
+
     private float waitTime2 = 5.0f;
     private float timer2 = 0.0f;
+
+    private float waitTime_Puu = 5.0f;
+    private float timer_Puu = 0.0f;
 
     private void Start()
     {
@@ -61,15 +71,24 @@ public class Giocatore : MonoBehaviour
         healthbar.GetComponent<HealthBar>().setTreD(false);
         //anim = this.transform.GetComponentInChildren<Animator>();
         y_now = transform.position.y;
-        target_ricognizione = GameObject.FindGameObjectWithTag("Target2D").transform;
+        target = GameObject.FindGameObjectWithTag("Target2D").transform;
+        target_ricognizione = GameObject.FindGameObjectWithTag("Target_ricognizione").transform;
+        target_camera = target;
+        Camera = GameObject.FindGameObjectWithTag("MainCamera");
         anim.SetBool("Grounded", true);
     }
 
     void Update()
     {
+        Camera.GetComponent<ScriptCamera>().GetTarget(this.target_camera);
         //Debug.Log("isGrounded = " + isGrounded);
-        if (GroundDestro || GroundSinistro || GroundCentrale) isGrounded = true;
+        if (GroundDestro || GroundSinistro || GroundCentrale)
+        {
+            isGrounded = true;
+            anim.SetBool("Grounded", true);
+        }
         else isGrounded = false;
+
         if (isGrounded)
         {
             anim.SetBool("Jump", false);
@@ -90,6 +109,10 @@ public class Giocatore : MonoBehaviour
             staDecollando = true;
             staAtterrando = false;
         }
+        else if (y_now < y_prec && (transform.position.y <12 && transform.position.y < -30))
+        {
+            stoPrecipitando = true;
+        }
         else if (y_now < y_prec)
         {
             staDecollando = false;
@@ -99,7 +122,7 @@ public class Giocatore : MonoBehaviour
         {
             staDecollando = false;
             staAtterrando = false;
-        }
+        } 
         if (staAtterrando && ContattoTerra) anim.SetBool("Grounded", true);
         if (fermo) anim.SetBool("running", false);
             if (!MenuPausa.GetComponent<MenuPausa>().pausa && !fermo)
@@ -132,7 +155,7 @@ public class Giocatore : MonoBehaviour
                     }
                 }
                 if (Input.GetKey("space") && stavolando && !isDead) Fly();
-                if (Input.GetKeyUp("space") && stavolando && !isDead)
+                else if (Input.GetKeyUp("space") && stavolando && !isDead)
                 {
                     stavolando = false;
                     anim.SetBool("Flying", false);
@@ -146,34 +169,89 @@ public class Giocatore : MonoBehaviour
                     Atterra();
                 }
             
-            if (Input.GetKey(KeyCode.R) && timer2<=waitTime2)
+            
+            if(!Puu_Carico_Onda && timer_Puu <= waitTime_Puu)
             {
+                timer_Puu = timer_Puu + Time.deltaTime;
+            } else if(!Puu_Carico_Onda && timer_Puu > waitTime_Puu)
+            {
+                Puu_Carico_Onda = true;
+                timer_Puu = 0.0f;
+            }
+
+            if (Input.GetKeyUp(KeyCode.R) || timer2>waitTime2)
+            {
+                timer2 = 0.0f;
+                target_ricognizione.position = target.position;
+                target_camera = target;
+                Puu_Carico_Onda = false;
+                //GameObject.FindGameObjectWithTag("MainCamera").GetComponent<ScriptCamera>().StopRicognizione();
+            } else if (Input.GetKey(KeyCode.R) && timer2 <= waitTime2 && Puu_Carico_Onda)
+            {
+                target_camera = target_ricognizione;
                 timer2 = timer2 + Time.deltaTime;
-                if (j == 0) 
+
+                if (transform.position.y > 0)
                 {
-                    pos_iniziale = target_ricognizione.position; 
-                    j++;
-                }
-                if(target_ricognizione.position.z>=-13 && target_ricognizione.position.y <= -30)
-                {
-                    target_ricognizione.Translate(Input.GetAxis("Horizontal2") * Time.deltaTime * speed, 0, 0);
-                    
+                    if (target_ricognizione.position.y <= -30)
+                    {
+                        target_ricognizione.Translate(Input.GetAxis("Horizontal2") * Time.deltaTime * speed * 3f, 0, 0);
+
+                    }
+                    else
+                    {
+                        target_ricognizione.Translate(0, -Input.GetAxis("Horizontal2") * Time.deltaTime * speed, Input.GetAxis("Horizontal2") * Time.deltaTime * speed * 0.2f);
+
+                    }
+                    //GameObject.FindGameObjectWithTag("MainCamera").GetComponent<ScriptCamera>().Ricognizione();
                 }
                 else
                 {
-                    target_ricognizione.Translate(0, -Input.GetAxis("Horizontal2") * Time.deltaTime * speed, Input.GetAxis("Horizontal2") * Time.deltaTime * speed * 0.5f);
-                    
+                    if (target_ricognizione.position.y >= -31)
+                    {
+                        target_ricognizione.Translate(Input.GetAxis("Horizontal2") * Time.deltaTime * speed * 3f, 0, 0);
+
+                    }
+                    else
+                    {
+                        target_ricognizione.Translate(0, -Input.GetAxis("Horizontal2") * Time.deltaTime * speed, Input.GetAxis("Horizontal2") * Time.deltaTime * speed * 0.2f);
+
+                    }
                 }
-                //GameObject.FindGameObjectWithTag("MainCamera").GetComponent<ScriptCamera>().Ricognizione();
-            }else if (Input.GetKeyUp(KeyCode.R) || timer2>waitTime2)
-            {
-                timer = 0.0f;
-                j = 0;
-                target_ricognizione.position = pos_iniziale;
-                //GameObject.FindGameObjectWithTag("MainCamera").GetComponent<ScriptCamera>().StopRicognizione();
+
             }
 
-                speed = 50f;
+
+            if(stoPrecipitando && !isGrounded)
+            {
+                anim.SetBool("precipita", true);
+                //Debug.Log("Precipita");
+            }
+            else if(stoPrecipitando && isGrounded)
+            {
+                anim.SetBool("precipita", false);
+                stoPrecipitando = false;
+            }
+
+            if(transform.position.y<12 && Input.GetKey(KeyCode.F) && !isDead)
+            {
+                Risali();
+                anim.SetBool("Flying", true);
+
+                if (k == 0)
+                {
+                    Puu.GetComponent<Puu>().isFlying();
+                    k++;
+                }
+            } else if (Input.GetKeyUp(KeyCode.F))
+            {
+                stavolando = false;
+                anim.SetBool("Flying", false);
+                Puu.GetComponent<Puu>().StopFlying();
+                k = 0;
+            }
+
+            speed = 50f;
                 //Debug.Log("k giocatore = " + k);
                 if (!vis3D)
                 {
@@ -343,6 +421,13 @@ public class Giocatore : MonoBehaviour
         stavolando = true;
         
         this.GetComponent<Rigidbody>().AddForce(new Vector3(0f, 0.7f, 0f), ForceMode.Impulse);
+    }
+
+    private void Risali()
+    {
+        stavolando = true;
+
+        this.GetComponent<Rigidbody>().AddForce(new Vector3(0f, 1.5f, 0f), ForceMode.Impulse);
     }
 
     public void CambiaVisualein3D()
