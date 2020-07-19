@@ -34,7 +34,7 @@ public class Enemy : MonoBehaviour
     
     private float altezzaSalto = 0f;
 
-    private float waitTime = 1f;
+    private float waitTime = 1.5f;
     private float timer = 0.0f;
 
     public Animator anim;
@@ -81,7 +81,7 @@ public class Enemy : MonoBehaviour
                 {
                     timer = 0f;
                     anim.SetBool("spara", true);
-                    Invoke("ShotEffects",0.3f);
+                    Invoke("ShotEffects",0.7f);
 
                 }
                 else
@@ -90,8 +90,6 @@ public class Enemy : MonoBehaviour
                     laserShotLine.enabled = false;
                     anim.SetBool("spara", false);
                 }
-
-
 
                 spellLight.intensity = Mathf.Lerp(spellLight.intensity, 0f, fadeSpeed * Time.deltaTime);
             }
@@ -202,7 +200,7 @@ public class Enemy : MonoBehaviour
 
                 if (!little)
                 {
-                    
+                    transform.Translate(10, 0, 0);
                 }
                 else
                 {
@@ -210,8 +208,6 @@ public class Enemy : MonoBehaviour
                     
                 }
                     
-
-                transform.Translate(0, 0, 20);
                 transform.gameObject.tag = "DeadEnemy";
                 player.GetComponent<PlayerShooting>().StopShooting();
             }
@@ -233,7 +229,7 @@ public class Enemy : MonoBehaviour
         
         if(collision.collider.tag == "CollPlayer" && little && !isDead)
         {
-            player.GetComponent<Giocatore>().TakeDamage(10f);
+            player.GetComponent<Giocatore>().TakeDamage(5f);
         }
         
     }

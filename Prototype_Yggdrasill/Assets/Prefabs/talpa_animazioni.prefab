@@ -90,6 +90,9 @@ GameObject:
   - component: {fileID: 8636525146914052536}
   - component: {fileID: 2659253223579297089}
   - component: {fileID: 7208605637202267892}
+  - component: {fileID: 2874348829422099219}
+  - component: {fileID: 5727323264637410827}
+  - component: {fileID: 8584378272449221967}
   m_Layer: 0
   m_Name: talpa_animazioni
   m_TagString: Untagged
@@ -168,7 +171,7 @@ Animator:
   m_GameObject: {fileID: 4385176431598211485}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 50e1444832db1554da7d03a572178bdf, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8bee15b2357d14741a4defb5f3fa9280, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -177,3 +180,52 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2874348829422099219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4385176431598211485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 941d80d0a85dfa0449a122c266a19462, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movement: {x: 0, y: 0}
+  speed: 100
+  little: 1
+  volante: 0
+  MaxHealth: 30
+  isDead: 0
+  MaxDamage: 5
+  MinDamage: 5
+  flashIntensity: 3
+  fadeSpeed: 10
+  anim: {fileID: 7208605637202267892}
+--- !u!135 &5727323264637410827
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4385176431598211485}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!135 &8584378272449221967
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4385176431598211485}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2.0860596
+  m_Center: {x: -0.018676758, y: -4.1843428e-17, z: -0.009522915}
