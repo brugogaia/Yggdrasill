@@ -39,6 +39,11 @@ public class Enemy : MonoBehaviour
 
     public Animator anim;
 
+    public AudioSource[] sounds;
+    public AudioSource suono;
+    int count = 1;
+    public AudioSource morte;
+
     private void Awake()
     {
         if (!little)
@@ -63,6 +68,10 @@ public class Enemy : MonoBehaviour
         rb = this.GetComponent<Rigidbody>();
         
         CurrentHealth = MaxHealth;
+
+        sounds = GetComponents<AudioSource>();
+        suono = sounds[0];
+        morte = sounds[1];
     }
 
     // Update is called once per frame
@@ -123,9 +132,12 @@ public class Enemy : MonoBehaviour
         if (!little)
         {
             float distanza = Vector3.Distance(transform.position, player.position);
-            if (distanza >=50 &&distanza <=100 && !volante)
+            if (distanza >= 50 && distanza <= 100 && !volante)
+            {
                 rb.MovePosition((Vector3)transform.position + (direction * speed * Time.deltaTime));
-            else if (volante && distanza <=100)
+                suono.Play();
+            }
+            else if (volante && distanza <= 100)
             {
                 Vector3 direccio = new Vector3(direction.x, 0, direction.z);
                 rb.MovePosition((Vector3)transform.position + (direccio * speed * Time.deltaTime));
@@ -137,7 +149,11 @@ public class Enemy : MonoBehaviour
             {
                 float step = speed * Time.deltaTime; 
                 transform.position = Vector3.MoveTowards(transform.position, new Vector3(end.position.x, altezzaSalto, end.position.z), step);
-
+                if (count == 1)
+                {
+                    suono.Play();
+                    count++;
+                }
             }
 
         }
@@ -195,6 +211,8 @@ public class Enemy : MonoBehaviour
 
 
                 isDead = true;
+                morte.Play();
+                Debug.Log("nemicoMorto");
 
                 anim.SetBool("morto", true);
 
@@ -205,6 +223,7 @@ public class Enemy : MonoBehaviour
                 player.GetComponent<PlayerShooting>().StopShooting();
             }
         }
+        //morte.Play();
 
     }
 

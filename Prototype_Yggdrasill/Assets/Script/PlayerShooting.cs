@@ -30,6 +30,8 @@ public class PlayerShooting : MonoBehaviour
 
     private Transform Bacchetta;
 
+    public AudioSource enemy1;
+
     private void Awake()
     {
         //laserShotLine = GetComponentInChildren<LineRenderer>();
@@ -41,6 +43,8 @@ public class PlayerShooting : MonoBehaviour
         spellLight.intensity = 0f;
 
         ScaleDamage = MaxDamage - MinDamage;
+
+        enemy1 = GetComponent<AudioSource>();
     }
 
     // Start is called before the first frame update
@@ -130,6 +134,7 @@ public class PlayerShooting : MonoBehaviour
             enemy = other.transform;
             Puu.GetComponent<Puu>().setNemico(enemy);
             Debug.Log("trovato nemico");
+            //enemy1.Play();
         }
     }
 
