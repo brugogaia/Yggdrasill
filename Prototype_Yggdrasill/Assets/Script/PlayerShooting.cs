@@ -30,7 +30,9 @@ public class PlayerShooting : MonoBehaviour
 
     private Transform Bacchetta;
 
-    public AudioSource enemy1;
+    public AudioSource[] sounds;
+    public AudioSource shotsound;
+
 
     private void Awake()
     {
@@ -44,13 +46,13 @@ public class PlayerShooting : MonoBehaviour
 
         ScaleDamage = MaxDamage - MinDamage;
 
-        enemy1 = GetComponent<AudioSource>();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-
+        sounds = GetComponents<AudioSource>();
+        shotsound = sounds[0];
     }
 
     // Update is called once per frame
@@ -64,6 +66,7 @@ public class PlayerShooting : MonoBehaviour
             {
 
                 ShotEffects();
+                shotsound.Play();
                 
 
             }

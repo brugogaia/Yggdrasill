@@ -43,6 +43,7 @@ public class Enemy : MonoBehaviour
     public AudioSource suono;
     int count = 1;
     public AudioSource morte;
+    public AudioSource shotsound;
 
     private void Awake()
     {
@@ -72,6 +73,7 @@ public class Enemy : MonoBehaviour
         sounds = GetComponents<AudioSource>();
         suono = sounds[0];
         morte = sounds[1];
+        shotsound = sounds[2];
     }
 
     // Update is called once per frame
@@ -135,7 +137,6 @@ public class Enemy : MonoBehaviour
             if (distanza >= 50 && distanza <= 100 && !volante)
             {
                 rb.MovePosition((Vector3)transform.position + (direction * speed * Time.deltaTime));
-                Debug.Log("AJSSHDAJSHDHJASD");
             }
             else if (volante && distanza <= 100)
             {
@@ -166,6 +167,7 @@ public class Enemy : MonoBehaviour
         damage = damage / 2;
         //Debug.Log(damage);
         player.GetComponent<Giocatore>().TakeDamage(damage);
+        shotsound.Play();
     }
 
     void ShotEffects()
@@ -212,7 +214,6 @@ public class Enemy : MonoBehaviour
 
                 isDead = true;
                 morte.Play();
-                Debug.Log("nemicoMorto");
 
                 anim.SetBool("morto", true);
 
@@ -252,7 +253,7 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "CollPlayer" && little && !isDead)
+        if (other.tag == "CollPlayer" && little && !isDead)
         {
             /*altezzaSalto = 17f;
             timer = 0.0f;
