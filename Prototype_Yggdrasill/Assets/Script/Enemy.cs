@@ -135,7 +135,7 @@ public class Enemy : MonoBehaviour
             if (distanza >= 50 && distanza <= 100 && !volante)
             {
                 rb.MovePosition((Vector3)transform.position + (direction * speed * Time.deltaTime));
-                suono.Play();
+                Debug.Log("AJSSHDAJSHDHJASD");
             }
             else if (volante && distanza <= 100)
             {
@@ -243,8 +243,12 @@ public class Enemy : MonoBehaviour
         {
             player.GetComponent<Giocatore>().TakeDamage(5f);
         }
-        
-    }
+/*        if (!little && !volante)
+        {
+            Debug.Log("non è talpa");
+            suono.Play();
+        }
+*/    }
 
     private void OnTriggerEnter(Collider other)
     {
