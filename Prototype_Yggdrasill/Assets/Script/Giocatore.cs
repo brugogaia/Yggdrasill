@@ -371,7 +371,7 @@ public class Giocatore : MonoBehaviour
             {
                 //Debug.Log("Collisione!");
                 Damage = collision.relativeVelocity.magnitude;
-                Damage = Damage / 10;
+                Damage = Damage / 50;
                 TakeDamage(Damage);
                 //setHit();
             }
