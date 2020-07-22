@@ -144,8 +144,8 @@ public class Giocatore : MonoBehaviour
                 }
                 else if (Input.GetKeyDown("space") && !isGrounded && !isDead)
                 {
-                    Debug.Log("sono nel volo");
-                    Fly();
+                    stavolando = true;
+                    
                     anim.SetBool("Flying", true);
 
                     if (k == 0)
@@ -330,6 +330,8 @@ public class Giocatore : MonoBehaviour
         {
             Atterra();
         }
+
+        if(stavolando) Fly();
     }
 
     private void Jump()
@@ -421,9 +423,8 @@ public class Giocatore : MonoBehaviour
 
     private void Fly()
     {
-        stavolando = true;
         
-        this.GetComponent<Rigidbody>().AddForce(new Vector3(0f, 0.7f, 0f), ForceMode.Impulse);
+        this.GetComponent<Rigidbody>().AddForce(new Vector3(0f, 0.3f, 0f), ForceMode.Impulse);
     }
 
     private void Risali()
