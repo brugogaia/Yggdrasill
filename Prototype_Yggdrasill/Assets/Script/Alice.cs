@@ -34,6 +34,8 @@ public class Alice : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.L)) StartCoroutine(Fading("Labirinto_Alice"));
+
         if (!MenuPausa.enabled && !MenuMorte.enabled)
         {
             if (staparlando)
@@ -56,7 +58,7 @@ public class Alice : MonoBehaviour
                     {
                         staparlando = false;
                         Dialogo.GetComponent<Canvas>().enabled = false;
-                        StartCoroutine(Fading());
+                        StartCoroutine(Fading("UscitaLabirinto"));
 
                     }
                 }
@@ -115,11 +117,11 @@ public class Alice : MonoBehaviour
     }
 
 
-    IEnumerator Fading()
+    IEnumerator Fading(string nomeScena)
     {
         anim.SetBool("Fade", true);
         yield return new WaitUntil(() => white.color.a == 1);
-        SceneManager.LoadScene("UscitaLabirinto", LoadSceneMode.Single);
+        SceneManager.LoadScene(nomeScena, LoadSceneMode.Single);
         //DontDestroyOnLoad(Canvas);
 
     }

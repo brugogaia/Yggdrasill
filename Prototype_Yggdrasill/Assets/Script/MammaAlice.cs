@@ -37,6 +37,8 @@ public class MammaAlice : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.L)) StartCoroutine(Fading("2D_end"));
+
         if (arrivato) player.GetComponent<Giocatore>().StaiFermo();
         if(arrivato && Input.GetKeyDown(KeyCode.E))
         {
@@ -106,7 +108,7 @@ public class MammaAlice : MonoBehaviour
                 {
                     staparlando = false;
                     Dialogo2.GetComponent<Canvas>().enabled = false;
-                    StartCoroutine(Fading());
+                    StartCoroutine(Fading("Labyrinth"));
                     //UI_Image_Aiuta.enabled = true;
                 }
             }
@@ -127,26 +129,12 @@ public class MammaAlice : MonoBehaviour
 
     }
     
-    void PlayVideo()
-    {
-        Time.timeScale = 0;
-        vid.Play();
-        vid.loopPointReached += EndReached;
-    }
-    void EndReached(UnityEngine.Video.VideoPlayer vp)
-    {
-        canvas_video.enabled = false;
-        parlato = true;
-        SceneManager.LoadScene("SampleScene - Copia", LoadSceneMode.Single);
-        Debug.Log("cambio scena");
-        DontDestroyOnLoad(Canvas);
-    }
-
-    IEnumerator Fading()
+    
+    IEnumerator Fading(string nomeScena)
     {
         anim.SetBool("Fade", true);
         yield return new WaitUntil(() => white.color.a == 1);
-        SceneManager.LoadScene("Labyrinth", LoadSceneMode.Single);
+        SceneManager.LoadScene(nomeScena, LoadSceneMode.Single);
         DontDestroyOnLoad(Canvas);
 
     }

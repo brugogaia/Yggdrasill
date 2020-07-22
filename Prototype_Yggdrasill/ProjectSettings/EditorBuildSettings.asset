@@ -14,12 +14,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/2D.unity
     guid: 054182b2c38faae42ae202c81df67a39
+  - enabled: 1
+    path: Assets/Scenes/Labyrinth.unity
+    guid: 0237d2098027ffc42bcd9168328c28e3
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
-    path: Assets/Scenes/Labyrinth.unity
-    guid: 58f107a1cceb3774cbaedf84b43893fd
   - enabled: 1
     path: Assets/Scenes/UscitaLabirinto.unity
     guid: faaeec7853621d54db9250bd2d42db82
@@ -29,4 +29,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Fine.unity
     guid: 6d2f6fa2fdc0f8b42931f50275246070
+  - enabled: 1
+    path: Assets/Scenes/2D_end.unity
+    guid: 1d81a0daa1e4f2c4fb0cc373733ad62a
+  - enabled: 1
+    path: Assets/Scenes/Labirinto_Alice.unity
+    guid: eeb69e3950a15ec4ab24f7edd2b43401
   m_configObjects: {}
