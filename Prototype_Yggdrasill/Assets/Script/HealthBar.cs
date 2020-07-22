@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class HealthBar : MonoBehaviour
 {
 
-    public Transform character;
+    public GameObject player;
     public Transform HBImage;
     private GameObject Puu;
     private Canvas MenuMorte;
@@ -30,7 +30,7 @@ public class HealthBar : MonoBehaviour
         MaxHealth = HBImage.transform.localScale.x;
         CurrentHealth = MaxHealth;
         Puu = GameObject.FindGameObjectWithTag("Puu");
-        
+        player = GameObject.FindGameObjectWithTag("Player");
         //if (GameObject.Find("Menu").GetComponent<Menu>().Riavviante()) SetCurrentHealth(GameObject.Find("Menu").GetComponent<Menu>().GetHealth());
     }
 
@@ -178,13 +178,13 @@ public class HealthBar : MonoBehaviour
         //Invoke("Trasla", 0.1f);
         isDead = true;
         Puu.GetComponent<Puu>().Morte();
-        character.transform.Translate(0, 0, -0.1f);
+        player.transform.Translate(0, 0, -0.2f);
         Invoke("OpenMenu", 1.0f);
     }
 
     void Trasla()
     {
-        character.Translate(0, -18, 0);
+        player.transform.Translate(0, -10, 0);
     }
 
     public void setTreD(bool bolena)

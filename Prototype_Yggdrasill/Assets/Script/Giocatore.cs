@@ -154,7 +154,7 @@ public class Giocatore : MonoBehaviour
                         k++;
                     }
                 }
-                if (Input.GetKey("space") && stavolando && !isDead) Fly();
+                //if (Input.GetKey("space") && stavolando && !isDead) Fly();
                 else if (Input.GetKeyUp("space") && stavolando && !isDead)
                 {
                     stavolando = false;
@@ -331,7 +331,7 @@ public class Giocatore : MonoBehaviour
             Atterra();
         }
 
-        if(stavolando) Fly();
+        if (Input.GetKey("space") && stavolando && !isDead) Fly();
     }
 
     private void Jump()
@@ -424,7 +424,7 @@ public class Giocatore : MonoBehaviour
     private void Fly()
     {
         
-        this.GetComponent<Rigidbody>().AddForce(new Vector3(0f, 0.3f, 0f), ForceMode.Impulse);
+        this.GetComponent<Rigidbody>().AddForce(new Vector3(0f, 0.6f, 0f), ForceMode.Impulse);
     }
 
     private void Risali()
@@ -434,24 +434,6 @@ public class Giocatore : MonoBehaviour
         this.GetComponent<Rigidbody>().AddForce(new Vector3(0f, 1.5f, 0f), ForceMode.Impulse);
     }
 
-    public void CambiaVisualein3D()
-    {
-        vis3D = true;
-        Debug.Log("Giocatore in 3D, vis3D vale "+vis3D);
-        this.GetComponent<PlayerShooting>().setDistanza3D();
-        
-    }
-
-    public void CambiaVisualein2D()
-    {
-        vis3D = false;
-        this.GetComponent<PlayerShooting>().resetDistanza2D();
-        
-        if (transform.rotation != rotIniziale)
-        {
-            transform.rotation = rotIniziale;
-        }
-    }
 
     public void TakeDamage(float DamageAmount)
     {
