@@ -137,11 +137,21 @@ public class Enemy : MonoBehaviour
             if (distanza >= 50 && distanza <= 100 && !volante)
             {
                 rb.MovePosition((Vector3)transform.position + (direction * speed * Time.deltaTime));
+                if (count == 1)
+                {
+                    suono.Play();
+                    count++;
+                }
             }
             else if (volante && distanza <= 100)
             {
                 Vector3 direccio = new Vector3(direction.x, 0, direction.z);
                 rb.MovePosition((Vector3)transform.position + (direccio * speed * Time.deltaTime));
+                if (count==1)
+                {
+                    suono.Play();
+                    count++;
+                }
             }
         }    
         else
