@@ -164,10 +164,7 @@ public class Giocatore : MonoBehaviour
                 }
 
 
-                if (!isGrounded)
-                {
-                    Atterra();
-                }
+                
             
             
             if(!Puu_Carico_Onda && timer_Puu <= waitTime_Puu)
@@ -327,7 +324,13 @@ public class Giocatore : MonoBehaviour
         
     }
 
-    
+    private void FixedUpdate()
+    {
+        if (!isGrounded)
+        {
+            Atterra();
+        }
+    }
 
     private void Jump()
     {
