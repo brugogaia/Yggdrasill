@@ -28,6 +28,9 @@ public class PlayerShooting3D : MonoBehaviour
 
     private Transform Bacchetta;
 
+    public AudioSource[] sounds;
+    public AudioSource shotsound;
+
     private void Awake()
     {
         //laserShotLine = GetComponentInChildren<LineRenderer>();
@@ -43,7 +46,8 @@ public class PlayerShooting3D : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        sounds = GetComponents<AudioSource>();
+        shotsound = sounds[0];
     }
 
     // Update is called once per frame
@@ -95,6 +99,7 @@ public class PlayerShooting3D : MonoBehaviour
         enemy.GetComponent<Enemy3D>().Damage(damage);
         Bacchetta.GetComponent<Bacchetta>().HaStordito();
         laserShotLine.material = Blu;
+        shotsound.Play();
 
         //Invoke("ShotEffects", 0.3f);
         

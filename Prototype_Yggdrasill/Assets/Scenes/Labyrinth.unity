@@ -15488,7 +15488,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: a5cd2d7d3ff5deb43a23de45c29d3e91,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: a5cd2d7d3ff5deb43a23de45c29d3e91,
         type: 3}
@@ -44282,7 +44282,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1001 &1291700213
 PrefabInstance:
@@ -57320,7 +57320,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 11.799001, y: -143.32301, z: 2.7930002}
 --- !u!4 &1672975089 stripped
 Transform:
@@ -61852,6 +61852,7 @@ GameObject:
   - component: {fileID: 1773138193}
   - component: {fileID: 1773138191}
   - component: {fileID: 1773138192}
+  - component: {fileID: 1773138194}
   m_Layer: 8
   m_Name: Giocatore
   m_TagString: Player
@@ -61923,7 +61924,7 @@ Transform:
   - {fileID: 294922404}
   - {fileID: 251873630}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 89.712006, z: 0}
 --- !u!114 &1773138191
 MonoBehaviour:
@@ -61976,6 +61977,104 @@ MonoBehaviour:
   Blu: {fileID: 2100000, guid: 0f21eb0f64530bd4fb1c72ce0d36a3cf, type: 2}
   Rosa: {fileID: 2100000, guid: dd384efc3cbb96c43981e09848f0edb8, type: 2}
   anim: {fileID: 251873641}
+  sounds: []
+  shotsound: {fileID: 0}
+--- !u!82 &1773138194
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1773138186}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: dd20b3959965344229442b134cc81dc0, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1774550163
 GameObject:
   m_ObjectHideFlags: 0
@@ -70062,7 +70161,7 @@ PrefabInstance:
     - target: {fileID: 4087288378092276743, guid: fb13323132bc58e45bbf5642a9708546,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4087288378092276743, guid: fb13323132bc58e45bbf5642a9708546,
         type: 3}
@@ -74838,6 +74937,10 @@ MonoBehaviour:
   flashIntensity: 3
   fadeSpeed: 10
   anim: {fileID: 0}
+  sounds: []
+  suono: {fileID: 0}
+  morte: {fileID: 0}
+  shotsound: {fileID: 0}
 --- !u!54 &2125679712
 Rigidbody:
   m_ObjectHideFlags: 0

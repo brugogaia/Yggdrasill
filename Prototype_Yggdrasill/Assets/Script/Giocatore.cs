@@ -62,6 +62,12 @@ public class Giocatore : MonoBehaviour
     private float waitTime_Puu = 5.0f;
     private float timer_Puu = 0.0f;
 
+    public AudioSource[] sounds;
+    public AudioSource suonobacchetta;
+    int count = 1;
+    public AudioSource vola;
+    public AudioSource muore;
+
     private void Start()
     {
         rotIniziale = transform.rotation;
@@ -76,6 +82,12 @@ public class Giocatore : MonoBehaviour
         target_camera = target;
         Camera = GameObject.FindGameObjectWithTag("MainCamera");
         anim.SetBool("Grounded", true);
+
+
+        sounds = GetComponents<AudioSource>();
+        suonobacchetta = sounds[0];
+        vola = sounds[1];
+        muore = sounds[2];
     }
 
     void Update()
@@ -135,7 +147,15 @@ public class Giocatore : MonoBehaviour
                 if (stavolando && !Puu.GetComponent<Puu>().flying) Puu.GetComponent<Puu>().isFlying();
 
                 isDead = healthbar.GetComponent<HealthBar>().isDed();
-                if (isDead) Puu.GetComponent<Puu>().setNemico(null);
+            if (isDead)
+            {
+                Puu.GetComponent<Puu>().setNemico(null);
+                if (count == 1)
+                {
+                    muore.Play();
+                    count++;
+                }
+            }
                 timer = timer + Time.deltaTime;
                 //Debug.Log("is grounded " + isGrounded);
                 if (Input.GetKeyDown("space") && isGrounded && !isDead)
@@ -145,6 +165,8 @@ public class Giocatore : MonoBehaviour
                 else if (Input.GetKeyDown("space") && !isGrounded && !isDead)
                 {
                     stavolando = true;
+                Debug.Log("qua ci sta yahoo 2");
+                    vola.Play();
                     
                     anim.SetBool("Flying", true);
 

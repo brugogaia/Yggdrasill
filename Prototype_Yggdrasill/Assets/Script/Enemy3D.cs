@@ -39,6 +39,12 @@ public class Enemy3D : MonoBehaviour
 
     public Animator anim;
 
+    public AudioSource[] sounds;
+    public AudioSource suono;
+    int count = 1;
+    public AudioSource morte;
+    public AudioSource shotsound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,6 +60,11 @@ public class Enemy3D : MonoBehaviour
         spellLight.intensity = 0f;
 
         ScaleDamage = MaxDamage - MinDamage;
+
+        sounds = GetComponents<AudioSource>();
+        suono = sounds[0];
+        morte = sounds[1];
+        shotsound = sounds[2];
     }
 
     // Update is called once per frame
@@ -111,6 +122,7 @@ public class Enemy3D : MonoBehaviour
         {
             Debug.Log("Trovato player");
             target = player.gameObject;
+            suono.Play();
         }
     }
 
@@ -121,6 +133,7 @@ public class Enemy3D : MonoBehaviour
         damage = damage / 2;
         //Debug.Log(damage);
         player.GetComponent<PlayerMovement>().TakeDamage(damage);
+        shotsound.Play();
     }
 
     void ShotEffects()
@@ -163,6 +176,7 @@ public class Enemy3D : MonoBehaviour
 
                 isDead = true;
                 Debug.Log("Morto nemico");
+                morte.Play();
 
                 anim.SetBool("morto", true);
 

@@ -165,6 +165,7 @@ public class Enemy : MonoBehaviour
                 //transform.position = Vector3.MoveTowards(transform.position, new Vector3(end.position.x, altezzaSalto, end.position.z), step);
                 if (count == 1)
                 {
+                    Debug.Log("askjdbgfhlcjhov");
                     suono.Play();
                     count++;
                 }
