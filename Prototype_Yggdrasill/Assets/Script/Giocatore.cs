@@ -65,8 +65,10 @@ public class Giocatore : MonoBehaviour
     public AudioSource[] sounds;
     public AudioSource suonobacchetta;
     int count = 1;
+    int puuspower = 1;
     public AudioSource vola;
     public AudioSource muore;
+    public AudioSource poweR;
 
     private void Start()
     {
@@ -88,6 +90,7 @@ public class Giocatore : MonoBehaviour
         suonobacchetta = sounds[0];
         vola = sounds[1];
         muore = sounds[2];
+        poweR = sounds[3];
     }
 
     void Update()
@@ -204,9 +207,16 @@ public class Giocatore : MonoBehaviour
                 target_ricognizione.position = target.position;
                 target_camera = target;
                 Puu_Carico_Onda = false;
+                puuspower = 1;
                 //GameObject.FindGameObjectWithTag("MainCamera").GetComponent<ScriptCamera>().StopRicognizione();
             } else if (Input.GetKey(KeyCode.R) && timer2 <= waitTime2 && Puu_Carico_Onda)
             {
+                if (puuspower == 1)
+                {
+                    //Debug.Log("pusspower");
+                    poweR.Play();
+                    puuspower++;
+                }
                 target_camera = target_ricognizione;
                 timer2 = timer2 + Time.deltaTime;
 
