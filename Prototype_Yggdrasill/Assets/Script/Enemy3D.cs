@@ -7,9 +7,9 @@ public class Enemy3D : MonoBehaviour
     private Transform player;
     private Rigidbody rb;
     private Vector3 movement;
-    private float speed = 10f;
+    private float speed = 15f;
     private GameObject target;
-    private GameObject PathTarget;
+    public GameObject PathTarget;
 
     private GameObject MenuPausa;
 
@@ -34,8 +34,10 @@ public class Enemy3D : MonoBehaviour
 
     private bool shooting = false;
 
-    private float waitTime = 0.7f;
+    private float waitTime = 1f;
     private float timer = 0.0f;
+
+    public Animator anim;
 
     // Start is called before the first frame update
     void Start()
@@ -43,7 +45,6 @@ public class Enemy3D : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         rb = this.GetComponent<Rigidbody>();
         MenuPausa = GameObject.FindGameObjectWithTag("MenuPausa");
-        PathTarget = GameObject.FindGameObjectWithTag("EnemyTarget1");
         target = PathTarget;
         CurrentHealth = MaxHealth;
 
@@ -68,20 +69,22 @@ public class Enemy3D : MonoBehaviour
             Quaternion rotation = Quaternion.LookRotation(target.transform.position, Vector3.forward);
 
             transform.LookAt(target.transform);
-            this.transform.Rotate(-90, 0, 0);
+            //this.transform.Rotate(-90, 0, 0);
             direction.Normalize();
             movement = direction;
 
             if (timer >= waitTime && !shooting && target==player.gameObject)
             {
                 timer = 0f;
-                ShotEffects();
+                anim.SetBool("spara", true);
+                Invoke("ShotEffects", 0.5f);
 
             }
             else
             {
                 shooting = false;
                 laserShotLine.enabled = false;
+                anim.SetBool("spara", false);
             }
 
 
@@ -122,13 +125,17 @@ public class Enemy3D : MonoBehaviour
 
     void ShotEffects()
     {
-        shooting = true;
-        laserShotLine.SetPosition(0, laserShotLine.transform.position);
-        laserShotLine.SetPosition(1, new Vector3(player.position.x, transform.position.y, player.position.z));
-        Debug.Log("Colpito giocatore");
-        laserShotLine.enabled = true;
-        spellLight.intensity = flashIntensity;
-        Shoot();
+        if (!isDead)
+        {
+            shooting = true;
+            laserShotLine.SetPosition(0, laserShotLine.transform.position);
+            laserShotLine.SetPosition(1, new Vector3(player.position.x, transform.position.y, player.position.z));
+            Debug.Log("Colpito giocatore");
+            laserShotLine.enabled = true;
+            spellLight.intensity = flashIntensity;
+            Shoot();
+        }
+        
 
 
     }
@@ -151,23 +158,13 @@ public class Enemy3D : MonoBehaviour
             {
                 CurrentHealth = 0;
 
+                laserShotLine.enabled = false;
+                spellLight.intensity = 0f;
 
                 isDead = true;
                 Debug.Log("Morto nemico");
 
-                if (!little)
-                {
-                    if (volante)
-                    {
-                        transform.Translate(0, -20, 0);
-                        Debug.Log("morto volante");
-                    }
-                }
-                else
-                {
-                    transform.localScale += new Vector3(0, -2, 0);
-
-                }
+                anim.SetBool("morto", true);
 
                 transform.gameObject.tag = "DeadEnemy";
                 player.GetComponent<PlayerShooting3D>().StopShooting();

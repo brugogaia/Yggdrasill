@@ -114,7 +114,6 @@ public class PlayerShooting3D : MonoBehaviour
     {
         shooting = true;
         float FractionalDistance = (distanza - Vector3.Distance(transform.position, enemy.position)) / distanza;
-        enemy.GetComponent<Enemy>().Cura();
         Bacchetta.GetComponent<Bacchetta>().HaCurato();
         laserShotLine.material = Rosa;
         ShotEffects();

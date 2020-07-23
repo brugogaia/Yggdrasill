@@ -211,7 +211,7 @@ public class Giocatore : MonoBehaviour
                     }
                     else
                     {
-                        target_ricognizione.Translate(0, -Input.GetAxis("Horizontal2") * Time.deltaTime * speed, Input.GetAxis("Horizontal2") * Time.deltaTime * speed * 0.2f);
+                        target_ricognizione.Translate(0, Input.GetAxis("Horizontal2") * Time.deltaTime * speed, Input.GetAxis("Horizontal2") * Time.deltaTime * speed * 0.2f);
 
                     }
                 }

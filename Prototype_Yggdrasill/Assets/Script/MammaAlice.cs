@@ -37,7 +37,7 @@ public class MammaAlice : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.L)) StartCoroutine(Fading("2D_end"));
+        if(Input.GetKeyDown(KeyCode.L)) StartCoroutine(FadingShortcut("2D_end"));
 
         if (arrivato) player.GetComponent<Giocatore>().StaiFermo();
         if(arrivato && Input.GetKeyDown(KeyCode.E))
@@ -130,6 +130,15 @@ public class MammaAlice : MonoBehaviour
     }
     
     
+    IEnumerator FadingShortcut(string nomeScena)
+    {
+        anim.SetBool("Fade", true);
+        yield return new WaitUntil(() => white.color.a == 1);
+        SceneManager.LoadScene(nomeScena, LoadSceneMode.Single);
+        //DontDestroyOnLoad(Canvas);
+
+    }
+
     IEnumerator Fading(string nomeScena)
     {
         anim.SetBool("Fade", true);

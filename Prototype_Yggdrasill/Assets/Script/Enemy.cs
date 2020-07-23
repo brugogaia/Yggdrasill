@@ -70,10 +70,13 @@ public class Enemy : MonoBehaviour
         
         CurrentHealth = MaxHealth;
 
+        
         sounds = GetComponents<AudioSource>();
         suono = sounds[0];
         morte = sounds[1];
-        shotsound = sounds[2];
+        if(!little) shotsound = sounds[2];
+        
+        
     }
 
     // Update is called once per frame
@@ -159,7 +162,7 @@ public class Enemy : MonoBehaviour
             if(Vector3.Distance(transform.position, player.position) <= distanza )
             {
                 float step = speed * Time.deltaTime; 
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(end.position.x, altezzaSalto, end.position.z), step);
+                //transform.position = Vector3.MoveTowards(transform.position, new Vector3(end.position.x, altezzaSalto, end.position.z), step);
                 if (count == 1)
                 {
                     suono.Play();
@@ -182,23 +185,27 @@ public class Enemy : MonoBehaviour
 
     void ShotEffects()
     {
-        shooting = true;
-        laserShotLine.SetPosition(0, laserShotLine.transform.position);
-        int layerMask = 1 << 8;
-        if (Physics.Raycast(transform.position, end.position - transform.position, Mathf.Infinity, layerMask))
+        if (!isDead)
         {
-            laserShotLine.SetPosition(1, new Vector3(player.position.x,transform.position.y,player.position.z));
-            Debug.Log("Colpito giocatore");
-            Shoot();
-        }
-        else
-        {
-            //Debug.Log("Did not Hit");
-            laserShotLine.SetPosition(1, new Vector3(end.position.x, transform.position.y, end.position.z));
-        }
+            shooting = true;
+            laserShotLine.SetPosition(0, laserShotLine.transform.position);
+            int layerMask = 1 << 8;
+            if (Physics.Raycast(transform.position, end.position - transform.position, Mathf.Infinity, layerMask))
+            {
+                laserShotLine.SetPosition(1, new Vector3(player.position.x, transform.position.y, player.position.z));
+                Debug.Log("Colpito giocatore");
+                Shoot();
+            }
+            else
+            {
+                //Debug.Log("Did not Hit");
+                laserShotLine.SetPosition(1, new Vector3(end.position.x, transform.position.y, end.position.z));
+            }
 
-        laserShotLine.enabled = true;
-        spellLight.intensity = flashIntensity;
+            laserShotLine.enabled = true;
+            spellLight.intensity = flashIntensity;
+        }
+        
         
         
     }
@@ -221,6 +228,8 @@ public class Enemy : MonoBehaviour
             {
                 CurrentHealth = 0;
 
+                laserShotLine.enabled = false;
+                spellLight.intensity = 0f;
 
                 isDead = true;
                 morte.Play();
@@ -238,38 +247,6 @@ public class Enemy : MonoBehaviour
 
     }
 
-    public void Cura()
-    {
-        CurrentHealth = CurrentHealth + 20f;
-        if(CurrentHealth > MaxHealth)
-        {
-            CurrentHealth = MaxHealth;
-        }
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        
-        if(collision.collider.tag == "CollPlayer" && little && !isDead)
-        {
-            player.GetComponent<Giocatore>().TakeDamage(5f);
-        }
-/*        if (!little && !volante)
-        {
-            Debug.Log("non è talpa");
-            suono.Play();
-        }
-*/    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "CollPlayer" && little && !isDead)
-        {
-            /*altezzaSalto = 17f;
-            timer = 0.0f;
-            waitTime = 0.25f;*/
-        }
-    }
 
     public bool isLittle()
     {
