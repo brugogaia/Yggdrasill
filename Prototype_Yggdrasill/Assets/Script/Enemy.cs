@@ -161,13 +161,18 @@ public class Enemy : MonoBehaviour
         {
             if(Vector3.Distance(transform.position, player.position) <= distanza )
             {
-                float step = speed * Time.deltaTime; 
+                float step = speed * Time.deltaTime;
                 //transform.position = Vector3.MoveTowards(transform.position, new Vector3(end.position.x, altezzaSalto, end.position.z), step);
-                if (count == 1)
+                //if (Vector3.Distance(new Vector3(transform.position.x, transform.position.y, transform.position.z), new Vector3(player.position.x, transform.position.y, player.position.z)) <= distanza)
+                //if (count == 1)
+                if((player.position.y<0 && transform.position.y<0)||(player.position.y>0 && transform.position.y > 0))
                 {
-                    Debug.Log("askjdbgfhlcjhov");
+                    if (count == 1)
+                    {
                     suono.Play();
                     count++;
+                    }
+
                 }
             }
 
