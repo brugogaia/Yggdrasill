@@ -36,10 +36,12 @@ public class MammaAlice2 : MonoBehaviour
             start = false;
             canvas_video.enabled = true;
             PlayVideo();
-        }*/
+        }*/ 
+        
+
         if (arrivato)
         {
-            if(Dialogo2.enabled && Input.GetKeyDown(KeyCode.E))
+           if(Dialogo2.enabled && Input.GetKeyDown(KeyCode.E))
             {
                 StartCoroutine(Fading());
             }

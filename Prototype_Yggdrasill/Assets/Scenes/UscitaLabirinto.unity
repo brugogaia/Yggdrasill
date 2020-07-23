@@ -45213,6 +45213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Dialogo: {fileID: 609487984}
+  Dialogo2: {fileID: 454971648}
   white: {fileID: 73430181}
   anim: {fileID: 73430183}
 --- !u!4 &2084110710 stripped
