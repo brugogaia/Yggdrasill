@@ -36,16 +36,15 @@ public class MammaAlice2 : MonoBehaviour
             start = false;
             canvas_video.enabled = true;
             PlayVideo();
-        }*/ 
-        
+        }*/
 
+        if (Dialogo2.enabled && Input.GetKeyDown(KeyCode.E))
+        {
+            Dialogo2.enabled = false;
+            StartCoroutine(Fading());
+        }
         if (arrivato)
         {
-           if(Dialogo2.enabled && Input.GetKeyDown(KeyCode.E))
-            {
-                StartCoroutine(Fading());
-            }
-
             player.GetComponent<Giocatore>().StaiFermo();
             if (!Dialogo.GetComponent<Canvas>().enabled && k == 0)
             {
@@ -84,7 +83,7 @@ public class MammaAlice2 : MonoBehaviour
 
     IEnumerator Fading()
     {
-        anim.SetBool("Fadee", true);
+        anim.SetBool("Fade", true);
         yield return new WaitUntil(() => white.color.a == 1);
         SceneManager.LoadScene("Labyrinth_dopoAlice", LoadSceneMode.Single);
         DontDestroyOnLoad(Canvas);

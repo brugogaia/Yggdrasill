@@ -32,7 +32,7 @@ public class CambioScenaFinale : MonoBehaviour
 
     IEnumerator Fading()
     {
-        Debug.Log("sono nella carota");
+        //Debug.Log("sono nella carota");
         anim.SetBool("Fade", true);
         yield return new WaitUntil(() => white.color.a == 1);
         SceneManager.LoadScene("Fine", LoadSceneMode.Single);

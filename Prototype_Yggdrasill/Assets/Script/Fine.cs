@@ -4,10 +4,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class Comandi_Inizio : MonoBehaviour
+public class Fine : MonoBehaviour
 {
     public Image white;
     public Animator anim;
+
+    private float waitTime = 5f;
+    private float timer = 0.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,14 +21,10 @@ public class Comandi_Inizio : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.L)) LoadScena();
+        timer = timer + Time.deltaTime;
+        if (timer >= waitTime) OpenMenu();
     }
 
-    public void LoadScena()
-    {
-        SceneManager.LoadScene("2D", LoadSceneMode.Single);
-
-    }
 
     public void OpenMenu()
     {
