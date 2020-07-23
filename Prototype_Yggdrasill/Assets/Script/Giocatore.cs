@@ -372,7 +372,7 @@ public class Giocatore : MonoBehaviour
         anim.SetBool("Jump", true);
         if (anim.GetBool("running"))
         {
-            this.GetComponent<Rigidbody>().AddForce(new Vector3(0f, 25f, 0f), ForceMode.Impulse);
+            this.GetComponent<Rigidbody>().AddForce(new Vector3(0f, 26f, 0f), ForceMode.Impulse);
         }
 
         else

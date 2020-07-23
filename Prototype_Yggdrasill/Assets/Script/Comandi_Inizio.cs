@@ -18,30 +18,30 @@ public class Comandi_Inizio : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.L)) LoadScena();
     }
 
     public void LoadScena()
     {
         SceneManager.LoadScene("2D", LoadSceneMode.Single);
-        
+
     }
 
     public void OpenMenu()
     {
         this.GetComponentInParent<Canvas>().enabled = false;
-        StartCoroutine(Fading());
+        StartCoroutine(Fading("MenuPrincipale"));
 
     }
 
-    IEnumerator Fading()
+    IEnumerator Fading(string nomeScena)
     {
         anim.SetBool("Fade", true);
         //if(anim1!=null) anim1.SetBool("Fade", true);
         //if(anim2!=null) anim2.SetBool("Fade", true);
         //anim3.SetBool("Fade", true);
         yield return new WaitUntil(() => white.color.a == 1);
-        SceneManager.LoadScene("MenuPrincipale", LoadSceneMode.Single);
+        SceneManager.LoadScene(nomeScena, LoadSceneMode.Single);
 
 
     }

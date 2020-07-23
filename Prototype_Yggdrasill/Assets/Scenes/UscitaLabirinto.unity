@@ -30751,6 +30751,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pausa: 0
   NomeScena: UscitaLabirinto
+  checkDopo: 
   Zaino1: {fileID: 451089696}
   Zaino2: {fileID: 1446887195}
   orol: 1

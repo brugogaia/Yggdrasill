@@ -19,7 +19,7 @@ public class PlayerShooting : MonoBehaviour
 
     private bool bacchettaScarica = false;
 
-    private int distanza = 100;
+    private int distanza = 130;
 
     private GameObject Puu;
 

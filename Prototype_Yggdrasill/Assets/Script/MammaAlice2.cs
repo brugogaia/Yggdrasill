@@ -10,6 +10,7 @@ public class MammaAlice2 : MonoBehaviour
     private Transform player;
     private GameObject Canvas;
     public GameObject Dialogo;
+    public Canvas Dialogo2;
     private bool arrivato = true;
     public Image white;
     public Animator anim;
@@ -38,6 +39,11 @@ public class MammaAlice2 : MonoBehaviour
         }*/
         if (arrivato)
         {
+            if(Dialogo2.enabled && Input.GetKeyDown(KeyCode.E))
+            {
+                StartCoroutine(Fading());
+            }
+
             player.GetComponent<Giocatore>().StaiFermo();
             if (!Dialogo.GetComponent<Canvas>().enabled && k == 0)
             {
@@ -58,7 +64,7 @@ public class MammaAlice2 : MonoBehaviour
                     GameObject.Destroy(Dialogo);
                     Orologio.enabled = true;
                     arrivato = false;
-                    //StartCoroutine(Fading());
+                    //
                 }
             }
             else if (Input.GetKeyDown(KeyCode.E) && !Dialogo.transform.GetChild(k).GetComponent<Image>().enabled)
@@ -78,7 +84,7 @@ public class MammaAlice2 : MonoBehaviour
     {
         anim.SetBool("Fadee", true);
         yield return new WaitUntil(() => white.color.a == 1);
-        SceneManager.LoadScene("Labyrinth", LoadSceneMode.Single);
+        SceneManager.LoadScene("Labyrinth_dopoAlice", LoadSceneMode.Single);
         DontDestroyOnLoad(Canvas);
 
     }

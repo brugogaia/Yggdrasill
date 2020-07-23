@@ -43,7 +43,6 @@ public class MammaAlice : MonoBehaviour
         if(arrivato && Input.GetKeyDown(KeyCode.E))
         {
             UI_Image_Parla.enabled = false;
-            canvas_video.enabled = true;
             arrivato = false;
             //PlayVideo();
             staparlando = true;
@@ -51,7 +50,7 @@ public class MammaAlice : MonoBehaviour
         else if(arrivato && Input.GetKeyDown(KeyCode.X))
         {
             UI_Image_Parla.enabled = false;
-            //Carichiamo scena labirinto senza Alice
+            StartCoroutine(Fading("Labyrinth_noAscolta"));
         }
 
         if (staparlando)
@@ -119,7 +118,7 @@ public class MammaAlice : MonoBehaviour
             else if (UI_Image_Aiuta.enabled && Input.GetKeyDown(KeyCode.X))
             {
                 UI_Image_Aiuta.enabled = false;
-                //Carichiamo scena labirinto con Alice invisibile che si sentono solo i passi
+                StartCoroutine(Fading("Labyrinth_noAiuta"));
             }
         }
         

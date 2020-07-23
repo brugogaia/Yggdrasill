@@ -126,6 +126,14 @@ public class Enemy3D : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.collider.tag == "CollPlayer")
+        {
+            player.GetComponent<PlayerMovement>().TakeDamage(100f);
+        }
+    }
+
     void Shoot()
     {
         float FractionalDistance = (70 - Vector3.Distance(transform.position, player.position)) / 70;

@@ -9,6 +9,7 @@ public class MenuPausa : MonoBehaviour
     // Start is called before the first frame update
     public bool pausa = false;
     [SerializeField] string NomeScena;
+    public string checkDopo;
     private Canvas MenuMorte;
     public Canvas Zaino1;
     public Canvas Zaino2;
@@ -71,9 +72,13 @@ public class MenuPausa : MonoBehaviour
                 Cursor.lockState = CursorLockMode.Locked;
             }
         }
-        
 
 
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            NomeScena = checkDopo;
+            LoadScena();
+        }
 
         if (!pausa && !MenuMorte.enabled && Input.GetKeyDown("escape"))
         {
@@ -99,6 +104,11 @@ public class MenuPausa : MonoBehaviour
     public string GetNomeScena()
     {
         return NomeScena;
+    }
+
+    public void setNomeScena(string scena)
+    {
+        NomeScena = scena;
     }
 
     public void setPausa(bool boolean)

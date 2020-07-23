@@ -91,7 +91,7 @@ public class Enemy : MonoBehaviour
             timer += Time.deltaTime;
             if (!little)
             {
-                if (!playerDead && timer >= waitTime && !shooting && !isDead && Vector3.Distance(transform.position, player.position) <= 70)
+                if (!playerDead && timer >= waitTime && !shooting && !isDead && Vector3.Distance(transform.position, player.position) <= 100)
                 {
                     timer = 0f;
                     anim.SetBool("spara", true);
@@ -184,7 +184,7 @@ public class Enemy : MonoBehaviour
         float FractionalDistance = (70 - Vector3.Distance(transform.position, player.position)) / 70;
         float damage = ScaleDamage * FractionalDistance + MinDamage;
         damage = damage / 2;
-        //Debug.Log(damage);
+        Debug.Log(damage);
         player.GetComponent<Giocatore>().TakeDamage(damage);
         shotsound.Play();
     }
@@ -204,7 +204,7 @@ public class Enemy : MonoBehaviour
             }
             else
             {
-                //Debug.Log("Did not Hit");
+                Debug.Log("Did not Hit");
                 laserShotLine.SetPosition(1, new Vector3(end.position.x, transform.position.y, end.position.z));
             }
 

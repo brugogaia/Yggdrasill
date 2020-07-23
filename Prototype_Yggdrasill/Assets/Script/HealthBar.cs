@@ -174,11 +174,12 @@ public class HealthBar : MonoBehaviour
     public void Affoga()
     {
         anim.SetBool("Affoga", true);
-        
+        CurrentHealth = 0;
+        HBImage.GetComponent<Image>().fillAmount = CurrentHealth;
         //Invoke("Trasla", 0.1f);
         isDead = true;
         Puu.GetComponent<Puu>().Morte();
-        player.transform.Translate(0, 0, -0.2f);
+        player.transform.Translate(0, 0, -0.15f);
         Invoke("OpenMenu", 1.0f);
     }
 

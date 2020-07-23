@@ -34,7 +34,7 @@ public class Alice : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.L)) StartCoroutine(Fading("Labirinto_Alice"));
+        if (Input.GetKeyDown(KeyCode.L)) StartCoroutine(Fading("Labyrinth_Alice"));
 
         if (!MenuPausa.enabled && !MenuMorte.enabled)
         {
