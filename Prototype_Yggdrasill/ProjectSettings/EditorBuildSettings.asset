@@ -23,7 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/UscitaLabirinto.unity
     guid: faaeec7853621d54db9250bd2d42db82
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/VideoUpgrade.unity
     guid: 6aa43eea2243a354580f94c2fcb442a1
   - enabled: 1
@@ -41,7 +41,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/2D_3check.unity
     guid: b514c1dac17739040881709962b761db
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Labirinto_Alice.unity
     guid: eeb69e3950a15ec4ab24f7edd2b43401
   - enabled: 1
