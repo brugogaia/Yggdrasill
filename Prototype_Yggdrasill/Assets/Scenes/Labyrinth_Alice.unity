@@ -28960,7 +28960,6 @@ GameObject:
   - component: {fileID: 781071875}
   - component: {fileID: 781071874}
   - component: {fileID: 781071877}
-  - component: {fileID: 781071873}
   m_Layer: 0
   m_Name: PlaneCambioScena
   m_TagString: Untagged
@@ -28968,20 +28967,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &781071873
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 781071872}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13fe7b8b945c9384f89093c84d13a95f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  white: {fileID: 2133028504}
-  anim: {fileID: 2133028503}
 --- !u!23 &781071874
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -29050,7 +29035,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 781071872}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 10.000002, y: 1.0241166, z: 10}
@@ -38365,7 +38350,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1086243058
 Transform:
   m_ObjectHideFlags: 0
@@ -38524,7 +38509,7 @@ MonoBehaviour:
       - 0
       globalNormalsAngle: 0
       flipNormals: 1
-    vertexPathUpToDate: 1
+    vertexPathUpToDate: 0
     vertexPathMaxAngleError: 0.3
     vertexPathMinVertexSpacing: 0.01
     showTransformTool: 1
@@ -55298,6 +55283,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: 0f2cc3a518e4646a8aa310aa05fb32cc,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 4636f089e825e4b0ca7068e9130032db, type: 2}
     - target: {fileID: -4216859302048453862, guid: 0f2cc3a518e4646a8aa310aa05fb32cc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -55373,11 +55363,6 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -6057140222963153312, guid: 0f2cc3a518e4646a8aa310aa05fb32cc,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 4636f089e825e4b0ca7068e9130032db, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f2cc3a518e4646a8aa310aa05fb32cc, type: 3}
 --- !u!4 &1619592611 stripped

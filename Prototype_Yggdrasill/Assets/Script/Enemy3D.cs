@@ -80,6 +80,7 @@ public class Enemy3D : MonoBehaviour
             Quaternion rotation = Quaternion.LookRotation(target.transform.position, Vector3.forward);
 
             transform.LookAt(target.transform);
+
             //this.transform.Rotate(-90, 0, 0);
             direction.Normalize();
             movement = direction;
@@ -131,7 +132,7 @@ public class Enemy3D : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.collider.tag == "CollPlayer")
+        if(!isDead && collision.collider.tag == "CollPlayer")
         {
             player.GetComponent<PlayerMovement>().TakeDamage(100f);
         }
