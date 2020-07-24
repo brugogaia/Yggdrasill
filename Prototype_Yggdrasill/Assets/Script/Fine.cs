@@ -9,7 +9,7 @@ public class Fine : MonoBehaviour
     public Image white;
     public Animator anim;
 
-    private float waitTime = 5f;
+    private float waitTime = 10f;
     private float timer = 0.0f;
     // Start is called before the first frame update
     void Start()
