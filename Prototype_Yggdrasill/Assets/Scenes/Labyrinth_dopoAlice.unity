@@ -9817,6 +9817,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1773138190}
     m_Modifications:
+    - target: {fileID: -927199367670048503, guid: b40d5b3645ecfba46a3cf9eda08f6e91,
+        type: 3}
+      propertyPath: m_Name
+      value: Helten_def_Idle
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: b40d5b3645ecfba46a3cf9eda08f6e91,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: b40d5b3645ecfba46a3cf9eda08f6e91,
+        type: 3}
+      propertyPath: m_TagString
+      value: idle
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: b40d5b3645ecfba46a3cf9eda08f6e91,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: b40d5b3645ecfba46a3cf9eda08f6e91,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9933,26 +9953,6 @@ PrefabInstance:
       value: CollPlayer
       objectReference: {fileID: 0}
     - target: {fileID: 8219362072142390352, guid: b40d5b3645ecfba46a3cf9eda08f6e91,
-        type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: b40d5b3645ecfba46a3cf9eda08f6e91,
-        type: 3}
-      propertyPath: m_Name
-      value: Helten_def_Idle
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: b40d5b3645ecfba46a3cf9eda08f6e91,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: b40d5b3645ecfba46a3cf9eda08f6e91,
-        type: 3}
-      propertyPath: m_TagString
-      value: idle
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: b40d5b3645ecfba46a3cf9eda08f6e91,
         type: 3}
       propertyPath: m_Layer
       value: 8
@@ -55513,6 +55513,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: 0f2cc3a518e4646a8aa310aa05fb32cc,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 4636f089e825e4b0ca7068e9130032db, type: 2}
     - target: {fileID: -4216859302048453862, guid: 0f2cc3a518e4646a8aa310aa05fb32cc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -55588,11 +55593,6 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -6057140222963153312, guid: 0f2cc3a518e4646a8aa310aa05fb32cc,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 4636f089e825e4b0ca7068e9130032db, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f2cc3a518e4646a8aa310aa05fb32cc, type: 3}
 --- !u!4 &1619592611 stripped
@@ -71098,6 +71098,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 4087288378092276751, guid: fb13323132bc58e45bbf5642a9708546,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4087288378092276743, guid: fb13323132bc58e45bbf5642a9708546,
         type: 3}

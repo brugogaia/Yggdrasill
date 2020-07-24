@@ -122,7 +122,10 @@ public class Enemy3D : MonoBehaviour
         {
             Debug.Log("Trovato player");
             target = player.gameObject;
-            suono.Play();
+            if (!isDead)
+            {
+                suono.Play();
+            }
         }
     }
 

@@ -42,14 +42,14 @@ public class MenuPausa : MonoBehaviour
         {
             if (this.GetComponentInParent<Canvas>().enabled || MenuMorte.enabled || Zaino1.enabled || Zaino2.enabled)
             {
-
+                Time.timeScale = 0;
                 pausa = true;
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.None;
             }
             else
             {
-
+                Time.timeScale = 1;
                 pausa = false;
                 Cursor.visible = false;
                 Cursor.lockState = CursorLockMode.Locked;
@@ -59,14 +59,13 @@ public class MenuPausa : MonoBehaviour
         {
             if (this.GetComponentInParent<Canvas>().enabled || MenuMorte.enabled || Zaino1.enabled || Zaino2.enabled || Orologio.enabled)
             {
-
                 pausa = true;
                 Cursor.visible = true;
                 Cursor.lockState = CursorLockMode.None;
             }
             else
             {
-
+                Time.timeScale = 1;
                 pausa = false;
                 Cursor.visible = false;
                 Cursor.lockState = CursorLockMode.Locked;
@@ -128,7 +127,7 @@ public class MenuPausa : MonoBehaviour
         this.GetComponentInParent<Canvas>().enabled = false;
         MenuMorte.enabled = false;
         StartCoroutine(Fading());
-        
+
     }
 
     IEnumerator Fading()
@@ -139,7 +138,9 @@ public class MenuPausa : MonoBehaviour
         //anim3.SetBool("Fade", true);
         yield return new WaitUntil(() => white.color.a == 1);
         SceneManager.LoadScene("MenuPrincipale", LoadSceneMode.Single);
-        
+
 
     }
 }
+
+
